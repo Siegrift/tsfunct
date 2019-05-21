@@ -1,4 +1,4 @@
-import { DeepReadonly } from './types'
+import { DeepReadonly } from '../types'
 
 export class DefaultContext<T = unknown> {
   constructor(private _value: T) {}

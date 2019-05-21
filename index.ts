@@ -1,8 +1,10 @@
-export { ArrayContext } from './src/arrayContext'
-export { ObjectContext } from './src/objectContext'
-export { DefaultContext } from './src/defaultContext'
-export { OptionalContext } from './src/optionalContext'
+export * from './src/context/arrayContext'
+export * from './src/context/objectContext'
+export * from './src/context/defaultContext'
+export * from './src/context/optionalContext'
 
 // create abbreviations for contexts
-export { ArrayContext as arr } from './src/arrayContext'
-export { ObjectContext as obj } from './src/objectContext'
+export { ArrayContext as arr } from './src/context/arrayContext'
+export { ObjectContext as obj } from './src/context/objectContext'
+
+export * from './src/lib/get'

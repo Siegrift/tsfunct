@@ -1,5 +1,5 @@
 import { OptionalContext } from './optionalContext'
-import { isNullOrUndefined } from './utils'
+import { _get } from '../lib/get'
 
 export class ObjectContext<T extends object> extends OptionalContext<T> {
   constructor(_value?: T) {
@@ -21,12 +21,6 @@ export class ObjectContext<T extends object> extends OptionalContext<T> {
     key2?: K2,
     key3?: K3,
   ) {
-    const value = this.value
-    if (isNullOrUndefined(value)) return this
-
-    if (key1 === undefined) return value
-    else if (key2 === undefined) return value[key1]
-    else if (key3 === undefined) return value[key1][key2]
-    else return value[key1][key2][key3]
+    return _get(this.value, key1, key2, key3)
   }
 }

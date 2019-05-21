@@ -1,6 +1,6 @@
-import { DeepReadonly } from './types'
+import { DeepReadonly } from '../types'
 import { OptionalContext } from './optionalContext'
-import { isNullOrUndefined } from './utils'
+import { isNullOrUndefined } from '../utils'
 
 export class ArrayContext<T = unknown> extends OptionalContext<T[]> {
   constructor(_value?: T[]) {
