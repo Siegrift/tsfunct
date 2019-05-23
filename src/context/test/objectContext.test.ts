@@ -30,9 +30,9 @@ describe('ObjectContext', () => {
   describe('get', () => {
     test('get part of the nested object', () => {
       const context = new ObjectContext(state)
-      expect(context.get('users')).toBe(state.users)
-      expect(context.get('users', 1)).toBe(state.users[1])
-      expect(context.get('users', 1, 'id')).toBe(state.users[1].id)
+      expect(context.get('users').value).toBe(state.users)
+      expect(context.get('users', 1).value).toBe(state.users[1])
+      expect(context.get('users', 1, 'id').value).toBe(state.users[1].id)
     })
   })
 })
