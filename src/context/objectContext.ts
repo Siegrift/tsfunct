@@ -1,8 +1,9 @@
 import { OptionalContext } from './optionalContext'
 import { _get } from '../lib/get'
+import { Optional } from '../types'
 
 export class ObjectContext<T extends object> extends OptionalContext<T> {
-  constructor(_value?: T) {
+  constructor(_value?: Optional<T>) {
     super(_value)
   }
 

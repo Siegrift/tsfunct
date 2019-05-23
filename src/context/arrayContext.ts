@@ -1,23 +1,16 @@
-import { DeepReadonly } from '../types'
+import { DeepReadonly, Optional } from '../types'
 import { OptionalContext } from './optionalContext'
-import { isNullOrUndefined } from '../utils'
+import { map } from '../lib/map'
 
 export class ArrayContext<T = unknown> extends OptionalContext<T[]> {
-  constructor(_value?: T[]) {
+  constructor(_value?: Optional<T[]>) {
     super(_value)
   }
 
   map<NewType>(
     fn: (value: DeepReadonly<T>, index: number) => NewType,
   ): ArrayContext<NewType> {
-    const value = this.value
-    if (isNullOrUndefined(value)) return new ArrayContext<NewType>()
-
-    const res = []
-    for (let i = 0; i < value.length; i++) {
-      res.push(fn(value[i] as DeepReadonly<T>, i))
-    }
-    return new ArrayContext(res)
+    return new ArrayContext<NewType>(map(this.value, fn))
   }
 
   fill(n: number, initFn: (index: number) => T): this {

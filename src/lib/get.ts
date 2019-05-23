@@ -34,17 +34,20 @@ export function _get<
 }
 
 export function get<T, K1 extends keyof T>(obj: T, key: K1): T[K1]
+
 export function get<T, K1 extends keyof T, K2 extends keyof T[K1]>(
   obj: T,
   key1: K1,
   key2: K2,
 ): T[K1][K2]
+
 export function get<
   T,
   K1 extends keyof T,
   K2 extends keyof T[K1],
   K3 extends keyof T[K1][K2]
 >(obj: T, key1: K1, key2: K2, key3: K3): T[K1][K2][K3]
+
 export function get<
   T,
   K1 extends keyof T,
@@ -52,6 +55,7 @@ export function get<
   K3 extends keyof T[K1][K2],
   K4 extends keyof T[K1][K2][K3]
 >(obj: T, key1: K1, key2: K2, key3: K3, key4: K4): T[K1][K2][K3][K4]
+
 export function get<
   T,
   K1 extends keyof T,
