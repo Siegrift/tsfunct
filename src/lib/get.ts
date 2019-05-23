@@ -96,10 +96,7 @@ export function get(
   key4?: any,
   key5?: any,
 ) {
-  if (isNullOrUndefined(obj)) {
-    if (key1 === undefined) return obj
-    return undefined
-  }
+  if (isNullOrUndefined(obj)) return obj
 
   if (key1 === undefined) {
     return obj

@@ -27,6 +27,11 @@ describe('get', () => {
     }
   })
 
+  test('if object is null or undefined, returns object', () => {
+    expect(get(null as any, 'asd')).toBe(null)
+    expect(get(undefined as any, 'asd')).toBe(undefined)
+  })
+
   test('get the nested value in object', () => {
     expect(get(state, 'more')).toEqual({
       someId: 'hello',
@@ -39,9 +44,5 @@ describe('get', () => {
   test('if object or intermidiate path is undefined, returns undefined', () => {
     expect(get(state, 'users', 10, 'id')).toBe(undefined)
     expect(get(state, 'more', 'badId')).toBe(undefined)
-  })
-
-  test('if object is null or undefined, returns undefined', () => {
-    expect(get(null as any, 'asd')).toBe(undefined)
   })
 })
