@@ -66,4 +66,13 @@ describe('get', () => {
   test('accepts default value', () => {
     expect(get(state, ['optional'], { a: 10 })).toEqual({ a: 10 })
   })
+
+  test('returns nested value (as non optional) when default value is passed', () => {
+    const user = get(state, ['users', 10], { id: -1, key: 'default' })
+    // thisline verifies that user is of type 'User' and not 'User | undefined'
+    const userId = user.id
+
+    expect(user).toEqual({ id: -1, key: 'default' })
+    expect(userId).toBe(-1)
+  })
 })
