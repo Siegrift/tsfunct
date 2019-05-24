@@ -7,4 +7,8 @@ export * from './src/context/optionalContext'
 export { ArrayContext as arr } from './src/context/arrayContext'
 export { ObjectContext as obj } from './src/context/objectContext'
 
+export * from './src/lib/filter'
 export * from './src/lib/get'
+export * from './src/lib/map'
+export * from './src/lib/omit'
+export * from './src/lib/pick'
