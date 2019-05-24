@@ -21,3 +21,8 @@ export interface Dictionary<T> {
 export interface NumericDictionary<T> {
   [index: number]: T
 }
+
+export type OptionalValueType<T extends Optional<any>> = Diff<
+  T,
+  null | undefined
+>

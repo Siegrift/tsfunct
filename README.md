@@ -34,13 +34,15 @@ Disadvantage is that you are creating a new context with every context function 
 
 ##### get(object, ...path)
 Lodash typings for this helper are pretty weak. First of all, you don't get compile error for
-incorrect usage and if you use it correctly the result will be typed as `any`. *It is impossible to
-strongly type get method if you support dynamic path (e.g. `'a.b'` or an array of keys).* ![Bad
+incorrect usage and if you use it correctly the result will be typed as `any`. ![Bad
 lodash typings](assets/bad_lodash.png)
 
 The path and also the result object is typed when using `get` from this libary.
 ![Autcomplete path](assets/path_autocomplete.png)
 ![Typed result](assets/typed_result.png)
+
+**NOTE: The signature of get method has changed to array and now supports also default value.**
+TODO: update screenshots 
 
 The result of `get` call is also stongly typed. This helper only allows for getting nested values in
 5 levels maximum. If you need more, you are probably doing something wrong ;).
