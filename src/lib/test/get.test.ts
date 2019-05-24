@@ -19,7 +19,7 @@ describe('get', () => {
     state = {
       users: [
         { id: 156, key: 'asd' },
-        { id: 56, key: 'hjghj' },
+        { id: 56, key: 'key' },
         { id: 78978, key: 'opi' },
       ],
       more: {
@@ -58,7 +58,7 @@ describe('get', () => {
     })
   })
 
-  test('if object or intermidiate path is undefined, returns undefined', () => {
+  test('if object or intermediate path is undefined, returns undefined', () => {
     expect(get(state, ['users', 10, 'id'])).toBe(undefined)
     expect(get(state, ['more', 'badId'])).toBe(undefined)
   })

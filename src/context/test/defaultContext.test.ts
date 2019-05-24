@@ -11,7 +11,7 @@ describe('DefaultContext', () => {
   })
 
   describe('transform', () => {
-    test('tranforms the value in context with custom function', () => {
+    test('transforms the value in context with custom function', () => {
       const value = 'str'
       const context = new DefaultContext(value)
       const fn = () => 123

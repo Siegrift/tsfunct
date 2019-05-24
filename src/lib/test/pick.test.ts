@@ -16,7 +16,7 @@ describe('pick', () => {
     expect(pick(obj, ['a', 'b'])).toEqual({ a: true, b: 'abc' })
   })
 
-  test('acceps also an array of properties', () => {
+  test('accepts also an array of properties', () => {
     const dict: Dictionary<string> = { a: 'true', b: 'abc', c: '123' }
 
     expect(pick(dict, ['a', 'badKey', 'c'])).toEqual({ a: 'true', c: '123' })

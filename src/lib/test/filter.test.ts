@@ -41,9 +41,9 @@ describe('filter', () => {
 
   test('is immutable', () => {
     const arr = [1, 2, 3, 4, 5]
-    const filterpedArr = filter(arr, () => false)
+    const filteredArr = filter(arr, () => false)
 
     expect(arr).toBe(arr)
-    expect(filterpedArr).toEqual([])
+    expect(filteredArr).toEqual([])
   })
 })
