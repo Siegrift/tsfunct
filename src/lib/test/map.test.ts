@@ -46,4 +46,12 @@ describe('map', () => {
     expect(arr).toBe(arr)
     expect(mappedArr).toEqual([1, 4, 9, 16, 25])
   })
+
+  test('non idiomatic usage can modify original array', () => {
+    const arr = [{ a: 0 }, { a: 1 }, { a: 2 }]
+    const mapped = map(arr, (val: any) => (val.a = 3))
+
+    expect(mapped).toEqual([3, 3, 3])
+    expect(arr).toEqual([{ a: 3 }, { a: 3 }, { a: 3 }])
+  })
 })
