@@ -25,5 +25,9 @@
       "pre-commit": "yarn fix",
       "pre-push": "yarn jest"
     }
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.132",
+    "lodash": "^4.17.11"
   }
 }

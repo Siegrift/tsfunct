@@ -52,5 +52,6 @@ export function map(collection: any, fn: any): any {
       res[key] = fn(collection[key], key)
     }
   }
+
   return res
 }

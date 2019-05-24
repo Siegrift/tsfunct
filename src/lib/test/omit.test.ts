@@ -13,7 +13,7 @@ describe('omit', () => {
   test('returns new object from omitted properties in source object', () => {
     const obj = { a: true, b: 'abc', c: 123 }
 
-    expect(omit(obj, 'a', 'b')).toEqual({ c: 123 })
+    expect(omit(obj, ['a', 'b'])).toEqual({ c: 123 })
   })
 
   test('acceps also an array of properties', () => {

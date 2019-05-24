@@ -13,7 +13,7 @@ describe('pick', () => {
   test('returns new object from picked properties in source object', () => {
     const obj = { a: true, b: 'abc', c: 123 }
 
-    expect(pick(obj, 'a', 'b')).toEqual({ a: true, b: 'abc' })
+    expect(pick(obj, ['a', 'b'])).toEqual({ a: true, b: 'abc' })
   })
 
   test('acceps also an array of properties', () => {
