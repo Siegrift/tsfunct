@@ -18,22 +18,22 @@ export function map<T, Result>(
 
 export function map<T, Result>(
   collection: Dictionary<T>,
-  fn: (value: DeepReadonly<T>, key: string) => Result,
+  fn: (value: DeepReadonly<T>, key: string) => { key: string; value: Result },
 ): Dictionary<T>
 
 export function map<T, Result>(
   collection: Optional<Dictionary<T>>,
-  fn: (value: DeepReadonly<T>, key: string) => Result,
+  fn: (value: DeepReadonly<T>, key: string) => { key: string; value: Result },
 ): Optional<Dictionary<T>>
 
 export function map<T, Result>(
   collection: NumericDictionary<T>,
-  fn: (value: DeepReadonly<T>, key: number) => Result,
+  fn: (value: DeepReadonly<T>, key: number) => { key: number; value: Result },
 ): NumericDictionary<T>
 
 export function map<T, Result>(
   collection: Optional<NumericDictionary<T>>,
-  fn: (value: DeepReadonly<T>, key: number) => Result,
+  fn: (value: DeepReadonly<T>, key: number) => { key: number; value: Result },
 ): Optional<NumericDictionary<T>>
 
 export function map(collection: any, fn: any): any {
@@ -49,7 +49,8 @@ export function map(collection: any, fn: any): any {
     res = {} as any
     const keys = Object.keys(collection)
     for (const key of keys) {
-      res[key] = fn(collection[key], key)
+      const mapped = fn(collection[key], key)
+      res[mapped.key] = mapped.value
     }
   }
 

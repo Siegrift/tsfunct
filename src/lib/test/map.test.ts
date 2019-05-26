@@ -34,9 +34,12 @@ describe('map', () => {
       b: 'b',
       c: 'c',
     }
-    const mapFn = (value: string, key: string) => key + value
+    const mapFn = (value: string, key: string) => ({
+      key: key + 'x',
+      value: key + value,
+    })
 
-    expect(map(dict, mapFn)).toEqual({ a: 'aa', b: 'bb', c: 'cc' })
+    expect(map(dict, mapFn)).toEqual({ ax: 'aa', bx: 'bb', cx: 'cc' })
   })
 
   test('is immutable', () => {
