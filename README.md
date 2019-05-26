@@ -1,4 +1,5 @@
 # tsfunct
+[![CircleCI](https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg)](https://circleci.com/gh/Siegrift/tsfunct)
 Tsfuncts is a **T**ype**S**cript **funct**ional library made directly for TS with its static
 typesystem in mind. 
 
