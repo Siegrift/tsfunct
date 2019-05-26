@@ -7,7 +7,21 @@ import * as tsfunct from '../index'
 import * as lodash from 'lodash'
 
 const unexported = []
-const ignored = ['_']
+const ignored = [
+  '_',
+  'assign',
+  'assignIn',
+  'assignInWith',
+  'assignWith',
+  'defaults',
+  'defaultsDeep',
+  'pull',
+  'pullAll',
+  'pullAllBy',
+  'pullAllWith',
+  'pullAt',
+  'remove',
+]
 
 for (const fn in lodash) {
   if (!lodash.hasOwnProperty(fn)) continue

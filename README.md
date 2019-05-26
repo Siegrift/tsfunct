@@ -71,3 +71,12 @@ const mapped = map(original, (val: any) => (val.a = 3))
 // mapped array will be [3, 3, 3]
 // original will be [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
+
+### Difference to lodash
+
+- `map` and `filter` are not changing the structure of the `source value`
+- `map` is exported as `mapValues` and `filter` as `filterValues`
+- removed `pull, pullAll, pullAllBy, pullAllWith, pullAt` (they have immutable alternatives)
+- removed `assign, assignIn, assignInWith, assignWith` (use destructuring or combination of
+  immutable helpers)
+- removed `defaults, defaultsDeep`

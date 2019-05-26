@@ -1,22 +1,21 @@
-export * from './src/context/arrayContext'
-export * from './src/context/objectContext'
-export * from './src/context/defaultContext'
-export * from './src/context/optionalContext'
+export { ArrayContext, arr } from './src/context/arrayContext'
+export { ObjectContext, obj } from './src/context/objectContext'
+export { DefaultContext } from './src/context/defaultContext'
+export { OptionalContext } from './src/context/optionalContext'
 
-export * from './src/lib/filter'
-export * from './src/lib/get'
-export * from './src/lib/map'
-export * from './src/lib/omit'
-export * from './src/lib/pick'
+export { filter } from './src/lib/filter'
+export { get } from './src/lib/get'
+export { map } from './src/lib/map'
+export { omit } from './src/lib/omit'
+export { pick } from './src/lib/pick'
+
+// export original lodash map and filter
+export { map as mapValues, filter as filterValues } from 'lodash'
 
 export {
   add,
   after,
   ary,
-  assign,
-  assignIn,
-  assignInWith,
-  assignWith,
   at,
   attempt,
   before,
@@ -47,8 +46,6 @@ export {
   debounce,
   deburr,
   defaultTo,
-  defaults,
-  defaultsDeep,
   defer,
   delay,
   difference,
@@ -165,7 +162,6 @@ export {
   lt,
   lte,
   mapKeys,
-  mapValues,
   matches,
   matchesProperty,
   max,
@@ -204,11 +200,6 @@ export {
   pickBy,
   property,
   propertyOf,
-  pull,
-  pullAll,
-  pullAllBy,
-  pullAllWith,
-  pullAt,
   random,
   range,
   rangeRight,
@@ -216,7 +207,6 @@ export {
   reduce,
   reduceRight,
   reject,
-  remove,
   repeat,
   replace,
   rest,
