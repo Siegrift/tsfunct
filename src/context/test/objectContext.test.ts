@@ -17,7 +17,7 @@ describe('ObjectContext', () => {
     state = {
       users: [
         { id: 156, key: 'asd' },
-        { id: 56, key: 'hjghj' },
+        { id: 56, key: 'key' },
         { id: 78978, key: 'opi' },
       ],
       more: {

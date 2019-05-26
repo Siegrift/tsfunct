@@ -1,5 +1,6 @@
 *.js
 !.test.js
 !jest.config.js
+validator/build
 node_modules
 yarn-lock.json

@@ -1,4 +1,4 @@
-import { isNullOrUndefined } from '../utils'
+import { get as _get } from 'lodash'
 import { Optional, OptionalValueType } from '../types'
 
 // create an alias as OptionalValueType is too verbose
@@ -92,10 +92,5 @@ export function get<
   defaultValue: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
 ): U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]
 export function get(obj: any, keys: any[], defaultValue?: any) {
-  for (const key of keys) {
-    if (isNullOrUndefined(obj)) return defaultValue
-    obj = obj[key]
-  }
-  if (isNullOrUndefined(obj)) return defaultValue
-  else return obj
+  return _get(obj, keys, defaultValue)
 }

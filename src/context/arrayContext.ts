@@ -23,3 +23,7 @@ export class ArrayContext<T = unknown> extends OptionalContext<T[]> {
     return this
   }
 }
+
+export function arr<T>(value: Optional<T[]>) {
+  return new ArrayContext(value)
+}
