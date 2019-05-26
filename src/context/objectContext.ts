@@ -51,3 +51,7 @@ export class ObjectContext<T extends object> extends OptionalContext<T> {
     return new DefaultContext(get(this.value, keys, defaultValue))
   }
 }
+
+export function obj<T>(value: Optional<T[]>) {
+  return new ObjectContext(value)
+}

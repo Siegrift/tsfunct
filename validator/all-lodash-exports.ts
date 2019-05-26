@@ -7,10 +7,13 @@ import * as tsfunct from '../index'
 import * as lodash from 'lodash'
 
 const unexported = []
+const ignored = ['_']
+
 for (const fn in lodash) {
   if (!lodash.hasOwnProperty(fn)) continue
 
   if (
+    !ignored.includes(fn) &&
     !tsfunct.hasOwnProperty(fn) &&
     // https://stackoverflow.com/questions/5999998/check-if-a-variable-is-of-function-type
     {}.toString.call((lodash as any)[fn]) === '[object Function]'
@@ -35,4 +38,8 @@ if (unexported.length) {
 
   // exit with error code
   process.exit(1)
+} else {
+  console.log('--------------------------------------------------')
+  console.log('        ALL LODASH FUNCTIONS ARE EXPORTED         ')
+  console.log('--------------------------------------------------')
 }
