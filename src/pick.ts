@@ -1,5 +1,4 @@
-import { pick as _pick } from 'lodash'
-import { isNullOrUndefined } from '../utils'
+import { isNullOrUndefined } from './utils'
 
 export function pick<T, K extends keyof T>(
   obj: T,
@@ -23,7 +22,19 @@ export function pick<T, K extends keyof T>(
 
 export function pick<T>(obj: T, keys: Array<keyof T>): Partial<T>
 
-export function pick(obj: any, keys: any[]): any {
+export function pick(obj: any, firstKeyOrKeys?: any, ...otherKeys: any[]): any {
   if (isNullOrUndefined(obj)) return obj
-  else return _pick(obj, keys)
+
+  const res = {} as any
+  if (Array.isArray(firstKeyOrKeys)) {
+    firstKeyOrKeys.forEach((key) => {
+      if (obj[key] !== undefined) res[key] = obj[key]
+    })
+  } else {
+    res[firstKeyOrKeys] = obj[firstKeyOrKeys]
+    otherKeys.forEach((key) => {
+      if (obj[key] !== undefined) res[key] = obj[key]
+    })
+  }
+  return res
 }

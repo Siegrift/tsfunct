@@ -1,10 +1,5 @@
-import {
-  DeepReadonly,
-  Dictionary,
-  NumericDictionary,
-  Optional
-} from '../types'
-import { isNullOrUndefined } from '../utils'
+import { DeepReadonly, Dictionary, NumericDictionary, Optional } from './types'
+import { isNullOrUndefined } from './utils'
 
 export function filter<T>(
   collection: T[],

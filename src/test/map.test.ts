@@ -1,5 +1,5 @@
 import { map } from '../map'
-import { Dictionary, NumericDictionary, Optional } from '../../types'
+import { Dictionary, NumericDictionary, Optional } from '../types'
 
 describe('map', () => {
   const idFn = (x: any) => x

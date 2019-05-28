@@ -24,11 +24,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn fix",
-      "pre-push": "yarn test && yarn tsc --target 'ES5' --outDir 'validator/build' ./validator/all-lodash-exports.ts && node ./validator/build/validator/all-lodash-exports.js"
+      "pre-push": "yarn test"
     }
-  },
-  "dependencies": {
-    "@types/lodash": "^4.14.132",
-    "lodash": "^4.17.11"
   }
 }

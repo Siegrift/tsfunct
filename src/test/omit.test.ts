@@ -1,5 +1,5 @@
 import { omit } from '../omit'
-import { Dictionary, Optional } from '../../types'
+import { Dictionary, Optional } from '../types'
 
 describe('omit', () => {
   test('when object is null or undefined, returns object', () => {

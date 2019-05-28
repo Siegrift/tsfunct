@@ -1,5 +1,5 @@
 import { pick } from '../pick'
-import { Dictionary, Optional } from '../../types'
+import { Dictionary, Optional } from '../types'
 
 describe('pick', () => {
   test('when object is null or undefined, returns object', () => {

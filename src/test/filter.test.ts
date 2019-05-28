@@ -1,5 +1,5 @@
 import { filter } from '../filter'
-import { Dictionary, NumericDictionary, Optional } from '../../types'
+import { Dictionary, NumericDictionary, Optional } from '../types'
 
 describe('filter', () => {
   const idFn = (x: any) => x
