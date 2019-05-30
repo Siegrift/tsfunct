@@ -1,4 +1,5 @@
 import { isNullOrUndefined } from './utils'
+import { Nullable, Optional, Undefinable } from './types'
 
 export function pick<T, K extends keyof T>(
   obj: T,
@@ -20,7 +21,82 @@ export function pick<T, K extends keyof T>(
     | [K, K, K, K, K, K, K, K, K, K, K, K, K, K, K],
 ): Pick<T, K>
 
+export function pick<T, K extends keyof T>(
+  obj: Nullable<T>,
+  keys:
+    | [K]
+    | [K, K]
+    | [K, K, K]
+    | [K, K, K, K]
+    | [K, K, K, K, K]
+    | [K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K, K],
+): Nullable<Pick<T, K>>
+
+export function pick<T, K extends keyof T>(
+  obj: Undefinable<T>,
+  keys:
+    | [K]
+    | [K, K]
+    | [K, K, K]
+    | [K, K, K, K]
+    | [K, K, K, K, K]
+    | [K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K, K],
+): Undefinable<Pick<T, K>>
+
+export function pick<T, K extends keyof T>(
+  obj: Optional<T>,
+  keys:
+    | [K]
+    | [K, K]
+    | [K, K, K]
+    | [K, K, K, K]
+    | [K, K, K, K, K]
+    | [K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K]
+    | [K, K, K, K, K, K, K, K, K, K, K, K, K, K, K],
+): Optional<Pick<T, K>>
+
 export function pick<T>(obj: T, keys: Array<keyof T>): Partial<T>
+
+export function pick<T>(
+  obj: Nullable<T>,
+  keys: Array<keyof T>,
+): Nullable<Partial<T>>
+
+export function pick<T>(
+  obj: Undefinable<T>,
+  keys: Array<keyof T>,
+): Undefinable<Partial<T>>
+
+export function pick<T>(
+  obj: Optional<T>,
+  keys: Array<keyof T>,
+): Optional<Partial<T>>
 
 export function pick(obj: any, firstKeyOrKeys?: any, ...otherKeys: any[]): any {
   if (isNullOrUndefined(obj)) return obj

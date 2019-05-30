@@ -1,16 +1,5 @@
 import { get } from '../get'
-
-interface User {
-  id: number
-  key: string
-}
-
-interface State {
-  users: User[]
-  more: { [key: string]: number | string }
-  optional?: { a: number }
-  a: { b: { c: { d: { e: string } } } }
-}
+import { State } from './common'
 
 describe('get', () => {
   let state: State
@@ -22,7 +11,7 @@ describe('get', () => {
         { id: 56, key: 'key' },
         { id: 78978, key: 'opi' },
       ],
-      more: {
+      dict: {
         someId: 'hello',
         someOther: 132,
       },
@@ -42,11 +31,11 @@ describe('get', () => {
     })
 
     test('in dictionary', () => {
-      expect(get(state, ['more'])).toEqual({
+      expect(get(state, ['dict'])).toEqual({
         someId: 'hello',
         someOther: 132,
       })
-      expect(get(state, ['more', 'someId'])).toBe('hello')
+      expect(get(state, ['dict', 'someId'])).toBe('hello')
     })
 
     test('get up to 5 levels', () => {
@@ -60,7 +49,7 @@ describe('get', () => {
 
   test('if object or intermediate path is undefined, returns undefined', () => {
     expect(get(state, ['users', 10, 'id'])).toBe(undefined)
-    expect(get(state, ['more', 'badId'])).toBe(undefined)
+    expect(get(state, ['dict', 'badId'])).toBe(undefined)
   })
 
   test('accepts default value', () => {

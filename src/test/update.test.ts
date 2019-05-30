@@ -1,17 +1,6 @@
 import { update } from '../update'
 import { DeepReadonly } from '../types'
-
-interface User {
-  id: number
-  key: string
-}
-
-interface State {
-  users: User[]
-  more: { [key: string]: number | string }
-  optional?: { a: number }
-  a: { b: { c: { d: { e: string } } } }
-}
+import { State, User } from './common'
 
 describe('update', () => {
   let state: State
@@ -19,7 +8,7 @@ describe('update', () => {
   beforeEach(() => {
     state = {
       users: [{ id: 56, key: 'key' }],
-      more: {
+      dict: {
         someId: 'hello',
       },
       a: { b: { c: { d: { e: '123' } } } },
@@ -36,7 +25,7 @@ describe('update', () => {
 
       expect(update(state, ['users', 0], updater)).toEqual({
         users: [{ id: 777, key: 'new' }],
-        more: {
+        dict: {
           someId: 'hello',
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -46,12 +35,12 @@ describe('update', () => {
 
     test('in dictionary', () => {
       expect(
-        update(state, ['more'], () => ({
+        update(state, ['dict'], () => ({
           newKey: 777,
         })),
       ).toEqual({
         users: [{ id: 56, key: 'key' }],
-        more: {
+        dict: {
           newKey: 777,
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -94,7 +83,7 @@ describe('update', () => {
     test('create new index in array', () => {
       expect(update(state, ['users', 3, 'id'], () => 777)).toEqual({
         users: [{ id: 56, key: 'key' }, undefined, undefined, { id: 777 }],
-        more: {
+        dict: {
           someId: 'hello',
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -102,9 +91,9 @@ describe('update', () => {
     })
 
     test('create new property in dictionary', () => {
-      expect(update(state, ['more', 'newKey'], () => 777)).toEqual({
+      expect(update(state, ['dict', 'newKey'], () => 777)).toEqual({
         users: [{ id: 56, key: 'key' }],
-        more: {
+        dict: {
           someId: 'hello',
           newKey: 777,
         },

@@ -1,16 +1,5 @@
 import { set } from '../set'
-
-interface User {
-  id: number
-  key: string
-}
-
-interface State {
-  users: User[]
-  more: { [key: string]: number | string }
-  optional?: { a: number }
-  a: { b: { c: { d: { e: string } } } }
-}
+import { State } from './common'
 
 describe('set', () => {
   let state: State
@@ -18,7 +7,7 @@ describe('set', () => {
   beforeEach(() => {
     state = {
       users: [{ id: 56, key: 'key' }],
-      more: {
+      dict: {
         someId: 'hello',
       },
       a: { b: { c: { d: { e: '123' } } } },
@@ -29,7 +18,7 @@ describe('set', () => {
     test('in array', () => {
       expect(set(state, ['users', 0], { id: 777, key: 'new' })).toEqual({
         users: [{ id: 777, key: 'new' }],
-        more: {
+        dict: {
           someId: 'hello',
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -37,9 +26,9 @@ describe('set', () => {
     })
 
     test('in dictionary', () => {
-      expect(set(state, ['more'], { newKey: 777 })).toEqual({
+      expect(set(state, ['dict'], { newKey: 777 })).toEqual({
         users: [{ id: 56, key: 'key' }],
-        more: {
+        dict: {
           newKey: 777,
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -78,7 +67,7 @@ describe('set', () => {
     test('create new index in array', () => {
       expect(set(state, ['users', 3, 'id'], 777)).toEqual({
         users: [{ id: 56, key: 'key' }, undefined, undefined, { id: 777 }],
-        more: {
+        dict: {
           someId: 'hello',
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -86,9 +75,9 @@ describe('set', () => {
     })
 
     test('create new property in dictionary', () => {
-      expect(set(state, ['more', 'newKey'], 777)).toEqual({
+      expect(set(state, ['dict', 'newKey'], 777)).toEqual({
         users: [{ id: 56, key: 'key' }],
-        more: {
+        dict: {
           someId: 'hello',
           newKey: 777,
         },

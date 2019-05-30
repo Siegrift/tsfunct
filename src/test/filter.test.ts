@@ -1,8 +1,8 @@
 import { filter } from '../filter'
 import { Dictionary, NumericDictionary, Optional } from '../types'
+import { idFn } from './common'
 
 describe('filter', () => {
-  const idFn = (x: any) => x
   test('if collection is null or undefined, returns the collection', () => {
     let arr: Optional<number[]> = null
     let dict: Optional<Dictionary<string>> = null

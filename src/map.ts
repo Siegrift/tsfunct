@@ -1,10 +1,27 @@
-import { DeepReadonly, Dictionary, NumericDictionary, Optional } from './types'
+import {
+  DeepReadonly,
+  Dictionary,
+  Nullable,
+  NumericDictionary,
+  Optional,
+  Undefinable
+} from './types'
 import { isNullOrUndefined } from './utils'
 
 export function map<T, Result>(
   collection: T[],
   fn: (value: DeepReadonly<T>, index: number) => Result,
 ): Result[]
+
+export function map<T, Result>(
+  collection: Nullable<T[]>,
+  fn: (value: DeepReadonly<T>, index: number) => Result,
+): Nullable<Result[]>
+
+export function map<T, Result>(
+  collection: Undefinable<T[]>,
+  fn: (value: DeepReadonly<T>, index: number) => Result,
+): Undefinable<Result[]>
 
 export function map<T, Result>(
   collection: Optional<T[]>,
@@ -17,6 +34,16 @@ export function map<T, Result>(
 ): Dictionary<T>
 
 export function map<T, Result>(
+  collection: Nullable<Dictionary<T>>,
+  fn: (value: DeepReadonly<T>, key: string) => { key: string; value: Result },
+): Nullable<Dictionary<T>>
+
+export function map<T, Result>(
+  collection: Undefinable<Dictionary<T>>,
+  fn: (value: DeepReadonly<T>, key: string) => { key: string; value: Result },
+): Undefinable<Dictionary<T>>
+
+export function map<T, Result>(
   collection: Optional<Dictionary<T>>,
   fn: (value: DeepReadonly<T>, key: string) => { key: string; value: Result },
 ): Optional<Dictionary<T>>
@@ -25,6 +52,16 @@ export function map<T, Result>(
   collection: NumericDictionary<T>,
   fn: (value: DeepReadonly<T>, key: number) => { key: number; value: Result },
 ): NumericDictionary<T>
+
+export function map<T, Result>(
+  collection: Nullable<NumericDictionary<T>>,
+  fn: (value: DeepReadonly<T>, key: number) => { key: number; value: Result },
+): Nullable<NumericDictionary<T>>
+
+export function map<T, Result>(
+  collection: Undefinable<NumericDictionary<T>>,
+  fn: (value: DeepReadonly<T>, key: number) => { key: number; value: Result },
+): Undefinable<NumericDictionary<T>>
 
 export function map<T, Result>(
   collection: Optional<NumericDictionary<T>>,

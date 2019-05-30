@@ -1,10 +1,10 @@
 import { exist } from '../exist'
 
 describe('exist', () => {
-  let obj: { a: string[]; b: { [key: string]: boolean } }
+  let obj: { a: string[]; b: { [key: string]: boolean }; c?: { d: string } }
 
   beforeEach(() => {
-    obj = { a: ['xxx', 'yyy'], b: { c: true } }
+    obj = { a: ['x', 'y'], b: { c: true } }
   })
 
   test('returns whether the path exists on the object', () => {
@@ -20,5 +20,14 @@ describe('exist', () => {
   test('handles case when the path exists, but value is undefined', () => {
     const undefinedObj = { a: undefined }
     expect(exist(undefinedObj, ['a'])).toBe(true)
+  })
+
+  test('when object is null or undefined, returns false', () => {
+    expect(exist(null as any, ['a'])).toBe(false)
+    expect(exist(undefined as any, ['a'])).toBe(false)
+  })
+
+  test('works on optional structures', () => {
+    expect(exist(obj, ['c', 'd'])).toBe(false)
   })
 })

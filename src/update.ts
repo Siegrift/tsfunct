@@ -1,18 +1,18 @@
-import { DeepReadonly, Optional, OptionalValueType } from './types'
+import { DeepReadonly, Optional, OptionalValue } from './types'
 import { shallowCopy } from './utils'
 
-// create an alias as OptionalValueType is too verbose
-type U<T> = OptionalValueType<T>
+// create an alias as OptionalValue is too verbose
+type U<T> = OptionalValue<T>
 
 export function update<T, K1 extends keyof T>(
   obj: Optional<T>,
-  keys: [K1],
+  path: [K1],
   updateFn: (value: DeepReadonly<T[K1]>) => T[K1],
 ): T
 
 export function update<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
   obj: Optional<T>,
-  keys: [K1, K2],
+  path: [K1, K2],
   updateFn: (value: DeepReadonly<U<T[K1]>[K2]>) => U<T[K1]>[K2],
 ): T
 
@@ -23,7 +23,7 @@ export function update<
   K3 extends keyof U<U<T[K1]>[K2]>
 >(
   obj: Optional<T>,
-  keys: [K1, K2, K3],
+  path: [K1, K2, K3],
   updateFn: (value: DeepReadonly<U<U<T[K1]>[K2]>[K3]>) => U<U<T[K1]>[K2]>[K3],
 ): T
 
@@ -35,7 +35,7 @@ export function update<
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
 >(
   obj: Optional<T>,
-  keys: [K1, K2, K3, K4],
+  path: [K1, K2, K3, K4],
   updateFn: (
     value: DeepReadonly<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
   ) => U<U<U<T[K1]>[K2]>[K3]>[K4],
@@ -50,7 +50,7 @@ export function update<
   K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
 >(
   obj: Optional<T>,
-  keys: [K1, K2, K3, K4, K5],
+  path: [K1, K2, K3, K4, K5],
   updateFn: (
     value: DeepReadonly<U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]>,
   ) => U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
@@ -69,8 +69,7 @@ export function update(obj: any, path: any[], updateFn: any) {
     }
     if (index === path.length - 1) {
       currentObject[path[index]] = updateFn(currentObject[path[index]])
-    }
-    else {
+    } else {
       currentObject[path[index]] = shallowCopy(currentObject[path[index]])
     }
     currentObject = currentObject[path[index]]

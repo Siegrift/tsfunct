@@ -1,16 +1,5 @@
 import { unset } from '../unset'
-
-interface User {
-  id: number
-  key: string
-}
-
-interface State {
-  users: User[]
-  more: { [key: string]: number | string }
-  optional?: { a: number }
-  a: { b: { c: { d: { e: string } } } }
-}
+import { State } from './common'
 
 describe('unset', () => {
   let state: State
@@ -18,7 +7,7 @@ describe('unset', () => {
   beforeEach(() => {
     state = {
       users: [{ id: 56, key: 'key' }],
-      more: {
+      dict: {
         someId: 'hello',
       },
       a: { b: { c: { d: { e: '123' } } } },
@@ -29,7 +18,7 @@ describe('unset', () => {
     test('in array', () => {
       expect(unset(state, ['users', 0])).toEqual({
         users: [],
-        more: {
+        dict: {
           someId: 'hello',
         },
         a: { b: { c: { d: { e: '123' } } } },
@@ -37,7 +26,7 @@ describe('unset', () => {
     })
 
     test('in dictionary', () => {
-      expect(unset(state, ['more'])).toEqual({
+      expect(unset(state, ['dict'])).toEqual({
         users: [{ id: 56, key: 'key' }],
         a: { b: { c: { d: { e: '123' } } } },
       })
@@ -68,15 +57,15 @@ describe('unset', () => {
 
     expect(unset(state, ['users', 3, 'id'])).toEqual({
       users: [{ id: 56, key: 'key' }],
-      more: {
+      dict: {
         someId: 'hello',
       },
       a: { b: { c: { d: { e: '123' } } } },
     })
 
-    expect(unset(state, ['more', 'newKey'])).toEqual({
+    expect(unset(state, ['dict', 'newKey'])).toEqual({
       users: [{ id: 56, key: 'key' }],
-      more: {
+      dict: {
         someId: 'hello',
       },
       a: { b: { c: { d: { e: '123' } } } },

@@ -6,6 +6,10 @@ export type DeepReadonlyObject<T> = {
   readonly [P in keyof T]: DeepReadonly<T[P]>
 }
 
+export type Nullable<T> = T | null
+
+export type Undefinable<T> = T | null
+
 export type Optional<T> = T | null | undefined
 
 export type Diff<T, U> = T extends U ? never : T
@@ -22,7 +26,4 @@ export interface NumericDictionary<T> {
   [index: number]: T
 }
 
-export type OptionalValueType<T extends Optional<any>> = Diff<
-  T,
-  null | undefined
->
+export type OptionalValue<T extends Optional<any>> = Diff<T, null | undefined>

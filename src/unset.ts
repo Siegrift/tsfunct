@@ -1,9 +1,15 @@
-import { Optional, OptionalValueType, Without } from './types'
+import {
+  Nullable,
+  Optional,
+  OptionalValue,
+  Undefinable,
+  Without
+} from './types'
 import { shallowCopy } from './utils'
 import { isNullOrUndefined } from 'util'
 
-// create an alias as OptionalValueType is too verbose
-type U<T> = OptionalValueType<T>
+// create an alias as OptionalValue is too verbose
+type U<T> = OptionalValue<T>
 
 // unset return types
 type Unset1<T, K1> = Without<T, K1>
@@ -21,21 +27,21 @@ type Unset5<T, K1, K2, K3, K4, K5> = {
 }
 
 export function unset<T, K1 extends keyof T>(
-  obj: Optional<T>,
-  keys: [K1],
-): Unset1<T, K1>
+  obj: Nullable<T>,
+  path: [K1],
+): Nullable<Unset1<T, K1>>
 
 export function unset<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
-  obj: Optional<T>,
-  keys: [K1, K2],
-): Unset2<T, K1, K2>
+  obj: Nullable<T>,
+  path: [K1, K2],
+): Nullable<Unset2<T, K1, K2>>
 
 export function unset<
   T,
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>
->(obj: Optional<T>, keys: [K1, K2, K3]): Unset3<T, K1, K2, K3>
+>(obj: Nullable<T>, path: [K1, K2, K3]): Nullable<Unset3<T, K1, K2, K3>>
 
 export function unset<
   T,
@@ -43,7 +49,10 @@ export function unset<
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
->(obj: Optional<T>, keys: [K1, K2, K3, K4]): Unset4<T, K1, K2, K3, K4>
+>(
+  obj: Nullable<T>,
+  path: [K1, K2, K3, K4],
+): Nullable<Unset4<T, K1, K2, K3, K4>>
 
 export function unset<
   T,
@@ -52,7 +61,121 @@ export function unset<
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
   K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
->(obj: Optional<T>, keys: [K1, K2, K3, K4, K5]): Unset5<T, K1, K2, K3, K4, K5>
+>(
+  obj: Nullable<T>,
+  path: [K1, K2, K3, K4, K5],
+): Nullable<Unset5<T, K1, K2, K3, K4, K5>>
+
+export function unset<T, K1 extends keyof T>(
+  obj: Undefinable<T>,
+  path: [K1],
+): Undefinable<Unset1<T, K1>>
+
+export function unset<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
+  obj: Undefinable<T>,
+  path: [K1, K2],
+): Undefinable<Unset2<T, K1, K2>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>
+>(obj: Undefinable<T>, path: [K1, K2, K3]): Undefinable<Unset3<T, K1, K2, K3>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+>(
+  obj: Undefinable<T>,
+  path: [K1, K2, K3, K4],
+): Undefinable<Unset4<T, K1, K2, K3, K4>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+>(
+  obj: Undefinable<T>,
+  path: [K1, K2, K3, K4, K5],
+): Undefinable<Unset5<T, K1, K2, K3, K4, K5>>
+
+export function unset<T, K1 extends keyof T>(
+  obj: Optional<T>,
+  path: [K1],
+): Optional<Unset1<T, K1>>
+
+export function unset<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
+  obj: Optional<T>,
+  path: [K1, K2],
+): Optional<Unset2<T, K1, K2>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>
+>(obj: Optional<T>, path: [K1, K2, K3]): Optional<Unset3<T, K1, K2, K3>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+>(
+  obj: Optional<T>,
+  path: [K1, K2, K3, K4],
+): Optional<Unset4<T, K1, K2, K3, K4>>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+>(
+  obj: Optional<T>,
+  path: [K1, K2, K3, K4, K5],
+): Optional<Unset5<T, K1, K2, K3, K4, K5>>
+
+export function unset<T, K1 extends keyof T>(obj: T, path: [K1]): Unset1<T, K1>
+
+export function unset<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
+  obj: T,
+  path: [K1, K2],
+): Unset2<T, K1, K2>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>
+>(obj: T, path: [K1, K2, K3]): Unset3<T, K1, K2, K3>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+>(obj: T, path: [K1, K2, K3, K4]): Unset4<T, K1, K2, K3, K4>
+
+export function unset<
+  T,
+  K1 extends keyof T,
+  K2 extends keyof U<T[K1]>,
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+>(obj: T, path: [K1, K2, K3, K4, K5]): Unset5<T, K1, K2, K3, K4, K5>
 
 export function unset(obj: any, path: any[]) {
   if (isNullOrUndefined(obj)) return obj
