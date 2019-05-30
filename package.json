@@ -18,12 +18,10 @@
   },
   "scripts": {
     "test": "jest",
-    "test-watch": "jest --watch",
-    "fix": "tslint --fix --project tsconfig.json"
+    "test-watch": "jest --watch"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn fix",
       "pre-push": "yarn test"
     }
   }
