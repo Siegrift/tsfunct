@@ -63,6 +63,6 @@ const mapped = map(original, (val: any) => (val.a = 3));
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
 
-### Example functions
+### API
 
 TODO: generate documentation and link it here.

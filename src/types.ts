@@ -12,11 +12,7 @@ export type Undefinable<T> = T | null
 
 export type Optional<T> = T | null | undefined
 
-export type Diff<T, U> = T extends U ? never : T
-
-export type Filter<T, U> = T extends U ? T : never
-
-export type Without<T, K> = Pick<T, Diff<keyof T, K>>
+export type Without<T, K> = Pick<T, Exclude<keyof T, K>>
 
 export interface Dictionary<T> {
   [index: string]: T
@@ -26,4 +22,10 @@ export interface NumericDictionary<T> {
   [index: number]: T
 }
 
-export type OptionalValue<T extends Optional<any>> = Diff<T, null | undefined>
+export type OptionalValue<T extends Optional<any>> = Exclude<
+  T,
+  null | undefined
+>
+
+// less verbose alias for OptionalValue
+export type U<T> = OptionalValue<T>

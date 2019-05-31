@@ -13,6 +13,7 @@
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
+    "typedoc": "^0.14.2",
     "typescript": "^3.4.5"
   },
   "scripts": {
@@ -21,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn test"
+      "pre-push": "yarn test && yarn typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets"
     }
   }
 }
