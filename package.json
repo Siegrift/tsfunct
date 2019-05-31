@@ -22,7 +22,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn test && yarn typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets"
+      "pre-commit": "yarn typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets && git add docs/*",
+      "pre-push": "yarn test"
     }
   }
 }

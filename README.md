@@ -63,6 +63,9 @@ const mapped = map(original, (val: any) => (val.a = 3));
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
 
-### API
+### API and documentation
 
-TODO: generate documentation and link it here.
+Documentation is automatically generated from source code and can be found at github pages
+[here](https://siegrift.github.io/tsfunct/).
+
+*You can read the list and sources of all helpers in the src/lib folder[here](https://github.com/Siegrift/tsfunct/tree/master/src/lib).*
