@@ -3,7 +3,7 @@
 Tsfunct is a **T**ype**S**cript **funct**ional library made directly for TS with its static
 typesystem in mind.
 
-### Installation
+## Installation
 
 To install this package run either:
 
@@ -13,7 +13,7 @@ or if you use npm
 
 `npm i @siegrift/tsfunct --save` 
 
-### Motivation
+## Motivation
 
 There are two big libraries which provide helper functions for JS/TS. These are
 [lodash](https://github.com/lodash/lodash) and [ramda](https://github.com/ramda/ramda). Both of
@@ -46,13 +46,13 @@ There are many advantages of this helper:
 
 Refer to documentation, source code and tests for more examples.
 
-#### Chaining
+## Chaining
 
 Original idea was to support chaining same way as lodash `_.chain` works, however after reading
 [this article](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)
 describing the disadvantages of using this function, I decided to drop this idea.
 
-#### Functional programming style
+## Functional programming style
 
 All of the functions in this library are written **imperatively** (e.g. `get(object, path)` compared
 to traditional functional `get(path, object)`). I encourage you to use FP style, and you can easily
@@ -60,7 +60,7 @@ create small wrappers, which will [curry](https://lodash.com/docs/4.17.11#curry)
 [rearrange](https://lodash.com/docs/4.17.11#rearg) the arguments (however, your helper will need
 fixed number arguments).
 
-### Immutability
+## Immutability
 
 All functions in this library are **effectively immutable**. That means that if you use the helpers
 according to their idiomatic usage, library is immutable. However, you are able to modify the
@@ -73,7 +73,7 @@ const mapped = map(original, (val: any) => (val.a = 3));
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
 
-### API and documentation
+## API and documentation
 
 Documentation is automatically generated from source code and can be found at github pages
 [here](https://siegrift.github.io/tsfunct/).
