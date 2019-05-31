@@ -1,13 +1,13 @@
 {
   "name": "@siegrift/tsfunct",
   "version": "1.0.2",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Siegrift/tsfunct.git"
   },
   "author": "Siegrift <e.tesarr@gmail.com>",
   "license": "MIT",
+  "main": "./out/index.js",
   "types": "./out/index.d.ts",
   "files": [
     "out/**/*"
