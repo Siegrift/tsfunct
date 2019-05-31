@@ -1,4 +1,4 @@
-import { get } from '../get'
+import { get } from '../lib/get'
 import { State } from './common'
 
 describe('get', () => {

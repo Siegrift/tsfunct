@@ -1,4 +1,4 @@
-import { omit } from '../omit'
+import { omit } from '../lib/omit'
 import { Dictionary, Optional } from '../types'
 
 describe('omit', () => {

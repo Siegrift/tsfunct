@@ -1,5 +1,5 @@
-import { isNullOrUndefined } from './utils'
-import { Nullable, Optional, Undefinable } from './types'
+import { isNullOrUndefined } from '../utils'
+import { Nullable, Optional, Undefinable } from '../types'
 
 /**
  * Picks properties from source value. If source type is nullable or optional, the result type is

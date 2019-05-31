@@ -1,4 +1,4 @@
-import { pick } from '../pick'
+import { pick } from '../lib/pick'
 import { Dictionary, Optional } from '../types'
 
 describe('pick', () => {

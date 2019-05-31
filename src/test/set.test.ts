@@ -1,4 +1,4 @@
-import { set } from '../set'
+import { set } from '../lib/set'
 import { State } from './common'
 
 describe('set', () => {

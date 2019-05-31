@@ -1,4 +1,4 @@
-import { update } from '../update'
+import { update } from '../lib/update'
 import { DeepReadonly } from '../types'
 import { State, User } from './common'
 

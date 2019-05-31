@@ -1,5 +1,5 @@
-import { Nullable, Optional, U, Undefinable, Without } from './types'
-import { shallowCopy } from './utils'
+import { Nullable, Optional, U, Undefinable, Without } from '../types'
+import { shallowCopy } from '../utils'
 import { isNullOrUndefined } from 'util'
 
 // NOTE: we can reuse unset return types

@@ -1,5 +1,5 @@
-import { Optional, U } from './types'
-import { isNullOrUndefined } from './utils'
+import { Optional, U } from '../types'
+import { isNullOrUndefined } from '../utils'
 
 /**
  * Returns the nested value in source specified by path. There are 3 ways how to use this helper.

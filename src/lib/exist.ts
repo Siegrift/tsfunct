@@ -1,4 +1,4 @@
-import { Optional, U } from './types'
+import { Optional, U } from '../types'
 import { isNullOrUndefined } from 'util'
 
 /**

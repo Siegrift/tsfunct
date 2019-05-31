@@ -1,5 +1,5 @@
-import { Optional, U } from './types'
-import { shallowCopy } from './utils'
+import { Optional, U } from '../types'
+import { shallowCopy } from '../utils'
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it

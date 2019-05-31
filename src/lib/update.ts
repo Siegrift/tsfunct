@@ -1,5 +1,5 @@
-import { DeepReadonly, Optional, U } from './types'
-import { shallowCopy } from './utils'
+import { DeepReadonly, Optional, U } from '../types'
+import { shallowCopy } from '../utils'
 
 /**
  * Updates the value on the specified path in source value using update function. This function will

@@ -1,4 +1,4 @@
-import { filter } from '../filter'
+import { filter } from '../lib/filter'
 import { Dictionary, NumericDictionary, Optional } from '../types'
 import { idFn } from './common'
 

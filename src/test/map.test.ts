@@ -1,4 +1,4 @@
-import { map } from '../map'
+import { map } from '../lib/map'
 import { Dictionary, NumericDictionary, Optional } from '../types'
 import { idFn } from './common'
 

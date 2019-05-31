@@ -5,8 +5,8 @@ import {
   NumericDictionary,
   Optional,
   Undefinable
-} from './types'
-import { isNullOrUndefined } from './utils'
+} from '../types'
+import { isNullOrUndefined } from '../utils'
 
 /**
  * Filters elements from the collection for which the filter function returns true. This function

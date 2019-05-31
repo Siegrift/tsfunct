@@ -5,8 +5,8 @@ import {
   NumericDictionary,
   Optional,
   Undefinable
-} from './types'
-import { isNullOrUndefined } from './utils'
+} from '../types'
+import { isNullOrUndefined } from '../utils'
 
 /**
  * Maps elements from the collection using mapping function. This function will always return the
