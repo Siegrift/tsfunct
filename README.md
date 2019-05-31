@@ -79,3 +79,11 @@ Documentation is automatically generated from source code and can be found at gi
 [here](https://siegrift.github.io/tsfunct/).
 
 *You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib).*
+
+## Limitations
+
+Most of the helpers are typed manually and have some restrictions on its arguments. For example,
+path array can be up to 5 elements only...
+
+Other limitation is typescript path autocompletion, which I
+[reported](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
