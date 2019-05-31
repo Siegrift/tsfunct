@@ -1,6 +1,6 @@
 {
   "name": "@siegrift/tsfunct",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Siegrift/tsfunct.git"
@@ -27,7 +27,7 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "clean": "rm -rf dist",
-    "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist"
+    "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist && cp README.md dist"
   },
   "husky": {
     "hooks": {
