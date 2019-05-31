@@ -4,4 +4,4 @@
 validator/build
 node_modules
 yarn-lock.json
-out
+dist
