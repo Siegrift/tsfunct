@@ -6,8 +6,11 @@ typesystem in mind.
 ### Installation
 
 To install this package run either:
+
 `yarn add @siegrift/tsfunct`
+
 or if you use npm
+
 `npm i @siegrift/tsfunct --save` 
 
 ### Motivation
