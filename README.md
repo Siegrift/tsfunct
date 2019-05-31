@@ -3,6 +3,13 @@
 Tsfunct is a **T**ype**S**cript **funct**ional library made directly for TS with its static
 typesystem in mind.
 
+### Installation
+
+To install this package run either:
+`yarn add @siegrift/tsfunct`
+or if you use npm
+`npm i @siegrift/tsfunct --save` 
+
 ### Motivation
 
 There are two big libraries which provide helper functions for JS/TS. These are
