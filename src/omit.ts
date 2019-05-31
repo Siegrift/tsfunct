@@ -2,7 +2,7 @@ import { Nullable, Optional, Undefinable, Without } from './types'
 import { isNullOrUndefined } from './utils'
 
 export function omit<T, K extends keyof T>(
-  obj: T,
+  source: T,
   keys:
     | [K]
     | [K, K]
@@ -22,7 +22,7 @@ export function omit<T, K extends keyof T>(
 ): Without<T, K>
 
 export function omit<T, K extends keyof T>(
-  obj: Nullable<T>,
+  source: Nullable<T>,
   keys:
     | [K]
     | [K, K]
@@ -42,7 +42,7 @@ export function omit<T, K extends keyof T>(
 ): Nullable<Without<T, K>>
 
 export function omit<T, K extends keyof T>(
-  obj: Undefinable<T>,
+  source: Undefinable<T>,
   keys:
     | [K]
     | [K, K]
@@ -62,7 +62,7 @@ export function omit<T, K extends keyof T>(
 ): Undefinable<Without<T, K>>
 
 export function omit<T, K extends keyof T>(
-  obj: Optional<T>,
+  source: Optional<T>,
   keys:
     | [K]
     | [K, K]
@@ -81,29 +81,34 @@ export function omit<T, K extends keyof T>(
     | [K, K, K, K, K, K, K, K, K, K, K, K, K, K, K],
 ): Optional<Without<T, K>>
 
-export function omit<T>(obj: T, keys: Array<keyof T>): Partial<T>
+export function omit<T>(source: T, keys: Array<keyof T>): Partial<T>
 
 export function omit<T>(
-  obj: Nullable<T>,
+  source: Nullable<T>,
   keys: Array<keyof T>,
 ): Nullable<Partial<T>>
 
 export function omit<T>(
-  obj: Undefinable<T>,
+  source: Undefinable<T>,
   keys: Array<keyof T>,
 ): Undefinable<Partial<T>>
 
 export function omit<T>(
-  obj: Optional<T>,
+  source: Optional<T>,
   keys: Array<keyof T>,
 ): Optional<Partial<T>>
 
-export function omit<T>(obj: T, keys: Array<keyof T>): Partial<T>
+export function omit<T>(source: T, keys: Array<keyof T>): Partial<T>
 
-export function omit(obj: any, firstKeyOrKeys?: any, ...otherKeys: any[]): any {
-  if (isNullOrUndefined(obj)) return obj
+export function omit(
+  source: any,
+  firstKeyOrKeys?: any,
+  // tslint:disable-next-line
+  ...otherKeys: any[]
+): any {
+  if (isNullOrUndefined(source)) return source
 
-  const res = { ...obj }
+  const res = { ...source }
   if (Array.isArray(firstKeyOrKeys)) {
     firstKeyOrKeys.forEach((key) => {
       delete res[key]

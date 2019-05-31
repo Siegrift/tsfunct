@@ -5,13 +5,13 @@ import { shallowCopy } from './utils'
 type U<T> = OptionalValue<T>
 
 export function update<T, K1 extends keyof T>(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1],
   updateFn: (value: DeepReadonly<T[K1]>) => T[K1],
 ): T
 
 export function update<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2],
   updateFn: (value: DeepReadonly<U<T[K1]>[K2]>) => U<T[K1]>[K2],
 ): T
@@ -22,7 +22,7 @@ export function update<
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>
 >(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2, K3],
   updateFn: (value: DeepReadonly<U<U<T[K1]>[K2]>[K3]>) => U<U<T[K1]>[K2]>[K3],
 ): T
@@ -34,7 +34,7 @@ export function update<
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
 >(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2, K3, K4],
   updateFn: (
     value: DeepReadonly<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
@@ -49,15 +49,15 @@ export function update<
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
   K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
 >(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2, K3, K4, K5],
   updateFn: (
     value: DeepReadonly<U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]>,
   ) => U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
 ): T
 
-export function update(obj: any, path: any[], updateFn: any) {
-  const returnObject = shallowCopy(obj, Array.isArray(path[0]) ? [] : {})
+export function update(source: any, path: any[], updateFn: any) {
+  const returnObject = shallowCopy(source, Array.isArray(path[0]) ? [] : {})
   let currentObject = returnObject
   let index = 0
   while (index < path.length) {

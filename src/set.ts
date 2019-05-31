@@ -5,13 +5,13 @@ import { shallowCopy } from './utils'
 type U<T> = OptionalValue<T>
 
 export function set<T, K1 extends keyof T>(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1],
   value: T[K1],
 ): T
 
 export function set<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2],
   value: U<T[K1]>[K2],
 ): T
@@ -21,7 +21,7 @@ export function set<
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>
->(obj: Optional<T>, path: [K1, K2, K3], value: U<U<T[K1]>[K2]>[K3]): T
+>(source: Optional<T>, path: [K1, K2, K3], value: U<U<T[K1]>[K2]>[K3]): T
 
 export function set<
   T,
@@ -30,7 +30,7 @@ export function set<
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
 >(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2, K3, K4],
   value: U<U<U<T[K1]>[K2]>[K3]>[K4],
 ): T
@@ -43,13 +43,13 @@ export function set<
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
   K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
 >(
-  obj: Optional<T>,
+  source: Optional<T>,
   path: [K1, K2, K3, K4, K5],
   value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
 ): T
 
-export function set(obj: any, path: any[], value: any) {
-  const returnObject = shallowCopy(obj, Array.isArray(path[0]) ? [] : {})
+export function set(source: any, path: any[], value: any) {
+  const returnObject = shallowCopy(source, Array.isArray(path[0]) ? [] : {})
   let currentObject = returnObject
   let index = 0
   while (index < path.length) {
