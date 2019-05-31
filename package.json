@@ -26,7 +26,7 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "clean": "rm -rf build",
+    "clean": "rm -rf dist",
     "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist"
   },
   "husky": {
