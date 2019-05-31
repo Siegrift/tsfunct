@@ -14,15 +14,19 @@ There are certain helpers *(mainly for immutable object manipulation)* which can
 Let's take a look at `get(obj, path)` helper in both *lodash* and *ramda*, when using it on a
 strongly typed TS object.
 
-![Weak typed result](assets/weak_typed_get.png) *(Lodash gets it at least correct, but cannot
+![Weak typed result](assets/weak_typed_get.png) 
+*(Lodash gets it at least correct, but cannot
 determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
 it and produce **incorrect** result type)*
 
-![No compile error](assets/no_compile_error.png) *(There are no TS warnings about accessing value on
+![No compile error](assets/no_compile_error.png)
+*(There are no TS warnings about accessing value on
 nonexistent path)*
 
-Lets look what you can get by using `get(obj, path)` from this library. ![Strongly typed get
-helper](assets/get_strong_typed.png) There are many advantages of this helper:
+Lets look what you can get by using `get(obj, path)` from this library. 
+
+![Strongly typed get helper](assets/get_strong_typed.png) 
+There are many advantages of this helper:
 * The result has correct type
 * The path can be autocompleted and must be able to exist in the object
 * Handles arrays, optional and nullable values (even in intermediate objects)
