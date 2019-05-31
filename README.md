@@ -17,20 +17,17 @@ Let's take a look at `get(obj, path)` helper in both _lodash_ and _ramda_, when 
 strongly typed TS object.
 
 ![Weak typed result](assets/weak_typed_get.png)
-
 _(Lodash gets it at least correct, but cannot
 determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
 it and produce **incorrect** result type)_
 
 ![No compile error](assets/no_compile_error.png)
-
 _(There are no TS warnings about accessing value on
 nonexistent path)_
 
 Lets look what you can get by using `get(obj, path)` from this library.
 
 ![Strongly typed get helper](assets/get_strong_typed.png)
-
 There are many advantages of this helper:
 
 - The result has correct type
