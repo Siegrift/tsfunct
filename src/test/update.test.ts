@@ -101,14 +101,26 @@ describe('update', () => {
       })
     })
 
-    test('if path is number an array is created, otherwise object is created', () => {
-      type A = string[]
-      type D = { [key: string]: A }
-      type T = { req: { opt?: D | null } }
-      const obj: T = { req: { opt: null } }
+    describe('if path is number an array is created, otherwise object is created', () => {
+      test('correct root value', () => {
+        expect(update(null as any, ['hello'], () => 'str')).toEqual({
+          hello: 'str',
+        })
+        expect(update(null as any, [1], () => 'str')).toEqual([
+          undefined,
+          'str',
+        ])
+      })
 
-      expect(update(obj, ['req', 'opt', 'key', 1], () => 'str')).toEqual({
-        req: { opt: { key: [undefined, 'str'] } },
+      test('deep path', () => {
+        type A = string[]
+        type D = { [key: string]: A }
+        type T = { req: { opt?: D | null } }
+        const obj: T = { req: { opt: null } }
+
+        expect(update(obj, ['req', 'opt', 'key', 1], () => 'str')).toEqual({
+          req: { opt: { key: [undefined, 'str'] } },
+        })
       })
     })
   })

@@ -1,5 +1,6 @@
 import { DeepReadonly, Optional, U } from '../types'
 import { shallowCopy } from '../utils'
+import { isObject } from 'util'
 
 /**
  * Updates the value on the specified path in source value using update function. This function will
@@ -140,13 +141,13 @@ export function update<
 
 // NOTE: implementation
 export function update(source: any, path: any[], updateFn: any) {
-  const returnObject = shallowCopy(source, Array.isArray(path[0]) ? [] : {})
+  const returnObject = shallowCopy(source, Number.isInteger(path[0]) ? [] : {})
   let currentObject = returnObject
   let index = 0
   while (index < path.length) {
     if (
       !Array.isArray(currentObject[path[index]]) &&
-      typeof currentObject[path[index]] !== 'object'
+      !isObject(currentObject[path[index]])
     ) {
       currentObject[path[index]] = Number.isInteger(path[index + 1]) ? [] : {}
     }
