@@ -1,5 +1,6 @@
 import { Optional, U } from '../types'
 import { shallowCopy } from '../utils'
+import { isObject } from 'util'
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
@@ -122,13 +123,13 @@ export function set<
 
 // NOTE: implementation
 export function set(source: any, path: any[], value: any) {
-  const returnObject = shallowCopy(source, Array.isArray(path[0]) ? [] : {})
+  const returnObject = shallowCopy(source, Number.isInteger(path[0]) ? [] : {})
   let currentObject = returnObject
   let index = 0
   while (index < path.length) {
     if (
       !Array.isArray(currentObject[path[index]]) &&
-      typeof currentObject[path[index]] !== 'object'
+      !isObject(currentObject[path[index]])
     ) {
       currentObject[path[index]] = Number.isInteger(path[index + 1]) ? [] : {}
     }

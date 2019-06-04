@@ -1,5 +1,6 @@
 import { Optional, U } from '../types'
 import { isNullOrUndefined } from 'util'
+import { isObject } from '../utils'
 
 /**
  * Checks whether path exist in source value.
@@ -101,7 +102,7 @@ export function exist(source: any, path: any[]) {
   while (++index < path.length) {
     if (
       isNullOrUndefined(source) ||
-      typeof source !== 'object' ||
+      !isObject(source) ||
       !source.hasOwnProperty(path[index])
     ) {
       return false
