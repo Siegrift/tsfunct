@@ -44,11 +44,7 @@ There are many advantages of this helper:
 - The path can be autocompleted and must be able to exist in the object
 - Handles arrays, optional and nullable values (even in intermediate objects)
 
-![Strongly typed get helper](assets/good_set.png)
-_After a value is set on a path, you don't need to use `!` on optional values, because the values
-along the path have been created._
-
-![Strongly typed get helper](assets/good_update.png)
+![Update helper](assets/good_update.png)
 _When you call update for the first time, `value` in update function can be `undefined` (if any
 intermediate value doesn't exist). However, when calling it for a second time, it is guaranteed that
 the values on the path exist._

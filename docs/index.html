@@ -96,10 +96,7 @@
 					<li>The path can be autocompleted and must be able to exist in the object</li>
 					<li>Handles arrays, optional and nullable values (even in intermediate objects)</li>
 				</ul>
-				<p><img src="assets/good_set.png" alt="Strongly typed get helper">
-					<em>After a value is set on a path, you don&#39;t need to use <code>!</code> on optional values, because the values
-				along the path have been created.</em></p>
-				<p><img src="assets/good_update.png" alt="Strongly typed get helper">
+				<p><img src="assets/good_update.png" alt="Update helper">
 					<em>When you call update for the first time, <code>value</code> in update function can be <code>undefined</code> (if any
 						intermediate value doesn&#39;t exist). However, when calling it for a second time, it is guaranteed that
 				the values on the path exist.</em></p>
