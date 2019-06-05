@@ -1,4 +1,4 @@
-import { Optional, U } from '../types'
+import { Optional, Set1, Set2, Set3, Set4, Set5, U } from '../types'
 import { shallowCopy } from '../utils'
 import { isObject } from 'util'
 
@@ -12,6 +12,9 @@ import { isObject } from 'util'
  *
  * Path supports up to 5 elements. This means, you are not able to use this helper if you need more.
  *
+ * Return type will be the same as the source type, where any optional values along the path are
+ * made required (because they are created).
+ *
  * @param source source, in which the nested value should be set.
  * @param path path array of the nested value in the source
  * @param value value to be set in source on specified path
@@ -21,7 +24,7 @@ export function set<T, K1 extends keyof T>(
   source: Optional<T>,
   path: [K1],
   value: T[K1],
-): T
+): Set1<T, K1>
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
@@ -32,6 +35,9 @@ export function set<T, K1 extends keyof T>(
  * intermediate) values are required (because nullable and undefinable types can't have keys).
  *
  * Path supports up to 5 elements. This means, you are not able to use this helper if you need more.
+ *
+ * Return type will be the same as the source type, where any optional values along the path are
+ * made required (because they are created).
  *
  * @param source source, in which the nested value should be set.
  * @param path path array of the nested value in the source
@@ -42,7 +48,7 @@ export function set<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
   source: Optional<T>,
   path: [K1, K2],
   value: U<T[K1]>[K2],
-): T
+): Set2<T, K1, K2>
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
@@ -53,6 +59,9 @@ export function set<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
  * intermediate) values are required (because nullable and undefinable types can't have keys).
  *
  * Path supports up to 5 elements. This means, you are not able to use this helper if you need more.
+ *
+ * Return type will be the same as the source type, where any optional values along the path are
+ * made required (because they are created).
  *
  * @param source source, in which the nested value should be set.
  * @param path path array of the nested value in the source
@@ -64,7 +73,11 @@ export function set<
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>
->(source: Optional<T>, path: [K1, K2, K3], value: U<U<T[K1]>[K2]>[K3]): T
+>(
+  source: Optional<T>,
+  path: [K1, K2, K3],
+  value: U<U<T[K1]>[K2]>[K3],
+): Set3<T, K1, K2, K3>
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
@@ -75,6 +88,9 @@ export function set<
  * intermediate) values are required (because nullable and undefinable types can't have keys).
  *
  * Path supports up to 5 elements. This means, you are not able to use this helper if you need more.
+ *
+ * Return type will be the same as the source type, where any optional values along the path are
+ * made required (because they are created).
  *
  * @param source source, in which the nested value should be set.
  * @param path path array of the nested value in the source
@@ -91,7 +107,7 @@ export function set<
   source: Optional<T>,
   path: [K1, K2, K3, K4],
   value: U<U<U<T[K1]>[K2]>[K3]>[K4],
-): T
+): Set4<T, K1, K2, K3, K4>
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
@@ -102,6 +118,9 @@ export function set<
  * intermediate) values are required (because nullable and undefinable types can't have keys).
  *
  * Path supports up to 5 elements. This means, you are not able to use this helper if you need more.
+ *
+ * Return type will be the same as the source type, where any optional values along the path are
+ * made required (because they are created).
  *
  * @param source source, in which the nested value should be set.
  * @param path path array of the nested value in the source
@@ -119,7 +138,7 @@ export function set<
   source: Optional<T>,
   path: [K1, K2, K3, K4, K5],
   value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
-): T
+): Set5<T, K1, K2, K3, K4, K5>
 
 // NOTE: implementation
 export function set(source: any, path: any[], value: any) {
