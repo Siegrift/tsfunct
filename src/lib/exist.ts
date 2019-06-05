@@ -98,16 +98,15 @@ export function exist<
 
 // NOTE: implementation
 export function exist(source: any, path: any[]) {
-  let index = -1
-  while (++index < path.length) {
+  for (const key of path) {
     if (
       isNullOrUndefined(source) ||
       !isObject(source) ||
-      !source.hasOwnProperty(path[index])
+      !source.hasOwnProperty(key)
     ) {
       return false
     }
-    source = source[path[index]]
+    source = source[key]
   }
   return true
 }
