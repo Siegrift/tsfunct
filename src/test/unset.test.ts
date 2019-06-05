@@ -16,7 +16,9 @@ describe('unset', () => {
 
   describe('(immutably) remove value in source object', () => {
     test('in array', () => {
-      expect(unset(state, ['users', 0])).toEqual({
+      state = unset(state, ['users', 0])
+
+      expect(state).toEqual({
         users: [],
         dict: {
           someId: 'hello',
@@ -26,22 +28,38 @@ describe('unset', () => {
     })
 
     test('in dictionary', () => {
-      expect(unset(state, ['dict'])).toEqual({
+      state = unset(state, ['dict', 'someId'])
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }],
         a: { b: { c: { d: { e: '123' } } } },
+        dict: {},
       })
     })
 
     test('unset up to 5 levels', () => {
       const obj = { a: state.a }
 
-      expect(unset(obj, ['a'])).toEqual({})
-      expect(unset(obj, ['a', 'b'])).toEqual({ a: {} })
-      expect(unset(obj, ['a', 'b', 'c'])).toEqual({ a: { b: {} } })
-      expect(unset(obj, ['a', 'b', 'c', 'd'])).toEqual({ a: { b: { c: {} } } })
-      expect(unset(obj, ['a', 'b', 'c', 'd', 'e'])).toEqual({
-        a: { b: { c: { d: {} } } },
-      })
+      const obj1: {} = unset(obj, ['a'])
+      expect(obj1).toEqual({})
+
+      const obj2: { a: {} } = unset(obj, ['a', 'b'])
+      expect(obj2).toEqual({ a: {} })
+
+      const obj3: { a: { b: {} } } = unset(obj, ['a', 'b', 'c'])
+      expect(obj3).toEqual({ a: { b: {} } })
+
+      const obj4: { a: { b: { c: {} } } } = unset(obj, ['a', 'b', 'c', 'd'])
+      expect(obj4).toEqual({ a: { b: { c: {} } } })
+
+      const obj5: { a: { b: { c: { d: {} } } } } = unset(obj, [
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+      ])
+      expect(obj5).toEqual({ a: { b: { c: { d: {} } } } })
     })
   })
 
@@ -52,23 +70,25 @@ describe('unset', () => {
   })
 
   test("if path doesn't exist, returns object", () => {
+    let unsetState = state
+    const originalState = {
+      users: [{ id: 56, key: 'key' }],
+      dict: {
+        someId: 'hello',
+      },
+      a: { b: { c: { d: { e: '123' } } } },
+    }
+
     expect(unset(null as any, ['key'])).toEqual(null)
     expect(unset(undefined as any, ['key'])).toEqual(undefined)
 
-    expect(unset(state, ['users', 3, 'id'])).toEqual({
-      users: [{ id: 56, key: 'key' }],
-      dict: {
-        someId: 'hello',
-      },
-      a: { b: { c: { d: { e: '123' } } } },
-    })
+    unsetState = unset(state, ['users', 3, 'id'])
+    expect(unsetState).toEqual(originalState)
 
-    expect(unset(state, ['dict', 'newKey'])).toEqual({
-      users: [{ id: 56, key: 'key' }],
-      dict: {
-        someId: 'hello',
-      },
-      a: { b: { c: { d: { e: '123' } } } },
-    })
+    unsetState = unset(state, ['dict', 'newKey'])
+    expect(unsetState).toEqual(originalState)
+
+    unsetState = unset(state, ['optional'])
+    expect(unsetState).toEqual(originalState)
   })
 })
