@@ -78,7 +78,6 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#deepreadonly" class="tsd-kind-icon">Deep<wbr>Readonly</a></li>
-								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#deepreadonlyobject" class="tsd-kind-icon">Deep<wbr>Readonly<wbr>Object</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#nullable" class="tsd-kind-icon">Nullable</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#optional" class="tsd-kind-icon">Optional</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#optionalvalue" class="tsd-kind-icon">Optional<wbr>Value</a></li>
@@ -123,20 +122,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="deepreadonly" class="tsd-anchor"></a>
 					<h3>Deep<wbr>Readonly</h3>
-					<div class="tsd-signature tsd-kind-icon">Deep<wbr>Readonly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DeepReadonly&lt;T&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Deep<wbr>Readonly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:3</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
-					<a name="deepreadonlyobject" class="tsd-anchor"></a>
-					<h3>Deep<wbr>Readonly<wbr>Object</h3>
-					<div class="tsd-signature tsd-kind-icon">Deep<wbr>Readonly<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in types.ts:5</li>
+							<li>Defined in types.ts:11</li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -151,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">Nullable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:9</li>
+							<li>Defined in types.ts:13</li>
 						</ul>
 					</aside>
 				</section>
@@ -161,7 +150,7 @@
 					<div class="tsd-signature tsd-kind-icon">Optional<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:13</li>
+							<li>Defined in types.ts:17</li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">Optional<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:25</li>
+							<li>Defined in types.ts:29</li>
 						</ul>
 					</aside>
 				</section>
@@ -191,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">Set1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;Pick&lt;T, KK1&gt;&gt;; }[K1]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:33</li>
+							<li>Defined in types.ts:37</li>
 						</ul>
 					</aside>
 				</section>
@@ -201,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">Set2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set1&lt;Exclude&lt;T[K1], null | undefined&gt;, K2&gt;; }&gt;; }[K1]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:36</li>
+							<li>Defined in types.ts:40</li>
 						</ul>
 					</aside>
 				</section>
@@ -211,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">Set3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set2&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3&gt;; }&gt;; }[K1]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:42</li>
+							<li>Defined in types.ts:46</li>
 						</ul>
 					</aside>
 				</section>
@@ -221,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">Set4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set3&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4&gt;; }&gt;; }[K1]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:50</li>
+							<li>Defined in types.ts:54</li>
 						</ul>
 					</aside>
 				</section>
@@ -231,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">Set5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set4&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4, K5&gt;; }&gt;; }[K1]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:59</li>
+							<li>Defined in types.ts:63</li>
 						</ul>
 					</aside>
 				</section>
@@ -241,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">U<span class="tsd-signature-symbol">:</span> <a href="globals.html#optionalvalue" class="tsd-signature-type">OptionalValue</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:31</li>
+							<li>Defined in types.ts:35</li>
 						</ul>
 					</aside>
 				</section>
@@ -251,7 +240,7 @@
 					<div class="tsd-signature tsd-kind-icon">Undefinable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:11</li>
+							<li>Defined in types.ts:15</li>
 						</ul>
 					</aside>
 				</section>
@@ -331,7 +320,7 @@
 					<div class="tsd-signature tsd-kind-icon">Without<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:15</li>
+							<li>Defined in types.ts:19</li>
 						</ul>
 					</aside>
 				</section>
@@ -5987,9 +5976,6 @@
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#deepreadonly" class="tsd-kind-icon">Deep<wbr>Readonly</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#deepreadonlyobject" class="tsd-kind-icon">Deep<wbr>Readonly<wbr>Object</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#nullable" class="tsd-kind-icon">Nullable</a>
