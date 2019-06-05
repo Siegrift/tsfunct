@@ -16,7 +16,9 @@ describe('set', () => {
 
   describe('set or override the nested value in object', () => {
     test('in array', () => {
-      expect(set(state, ['users', 0], { id: 777, key: 'new' })).toEqual({
+      state = set(state, ['users', 0], { id: 777, key: 'new' })
+
+      expect(state).toEqual({
         users: [{ id: 777, key: 'new' }],
         dict: {
           someId: 'hello',
@@ -26,7 +28,9 @@ describe('set', () => {
     })
 
     test('in dictionary', () => {
-      expect(set(state, ['dict'], { newKey: 777 })).toEqual({
+      state = set(state, ['dict'], { newKey: 777 })
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }],
         dict: {
           newKey: 777,
@@ -38,15 +42,22 @@ describe('set', () => {
     test('set up to 5 levels', () => {
       const obj = { a: state.a }
       const expected = { a: { b: { c: { d: { e: '123' } } } } }
+      let setObj: Pick<State, 'a'> = obj
 
-      expect(set(obj, ['a'], { b: { c: { d: { e: '123' } } } })).toEqual(
-        expected,
-      )
-      expect(set(obj, ['a', 'b'], { c: { d: { e: '123' } } })).toEqual(
-        expected,
-      )
-      expect(set(obj, ['a', 'b', 'c'], { d: { e: '123' } })).toEqual(expected)
-      expect(set(obj, ['a', 'b', 'c', 'd'], { e: '123' })).toEqual(expected)
+      setObj = set(obj, ['a'], { b: { c: { d: { e: '123' } } } })
+      expect(setObj).toEqual(expected)
+
+      setObj = set(obj, ['a', 'b'], { c: { d: { e: '123' } } })
+      expect(setObj).toEqual(expected)
+
+      setObj = set(obj, ['a', 'b', 'c'], { d: { e: '123' } })
+      expect(setObj).toEqual(expected)
+
+      setObj = set(obj, ['a', 'b', 'c', 'd'], { e: '123' })
+      expect(setObj).toEqual(expected)
+
+      setObj = set(obj, ['a', 'b', 'c', 'd', 'e'], '123')
+      expect(setObj).toEqual(expected)
     })
   })
 
@@ -65,7 +76,9 @@ describe('set', () => {
     })
 
     test('create new index in array', () => {
-      expect(set(state, ['users', 3, 'id'], 777)).toEqual({
+      state = set(state, ['users', 3, 'id'], 777)
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }, undefined, undefined, { id: 777 }],
         dict: {
           someId: 'hello',
@@ -75,7 +88,9 @@ describe('set', () => {
     })
 
     test('create new property in dictionary', () => {
-      expect(set(state, ['dict', 'newKey'], 777)).toEqual({
+      state = set(state, ['dict', 'newKey'], 777)
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }],
         dict: {
           someId: 'hello',
@@ -95,9 +110,11 @@ describe('set', () => {
         type A = string[]
         type D = { [key: string]: A }
         type T = { req: { opt?: D | null } }
-        const obj: T = { req: { opt: null } }
+        let obj: T = { req: { opt: null } }
 
-        expect(set(obj, ['req', 'opt', 'key', 1], 'str')).toEqual({
+        obj = set(obj, ['req', 'opt', 'key', 1], 'str')
+
+        expect(obj).toEqual({
           req: { opt: { key: [undefined, 'str'] } },
         })
       })

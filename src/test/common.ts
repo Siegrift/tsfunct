@@ -3,9 +3,13 @@ export interface User {
   key: string
 }
 
+export interface Dict {
+  [key: string]: number | string
+}
+
 export interface State {
   users: User[]
-  dict: { [key: string]: number | string }
+  dict: Dict
   optional?: { a: number }
   a: { b: { c: { d: { e: string } } } }
 }

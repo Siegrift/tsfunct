@@ -1,5 +1,5 @@
 import { get } from '../lib/get'
-import { State } from './common'
+import { Dict, State, User } from './common'
 
 describe('get', () => {
   let state: State
@@ -26,43 +26,62 @@ describe('get', () => {
 
   describe('get the nested value in object', () => {
     test('in array', () => {
-      expect(get(state, ['users', 0])).toEqual({ id: 156, key: 'asd' })
-      expect(get(state, ['users', 0, 'id'])).toEqual(156)
+      const user: User = get(state, ['users', 0])
+      expect(user).toEqual({ id: 156, key: 'asd' })
+
+      const id: number = get(state, ['users', 0, 'id'])
+      expect(id).toEqual(156)
     })
 
     test('in dictionary', () => {
-      expect(get(state, ['dict'])).toEqual({
+      const dict: Dict = get(state, ['dict'])
+      expect(dict).toEqual({
         someId: 'hello',
         someOther: 132,
       })
-      expect(get(state, ['dict', 'someId'])).toBe('hello')
+
+      const id: string | number = get(state, ['dict', 'someId'])
+      expect(id).toBe('hello')
     })
 
     test('get up to 5 levels', () => {
-      expect(get(state, ['a'])).toEqual({ b: { c: { d: { e: '123' } } } })
-      expect(get(state, ['a', 'b'])).toEqual({ c: { d: { e: '123' } } })
-      expect(get(state, ['a', 'b', 'c'])).toEqual({ d: { e: '123' } })
-      expect(get(state, ['a', 'b', 'c', 'd'])).toEqual({ e: '123' })
-      expect(get(state, ['a', 'b', 'c', 'd', 'e'])).toEqual('123')
+      const get1: { b: { c: { d: { e: string } } } } = get(state, ['a'])
+      expect(get1).toEqual({ b: { c: { d: { e: '123' } } } })
+
+      const get2: { c: { d: { e: string } } } = get(state, ['a', 'b'])
+      expect(get2).toEqual({ c: { d: { e: '123' } } })
+
+      const get3: { d: { e: string } } = get(state, ['a', 'b', 'c'])
+      expect(get3).toEqual({ d: { e: '123' } })
+
+      const get4: { e: string } = get(state, ['a', 'b', 'c', 'd'])
+      expect(get4).toEqual({ e: '123' })
+
+      const get5: string = get(state, ['a', 'b', 'c', 'd', 'e'])
+      expect(get5).toEqual('123')
     })
   })
 
   test('if object or intermediate path is undefined, returns undefined', () => {
-    expect(get(state, ['users', 10, 'id'])).toBe(undefined)
-    expect(get(state, ['dict', 'badId'])).toBe(undefined)
+    // type is correct because array type is NOT optional, but returns undefined for non-existent keys
+    const badIndex: number = get(state, ['users', 10, 'id'])
+    expect(badIndex).toBe(undefined)
+
+    // again correct, because dictionary type is required
+    const badId = get(state, ['dict', 'badId'])
+    expect(badId).toBe(undefined)
   })
 
   test('accepts default value', () => {
-    expect(get(state, ['optional'], { a: 10 })).toEqual({ a: 10 })
+    const opt: { a: number } | undefined = get(state, ['optional'], { a: 10 })
+    expect(opt).toEqual({ a: 10 })
   })
 
   test('returns nested value (as non optional) when default value is passed', () => {
-    const user = get(state, ['users', 10], { id: -1, key: 'default' })
-    // this line verifies that user is of type 'User' and not 'User | undefined'
-    const userId = user.id
+    const user: User = get(state, ['users', 10], { id: -1, key: 'default' })
 
     expect(user).toEqual({ id: -1, key: 'default' })
-    expect(userId).toBe(-1)
+    expect(user.id).toBe(-1)
   })
 
   test('falsy last value has more priority than defaultValue', () => {

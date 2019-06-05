@@ -177,7 +177,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="set1" class="tsd-anchor"></a>
 					<h3>Set1</h3>
-					<div class="tsd-signature tsd-kind-icon">Set1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;Pick&lt;T, KK1&gt;&gt;; }[K1]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Set1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set1&lt;T, K1&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in types.ts:37</li>
@@ -187,40 +187,40 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="set2" class="tsd-anchor"></a>
 					<h3>Set2</h3>
-					<div class="tsd-signature tsd-kind-icon">Set2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set1&lt;Exclude&lt;T[K1], null | undefined&gt;, K2&gt;; }&gt;; }[K1]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Set2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set2&lt;T, K1, K2&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:40</li>
+							<li>Defined in types.ts:42</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="set3" class="tsd-anchor"></a>
 					<h3>Set3</h3>
-					<div class="tsd-signature tsd-kind-icon">Set3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set2&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3&gt;; }&gt;; }[K1]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Set3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set3&lt;T, K1, K2, K3&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:46</li>
+							<li>Defined in types.ts:51</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="set4" class="tsd-anchor"></a>
 					<h3>Set4</h3>
-					<div class="tsd-signature tsd-kind-icon">Set4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set3&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4&gt;; }&gt;; }[K1]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Set4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set4&lt;T, K1, K2, K3, K4&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:54</li>
+							<li>Defined in types.ts:61</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="set5" class="tsd-anchor"></a>
 					<h3>Set5</h3>
-					<div class="tsd-signature tsd-kind-icon">Set5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set4&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4, K5&gt;; }&gt;; }[K1]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Set5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set5&lt;T, K1, K2, K3, K4, K5&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in types.ts:63</li>
+							<li>Defined in types.ts:74</li>
 						</ul>
 					</aside>
 				</section>
@@ -317,7 +317,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="without" class="tsd-anchor"></a>
 					<h3>Without</h3>
-					<div class="tsd-signature tsd-kind-icon">Without<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Without<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Without&lt;T, K&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in types.ts:19</li>

@@ -23,7 +23,9 @@ describe('update', () => {
         return { id: 777, key: 'new' }
       }
 
-      expect(update(state, ['users', 0], updater)).toEqual({
+      state = update(state, ['users', 0], updater)
+
+      expect(state).toEqual({
         users: [{ id: 777, key: 'new' }],
         dict: {
           someId: 'hello',
@@ -34,11 +36,11 @@ describe('update', () => {
     })
 
     test('in dictionary', () => {
-      expect(
-        update(state, ['dict'], () => ({
-          newKey: 777,
-        })),
-      ).toEqual({
+      state = update(state, ['dict'], () => ({
+        newKey: 777,
+      }))
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }],
         dict: {
           newKey: 777,
@@ -50,19 +52,22 @@ describe('update', () => {
     test('update up to 5 levels', () => {
       const obj = { a: state.a }
       const expected = { a: { b: { c: { d: { e: '123' } } } } }
+      let updateObj: Pick<State, 'a'> = obj
 
-      expect(
-        update(obj, ['a'], () => ({ b: { c: { d: { e: '123' } } } })),
-      ).toEqual(expected)
-      expect(
-        update(obj, ['a', 'b'], () => ({ c: { d: { e: '123' } } })),
-      ).toEqual(expected)
-      expect(update(obj, ['a', 'b', 'c'], () => ({ d: { e: '123' } }))).toEqual(
-        expected,
-      )
-      expect(update(obj, ['a', 'b', 'c', 'd'], () => ({ e: '123' }))).toEqual(
-        expected,
-      )
+      updateObj = update(obj, ['a'], () => ({ b: { c: { d: { e: '123' } } } }))
+      expect(updateObj).toEqual(expected)
+
+      updateObj = update(obj, ['a', 'b'], () => ({ c: { d: { e: '123' } } }))
+      expect(updateObj).toEqual(expected)
+
+      updateObj = update(obj, ['a', 'b', 'c'], () => ({ d: { e: '123' } }))
+      expect(updateObj).toEqual(expected)
+
+      updateObj = update(obj, ['a', 'b', 'c', 'd'], () => ({ e: '123' }))
+      expect(updateObj).toEqual(expected)
+
+      updateObj = update(obj, ['a', 'b', 'c', 'd', 'e'], () => '123')
+      expect(updateObj).toEqual(expected)
     })
   })
 
@@ -81,7 +86,9 @@ describe('update', () => {
     })
 
     test('create new index in array', () => {
-      expect(update(state, ['users', 3, 'id'], () => 777)).toEqual({
+      state = update(state, ['users', 3, 'id'], () => 777)
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }, undefined, undefined, { id: 777 }],
         dict: {
           someId: 'hello',
@@ -91,7 +98,9 @@ describe('update', () => {
     })
 
     test('create new property in dictionary', () => {
-      expect(update(state, ['dict', 'newKey'], () => 777)).toEqual({
+      state = update(state, ['dict', 'newKey'], () => 777)
+
+      expect(state).toEqual({
         users: [{ id: 56, key: 'key' }],
         dict: {
           someId: 'hello',
@@ -118,7 +127,8 @@ describe('update', () => {
         type T = { req: { opt?: D | null } }
         const obj: T = { req: { opt: null } }
 
-        expect(update(obj, ['req', 'opt', 'key', 1], () => 'str')).toEqual({
+        const updateObj = update(obj, ['req', 'opt', 'key', 1], () => 'str')
+        expect(updateObj).toEqual({
           req: { opt: { key: [undefined, 'str'] } },
         })
       })
