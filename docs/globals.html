@@ -83,6 +83,11 @@
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#optional" class="tsd-kind-icon">Optional</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#optionalvalue" class="tsd-kind-icon">Optional<wbr>Value</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#primitive" class="tsd-kind-icon">Primitive</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#set1" class="tsd-kind-icon">Set1</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#set2" class="tsd-kind-icon">Set2</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#set3" class="tsd-kind-icon">Set3</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#set4" class="tsd-kind-icon">Set4</a></li>
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#set5" class="tsd-kind-icon">Set5</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#u" class="tsd-kind-icon">U</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#undefinable" class="tsd-kind-icon">Undefinable</a></li>
 								<li class="tsd-kind-type-alias tsd-has-type-parameter tsd-is-not-exported"><a href="globals.html#unset1" class="tsd-kind-icon">Unset1</a></li>
@@ -177,6 +182,56 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in types.ts:1</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="set1" class="tsd-anchor"></a>
+					<h3>Set1</h3>
+					<div class="tsd-signature tsd-kind-icon">Set1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;Pick&lt;T, KK1&gt;&gt;; }[K1]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in types.ts:33</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="set2" class="tsd-anchor"></a>
+					<h3>Set2</h3>
+					<div class="tsd-signature tsd-kind-icon">Set2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set1&lt;Exclude&lt;T[K1], null | undefined&gt;, K2&gt;; }&gt;; }[K1]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in types.ts:36</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="set3" class="tsd-anchor"></a>
+					<h3>Set3</h3>
+					<div class="tsd-signature tsd-kind-icon">Set3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set2&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3&gt;; }&gt;; }[K1]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in types.ts:42</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="set4" class="tsd-anchor"></a>
+					<h3>Set4</h3>
+					<div class="tsd-signature tsd-kind-icon">Set4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set3&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4&gt;; }&gt;; }[K1]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in types.ts:50</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="set5" class="tsd-anchor"></a>
+					<h3>Set5</h3>
+					<div class="tsd-signature tsd-kind-icon">Set5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">keyof T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">{ [KK1 in K1]-?: Required&lt;{ [key in K1]: Set4&lt;Exclude&lt;T[K1], null | undefined&gt;, K2, K3, K4, K5&gt;; }&gt;; }[K1]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in types.ts:59</li>
 						</ul>
 					</aside>
 				</section>
@@ -3826,17 +3881,17 @@
 					<a name="set" class="tsd-anchor"></a>
 					<h3>set</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3, K4&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3, K4, K5&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3, K4&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">set&lt;T, K1, K2, K3, K4, K5&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/set.ts:20</li>
+									<li>Defined in lib/set.ts:23</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -3848,6 +3903,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -3879,13 +3936,13 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with value on path set</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/set.ts:41</li>
+									<li>Defined in lib/set.ts:47</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -3897,6 +3954,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -3931,13 +3990,13 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with value on path set</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/set.ts:62</li>
+									<li>Defined in lib/set.ts:71</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -3949,6 +4008,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -3986,13 +4047,13 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with value on path set</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/set.ts:84</li>
+									<li>Defined in lib/set.ts:100</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -4004,6 +4065,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -4044,13 +4107,13 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with value on path set</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/set.ts:111</li>
+									<li>Defined in lib/set.ts:130</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -4062,6 +4125,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -4105,7 +4170,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with value on path set</p>
 						</li>
 					</ul>
@@ -5148,17 +5213,22 @@
 					<a name="update" class="tsd-anchor"></a>
 					<h3>update</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4, K5&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4, K5&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update&lt;T, K1, K2, K3, K4, K5&gt;<span class="tsd-signature-symbol">(</span>source<span class="tsd-signature-symbol">: </span><a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span>, updateFn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/update.ts:22</li>
+									<li>Defined in lib/update.ts:34</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -5172,6 +5242,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -5185,7 +5257,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>source: <a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>source: <span class="tsd-signature-type">T</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>source, in which the nested value should be removed.</p>
 									</div>
@@ -5218,13 +5290,13 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with removed value</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/update.ts:45</li>
+									<li>Defined in lib/update.ts:60</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -5238,6 +5310,378 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
+								</li>
+								<li>
+									<h4>K2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1]</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>source, in which the nested value should be removed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path array of the nested value in the source</p>
+									</div>
+								</li>
+								<li>
+									<h5>updateFn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1][K2]</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T[K1][K2]</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>source value with removed value</p>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/update.ts:86</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the value on the specified path in source value using update function. This function will
+									take current value and can transform it to other value (with the same type).</p>
+								</div>
+								<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+									type of the object at runtime. Due to this, if the path value is number, we create an array,
+								otherwise object.</p>
+								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
+								</li>
+								<li>
+									<h4>K2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1]</span></h4>
+								</li>
+								<li>
+									<h4>K3<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2]</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>source, in which the nested value should be removed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path array of the nested value in the source</p>
+									</div>
+								</li>
+								<li>
+									<h5>updateFn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1][K2][K3]</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T[K1][K2][K3]</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>source value with removed value</p>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/update.ts:117</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the value on the specified path in source value using update function. This function will
+									take current value and can transform it to other value (with the same type).</p>
+								</div>
+								<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+									type of the object at runtime. Due to this, if the path value is number, we create an array,
+								otherwise object.</p>
+								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
+								</li>
+								<li>
+									<h4>K2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1]</span></h4>
+								</li>
+								<li>
+									<h4>K3<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2]</span></h4>
+								</li>
+								<li>
+									<h4>K4<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2][K3]</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>source, in which the nested value should be removed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path array of the nested value in the source</p>
+									</div>
+								</li>
+								<li>
+									<h5>updateFn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3][K4]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1][K2][K3][K4]</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3][K4]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T[K1][K2][K3][K4]</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>source value with removed value</p>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/update.ts:149</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the value on the specified path in source value using update function. This function will
+									take current value and can transform it to other value (with the same type).</p>
+								</div>
+								<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+									type of the object at runtime. Due to this, if the path value is number, we create an array,
+								otherwise object.</p>
+								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
+								</li>
+								<li>
+									<h4>K2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1]</span></h4>
+								</li>
+								<li>
+									<h4>K3<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2]</span></h4>
+								</li>
+								<li>
+									<h4>K4<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2][K3]</span></h4>
+								</li>
+								<li>
+									<h4>K5<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T[K1][K2][K3][K4]</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <span class="tsd-signature-type">T</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>source, in which the nested value should be removed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path array of the nested value in the source</p>
+									</div>
+								</li>
+								<li>
+									<h5>updateFn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3][K4][K5]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1][K2][K3][K4][K5]</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1][K2][K3][K4][K5]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T[K1][K2][K3][K4][K5]</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>source value with removed value</p>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/update.ts:184</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the value on the specified path in source value using update function. This function will
+									take current value and can transform it to other value (with the same type).</p>
+								</div>
+								<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+									type of the object at runtime. Due to this, if the path value is number, we create an array,
+								otherwise object.</p>
+								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+								<li>
+									<h4>K1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof T</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>source: <a href="globals.html#optional" class="tsd-signature-type">Optional</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>source, in which the nested value should be removed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>path array of the nested value in the source</p>
+									</div>
+								</li>
+								<li>
+									<h5>updateFn: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T[K1]</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T[K1]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T[K1]</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set1" class="tsd-signature-type">Set1</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>source value with removed value</p>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/update.ts:210</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the value on the specified path in source value using update function. This function will
+									take current value and can transform it to other value (with the same type).</p>
+								</div>
+								<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+									type of the object at runtime. Due to this, if the path value is number, we create an array,
+								otherwise object.</p>
+								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -5270,14 +5714,14 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Exclude&lt;T[K1], null | undefined&gt;[K2]</span></h4>
@@ -5287,13 +5731,13 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set2" class="tsd-signature-type">Set2</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with removed value</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/update.ts:68</li>
+									<li>Defined in lib/update.ts:236</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -5307,6 +5751,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -5342,14 +5788,14 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3]</span></h4>
@@ -5359,13 +5805,13 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set3" class="tsd-signature-type">Set3</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with removed value</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/update.ts:96</li>
+									<li>Defined in lib/update.ts:269</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -5379,6 +5825,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -5417,14 +5865,14 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4]</span></h4>
@@ -5434,13 +5882,13 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set4" class="tsd-signature-type">Set4</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with removed value</p>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/update.ts:127</li>
+									<li>Defined in lib/update.ts:303</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -5454,6 +5902,8 @@
 								<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
 								intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
 								<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+								<p>Return type will be the same as the source type, where any optional values along the path are
+								made required (because they are created).</p>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
@@ -5495,14 +5945,14 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+															<h5>value: <a href="globals.html#deepreadonly" class="tsd-signature-type">DeepReadonly</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Exclude&lt;Exclude&lt;Exclude&lt;Exclude&lt;T[K1], null | undefined&gt;[K2], null | undefined&gt;[K3], null | undefined&gt;[K4], null | undefined&gt;[K5]</span></h4>
@@ -5512,7 +5962,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="globals.html#set5" class="tsd-signature-type">Set5</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K1</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K2</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K3</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K4</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K5</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>source value with removed value</p>
 						</li>
 					</ul>
@@ -5552,6 +6002,21 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#primitive" class="tsd-kind-icon">Primitive</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set1" class="tsd-kind-icon">Set1</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set2" class="tsd-kind-icon">Set2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set3" class="tsd-kind-icon">Set3</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set4" class="tsd-kind-icon">Set4</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set5" class="tsd-kind-icon">Set5</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#u" class="tsd-kind-icon">U</a>
