@@ -96,6 +96,13 @@
 					<li>The path can be autocompleted and must be able to exist in the object</li>
 					<li>Handles arrays, optional and nullable values (even in intermediate objects)</li>
 				</ul>
+				<p><img src="assets/good_set.png" alt="Strongly typed get helper">
+					<em>After a value is set on a path, you don&#39;t need to use <code>!</code> on optional values, because the values
+				along the path have been created.</em></p>
+				<p><img src="assets/good_update.png" alt="Strongly typed get helper">
+					<em>When you call update for the first time, <code>value</code> in update function can be <code>undefined</code> (if any
+						intermediate value doesn&#39;t exist). However, when calling it for a second time, it is guaranteed that
+				the values on the path exist.</em></p>
 				<p>Refer to documentation, source code and tests for more examples.</p>
 				<h2 id="chaining">Chaining</h2>
 				<p>Original idea was to support chaining same way as lodash <code>_.chain</code> works, however after reading
@@ -146,9 +153,6 @@
 						<a href="globals.html#deepreadonly" class="tsd-kind-icon">Deep<wbr>Readonly</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#deepreadonlyobject" class="tsd-kind-icon">Deep<wbr>Readonly<wbr>Object</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#nullable" class="tsd-kind-icon">Nullable</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
@@ -159,6 +163,21 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#primitive" class="tsd-kind-icon">Primitive</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set1" class="tsd-kind-icon">Set1</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set2" class="tsd-kind-icon">Set2</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set3" class="tsd-kind-icon">Set3</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set4" class="tsd-kind-icon">Set4</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#set5" class="tsd-kind-icon">Set5</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#u" class="tsd-kind-icon">U</a>

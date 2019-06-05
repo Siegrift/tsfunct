@@ -17,9 +17,10 @@ describe('exist', () => {
     expect(exist(obj, ['b', 'd'])).toBe(false)
   })
 
-  test('handles case when the path exists, but value is undefined', () => {
-    const undefinedObj = { a: undefined }
-    expect(exist(undefinedObj, ['a'])).toBe(true)
+  test('handles case when the path exists, but value is falsy', () => {
+    expect(exist({ a: undefined } as any, ['a'])).toBe(true)
+    expect(exist({ a: { b: false } }, ['a', 'b'])).toBe(true)
+    expect(exist({ a: { b: null } } as any, ['a', 'b'])).toBe(true)
   })
 
   test('when object is null or undefined, returns false', () => {

@@ -1,5 +1,5 @@
 import { Optional, U } from '../types'
-import { isNullOrUndefined } from '../utils'
+import { isNullOrUndefined, isObject } from '../utils'
 
 /**
  * Returns the nested value in source specified by path. There are 3 ways how to use this helper.
@@ -453,9 +453,14 @@ export function get<
 // NOTE: implementation
 export function get(source: any, path: any[], defaultValue?: any) {
   for (const key of path) {
-    if (isNullOrUndefined(source)) return defaultValue
+    if (
+      isNullOrUndefined(source) ||
+      !isObject(source) ||
+      !source.hasOwnProperty(key)
+    ) {
+      return defaultValue
+    }
     source = source[key]
   }
-  if (isNullOrUndefined(source)) return defaultValue
-  else return source
+  return source
 }

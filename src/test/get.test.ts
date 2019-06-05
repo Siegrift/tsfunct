@@ -64,4 +64,10 @@ describe('get', () => {
     expect(user).toEqual({ id: -1, key: 'default' })
     expect(userId).toBe(-1)
   })
+
+  test('falsy last value has more priority than defaultValue', () => {
+    expect(get({ a: undefined } as any, ['a'], true)).toBe(undefined)
+    expect(get({ a: { b: false } }, ['a', 'b'], true)).toBe(false)
+    expect(get({ a: { b: null } } as any, ['a', 'b'], true)).toBe(null)
+  })
 })
