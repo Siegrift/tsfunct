@@ -89,4 +89,13 @@ describe('get', () => {
     expect(get({ a: { b: false } }, ['a', 'b'], true)).toBe(false)
     expect(get({ a: { b: null } } as any, ['a', 'b'], true)).toBe(null)
   })
+
+  test('is working correctly for undefinable get with 2 elements', () => {
+    interface A {
+      [key: string]: { a: number } | undefined
+    }
+
+    // the test is testing the typings of the get method
+    expect(get({} as A, ['k1', 'a'])).toBe(undefined)
+  })
 })

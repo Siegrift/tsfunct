@@ -191,7 +191,7 @@ export function get<T, K1 extends keyof T>(
  * @returns the nested value in the source. Value returned is the reference of the value in source.
  * Modifying this value will also modify the source value.
  */
-export function get<T, K1 extends keyof T, K2 extends keyof T[K1]>(
+export function get<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
   source: Optional<T>,
   path: [K1, K2],
 ): U<T[K1]>[K2] | undefined
