@@ -71,7 +71,7 @@
 				<p>To install this package run either:</p>
 				<p><code>yarn add @siegrift/tsfunct</code></p>
 				<p>or if you use npm</p>
-				<p><code>npm i @siegrift/tsfunct --save</code> </p>
+				<p><code>npm i @siegrift/tsfunct --save</code></p>
 				<h2 id="motivation">Motivation</h2>
 				<p>There are two big libraries which provide helper functions for JS/TS. These are
 					<a href="https://github.com/lodash/lodash">lodash</a> and <a href="https://github.com/ramda/ramda">ramda</a>. Both of
@@ -79,24 +79,24 @@
 				libraries aim to be as general as possible, which makes it harder to type properly.</p>
 				<p>Most of the times, the typings for these helper functions is pretty decent. However, not always...
 				There are certain helpers <em>(mainly for immutable object manipulation)</em> which can be typed better.</p>
-				<p>Let&#39;s take a look at <code>get(obj, path)</code> helper in both <em>lodash</em> and <em>ramda</em>, when using it on a
-				strongly typed TS object.</p>
-				<p><img src="assets/weak_typed_get.png" alt="Weak typed result">
+				<p>Let&#39;s take a look at <code>get(obj, path)</code> helper in both lodash <em>(^4.14.132)</em> and ramda <em>(^0.26.9)</em>,
+				when using it on a strongly typed TS object.</p>
+				<p><img src="assets/weak_typed_get.png" alt="Weak typed result"><br/>
 					<em>(Lodash gets it at least correct, but cannot
 						determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
 				it and produce <strong>incorrect</strong> result type)</em></p>
-				<p><img src="assets/no_compile_error.png" alt="No compile error">
+				<p><img src="assets/no_compile_error.png" alt="No compile error"><br/>
 					<em>(There are no TS warnings about accessing value on
 				nonexistent path)</em></p>
 				<p>Lets look what you can get by using <code>get(obj, path)</code> from this library.</p>
-				<p><img src="assets/get_strong_typed.png" alt="Strongly typed get helper">
+				<p><img src="assets/get_strong_typed.png" alt="Strongly typed get helper"><br/>
 				There are many advantages of this helper:</p>
 				<ul>
 					<li>The result has correct type</li>
 					<li>The path can be autocompleted and must be able to exist in the object</li>
 					<li>Handles arrays, optional and nullable values (even in intermediate objects)</li>
 				</ul>
-				<p><img src="assets/good_update.png" alt="Update helper">
+				<p><img src="assets/good_update.png" alt="Update helper"><br/>
 					<em>When you call update for the first time, <code>value</code> in update function can be <code>undefined</code> (if any
 						intermediate value doesn&#39;t exist). However, when calling it for a second time, it is guaranteed that
 				the values on the path exist.</em></p>
@@ -104,7 +104,8 @@
 				<h2 id="chaining">Chaining</h2>
 				<p>Original idea was to support chaining same way as lodash <code>_.chain</code> works, however after reading
 					<a href="https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba">this article</a>
-				describing the disadvantages of using this function, I decided to drop this idea.</p>
+					describing the disadvantages of using this function, I decided to drop this idea and you should
+				probably do the same.</p>
 				<h2 id="functional-programming-style">Functional programming style</h2>
 				<p>All of the functions in this library are written <strong>imperatively</strong> (e.g. <code>get(object, path)</code> compared
 					to traditional functional <code>get(path, object)</code>). I encourage you to use FP style, and you can easily
@@ -125,7 +126,11 @@
 				<p><em>You can read the list and sources of all helpers in the src/lib folder <a href="https://github.com/Siegrift/tsfunct/tree/master/src/lib">here</a>.</em></p>
 				<h2 id="limitations">Limitations</h2>
 				<p>Most of the helpers are typed manually and have some restrictions on its arguments. For example,
-				path array can be up to 5 elements only...</p>
+				path array can be up to 5 elements only in some helpers...</p>
+				<p>Be also careful about the typesystem. Types might lie to you if you are not careful. For example,</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> arr: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">const</span> num: number = <span class="hljs-keyword">get</span>(arr, [999]); // this line won't trigger TS error!
+console.log(num); // undefined!</code></pre>
 				<p>Other limitation is typescript path autocompletion, which I
 				<a href="https://github.com/microsoft/TypeScript/issues/31630">reported</a> and will be fixed in the future.</p>
 			</div>

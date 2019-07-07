@@ -23,6 +23,7 @@ import { isNullOrUndefined } from '../utils'
  * 2) If the value is dictionary, function must return `{ key: newKey; value: mappedResult }`
  * @returns the same type of collection with mapped elements.
  */
+
 export function map<T, Result>(
   collection: T[],
   fn: (value: DeepReadonly<T>, index: number) => Result,
