@@ -11,7 +11,7 @@ To install this package run either:
 
 or if you use npm
 
-`npm i @siegrift/tsfunct --save` 
+`npm i @siegrift/tsfunct --save`
 
 ## Motivation
 
@@ -23,28 +23,28 @@ libraries aim to be as general as possible, which makes it harder to type proper
 Most of the times, the typings for these helper functions is pretty decent. However, not always...
 There are certain helpers _(mainly for immutable object manipulation)_ which can be typed better.
 
-Let's take a look at `get(obj, path)` helper in both _lodash_ and _ramda_, when using it on a
-strongly typed TS object.
+Let's take a look at `get(obj, path)` helper in both lodash _(^4.14.132)_ and ramda _(^0.26.9)_,
+when using it on a strongly typed TS object.
 
-![Weak typed result](assets/weak_typed_get.png)
+![Weak typed result](assets/weak_typed_get.png)<br/>
 _(Lodash gets it at least correct, but cannot
 determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
 it and produce **incorrect** result type)_
 
-![No compile error](assets/no_compile_error.png)
+![No compile error](assets/no_compile_error.png)<br/>
 _(There are no TS warnings about accessing value on
 nonexistent path)_
 
 Lets look what you can get by using `get(obj, path)` from this library.
 
-![Strongly typed get helper](assets/get_strong_typed.png)
+![Strongly typed get helper](assets/get_strong_typed.png)<br/>
 There are many advantages of this helper:
 
 - The result has correct type
 - The path can be autocompleted and must be able to exist in the object
 - Handles arrays, optional and nullable values (even in intermediate objects)
 
-![Update helper](assets/good_update.png)
+![Update helper](assets/good_update.png)<br/>
 _When you call update for the first time, `value` in update function can be `undefined` (if any
 intermediate value doesn't exist). However, when calling it for a second time, it is guaranteed that
 the values on the path exist._
@@ -55,7 +55,8 @@ Refer to documentation, source code and tests for more examples.
 
 Original idea was to support chaining same way as lodash `_.chain` works, however after reading
 [this article](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)
-describing the disadvantages of using this function, I decided to drop this idea.
+describing the disadvantages of using this function, I decided to drop this idea and you should
+probably do the same.
 
 ## Functional programming style
 
@@ -83,12 +84,20 @@ const mapped = map(original, (val: any) => (val.a = 3));
 Documentation is automatically generated from source code and can be found at github pages
 [here](https://siegrift.github.io/tsfunct/).
 
-*You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib).*
+_You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
 
 ## Limitations
 
 Most of the helpers are typed manually and have some restrictions on its arguments. For example,
-path array can be up to 5 elements only...
+path array can be up to 5 elements only in some helpers...
+
+Be also careful about the typesystem. Types might lie to you if you are not careful. For example,
+
+```javascript
+const arr: number[] = [1, 2, 3];
+const num: number = get(arr, [999]); // this line won't trigger TS error!
+console.log(num); // undefined!
+```
 
 Other limitation is typescript path autocompletion, which I
 [reported](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
