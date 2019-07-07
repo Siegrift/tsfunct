@@ -1,6 +1,5 @@
 import { Optional, U } from '../types'
-import { isNullOrUndefined } from 'util'
-import { isObject } from '../utils'
+import { isNullOrUndefined, isObject } from '../utils'
 
 /**
  * Checks whether path exist in source value.

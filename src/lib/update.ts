@@ -8,8 +8,7 @@ import {
   Set5,
   U
 } from '../types'
-import { shallowCopy } from '../utils'
-import { isObject } from 'util'
+import { isObject, shallowCopy } from '../utils'
 
 /**
  * Updates the value on the specified path in source value using update function. This function will

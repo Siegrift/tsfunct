@@ -1,6 +1,5 @@
 import { Nullable, Optional, U, Undefinable, Without } from '../types'
-import { shallowCopy } from '../utils'
-import { isNullOrUndefined } from 'util'
+import { isNullOrUndefined, shallowCopy } from '../utils'
 
 // NOTE: we can reuse unset return types
 type Unset1<T, K1> = Without<T, K1>

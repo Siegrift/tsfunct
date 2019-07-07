@@ -1,6 +1,5 @@
 import { Optional, Set1, Set2, Set3, Set4, Set5, U } from '../types'
-import { shallowCopy } from '../utils'
-import { isObject } from 'util'
+import { isObject, shallowCopy } from '../utils'
 
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it

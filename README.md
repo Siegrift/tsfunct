@@ -51,21 +51,6 @@ the values on the path exist._
 
 Refer to documentation, source code and tests for more examples.
 
-## Chaining
-
-Original idea was to support chaining same way as lodash `_.chain` works, however after reading
-[this article](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)
-describing the disadvantages of using this function, I decided to drop this idea and you should
-probably do the same.
-
-## Functional programming style
-
-All of the functions in this library are written **imperatively** (e.g. `get(object, path)` compared
-to traditional functional `get(path, object)`). I encourage you to use FP style, and you can easily
-create small wrappers, which will [curry](https://lodash.com/docs/4.17.11#curry), and
-[rearrange](https://lodash.com/docs/4.17.11#rearg) the arguments (however, your helper will need
-fixed number arguments).
-
 ## Immutability
 
 All functions in this library are **effectively immutable**. That means that if you use the helpers
@@ -86,6 +71,27 @@ Documentation is automatically generated from source code and can be found at gi
 
 _You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
 
+## Chaining
+
+Original idea was to support chaining same way as lodash `_.chain` works, however after reading
+[this article](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)
+describing the disadvantages of using this function, I decided to drop this idea and you should
+probably do the same.
+
+## Functional programming style
+
+All of the functions in this library are written **imperatively** (e.g. `get(object, path)` compared
+to traditional functional `get(path, object)`). I encourage you to use FP style, and you can easily
+create small wrappers, which will [curry](https://lodash.com/docs/4.17.11#curry), and
+[rearrange](https://lodash.com/docs/4.17.11#rearg) the arguments (however, your helper will need
+fixed number arguments).
+
+## Codebase overview
+
+Each helper is written in its own module without depending on other helper (but it might depend on
+common types or small util functions). This allows you to copy the source of single helper you want
+without the need to install the whole library.
+
 ## Limitations
 
 Most of the helpers are typed manually and have some restrictions on its arguments. For example,
@@ -101,3 +107,19 @@ console.log(num); // undefined!
 
 Other limitation is typescript path autocompletion, which I
 [reported](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
+
+## Issues
+
+Each helper is heavily tested and I try to make the library as stable as possible. In case there is
+a bug or unwanted behavior, please create an issue.
+
+## Contribution
+
+If you would like to fix an issue or create another helper, feel free to create a PR for it. To
+contribute just follow these steps:
+
+1. fork the repository
+2. make sure you have yarn installed and run: `yarn`
+3. create a new branch with you feature
+4. commit & push
+5. create PR to the original repo
