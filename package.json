@@ -32,7 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets && git add docs/*",
+      "pre-commit": "yarn clean && typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets && git add docs/*",
       "pre-push": "yarn test"
     }
   },
