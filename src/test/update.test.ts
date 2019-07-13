@@ -133,4 +133,9 @@ describe('update', () => {
       })
     })
   })
+
+  test('optional path', () => {
+    const newState = update(state, ['optional', 'a'], (op) => 123)
+    expect(newState.optional.a).toBe(123) // the path surely exists now!
+  })
 })
