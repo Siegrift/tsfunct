@@ -1,24 +1,20 @@
 import { filter } from '../lib/filter'
-import { Dictionary, NumericDictionary, Optional } from '../types'
+import { Dictionary, Optional } from '../types'
 import { idFn } from './common'
 
 describe('filter', () => {
   test('if collection is null or undefined, returns the collection', () => {
     let arr: Optional<number[]> = null
     let dict: Optional<Dictionary<string>> = null
-    let numDict: Optional<NumericDictionary<string>> = null
 
     expect(filter(arr, idFn)).toBe(null)
     expect(filter(dict, idFn)).toBe(null)
-    expect(filter(numDict, idFn)).toBe(null)
 
     arr = undefined
     dict = undefined
-    numDict = undefined
 
     expect(filter(arr, idFn)).toBe(undefined)
     expect(filter(dict, idFn)).toBe(undefined)
-    expect(filter(numDict, idFn)).toBe(undefined)
   })
 
   test('filters elements of an array', () => {

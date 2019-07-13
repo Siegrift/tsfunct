@@ -1,15 +1,5 @@
 export type Primitive = string | number | boolean | undefined | null
 
-// FIXME: original definition is throwing and error when using TS compiler ^3.5.1
-// Error: Type instantiation is excessively deep and possibly infinite.
-//
-// export type DeepReadonly<T> = T extends Primitive
-//   ? T
-//   : { readonly [K in keyof T]: DeepReadonly<T[K]> }
-//
-// it seems to be passing when using the version without conditional types
-export type DeepReadonly<T> = { readonly [K in keyof T]: DeepReadonly<T[K]> }
-
 export type Nullable<T> = T | null
 
 export type Undefinable<T> = T | undefined
@@ -20,10 +10,6 @@ export type Without<T, K> = T extends any[] ? T : Pick<T, Exclude<keyof T, K>>
 
 export interface Dictionary<T> {
   [index: string]: T
-}
-
-export interface NumericDictionary<T> {
-  [index: number]: T
 }
 
 export type OptionalValue<T extends Optional<any>> = Exclude<

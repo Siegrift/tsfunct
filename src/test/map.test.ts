@@ -1,24 +1,20 @@
 import { map } from '../lib/map'
-import { Dictionary, NumericDictionary, Optional } from '../types'
+import { Dictionary, Optional } from '../types'
 import { idFn } from './common'
 
 describe('map', () => {
   test('if collection is null or undefined, returns the collection', () => {
     let arr: Optional<number[]> = null
     let dict: Optional<Dictionary<string>> = null
-    let numDict: Optional<NumericDictionary<string>> = null
 
     expect(map(arr, idFn)).toBe(null)
     expect(map(dict, idFn)).toBe(null)
-    expect(map(numDict, idFn)).toBe(null)
 
     arr = undefined
     dict = undefined
-    numDict = undefined
 
     expect(map(arr, idFn)).toBe(undefined)
     expect(map(dict, idFn)).toBe(undefined)
-    expect(map(numDict, idFn)).toBe(undefined)
   })
 
   test('maps elements of an array', () => {

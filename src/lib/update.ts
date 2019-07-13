@@ -1,13 +1,4 @@
-import {
-  DeepReadonly,
-  Optional,
-  Set1,
-  Set2,
-  Set3,
-  Set4,
-  Set5,
-  U
-} from '../types'
+import { Optional, Set1, Set2, Set3, Set4, Set5, U } from '../types'
 import { isObject, shallowCopy } from '../utils'
 
 /**
@@ -33,7 +24,7 @@ import { isObject, shallowCopy } from '../utils'
 export function update<T, K1 extends keyof T>(
   source: T,
   path: [K1],
-  updateFn: (value: DeepReadonly<T[K1]>) => T[K1],
+  updateFn: (value: T[K1]) => T[K1],
 ): Set1<T, K1>
 
 /**
@@ -59,7 +50,7 @@ export function update<T, K1 extends keyof T>(
 export function update<T, K1 extends keyof T, K2 extends keyof T[K1]>(
   source: T,
   path: [K1, K2],
-  updateFn: (value: DeepReadonly<T[K1][K2]>) => T[K1][K2],
+  updateFn: (value: T[K1][K2]) => T[K1][K2],
 ): Set2<T, K1, K2>
 
 /**
@@ -90,7 +81,7 @@ export function update<
 >(
   source: T,
   path: [K1, K2, K3],
-  updateFn: (value: DeepReadonly<T[K1][K2][K3]>) => T[K1][K2][K3],
+  updateFn: (value: T[K1][K2][K3]) => T[K1][K2][K3],
 ): Set3<T, K1, K2, K3>
 
 /**
@@ -122,7 +113,7 @@ export function update<
 >(
   source: T,
   path: [K1, K2, K3, K4],
-  updateFn: (value: DeepReadonly<T[K1][K2][K3][K4]>) => T[K1][K2][K3][K4],
+  updateFn: (value: T[K1][K2][K3][K4]) => T[K1][K2][K3][K4],
 ): Set4<T, K1, K2, K3, K4>
 
 /**
@@ -155,9 +146,7 @@ export function update<
 >(
   source: T,
   path: [K1, K2, K3, K4, K5],
-  updateFn: (
-    value: DeepReadonly<T[K1][K2][K3][K4][K5]>,
-  ) => T[K1][K2][K3][K4][K5],
+  updateFn: (value: T[K1][K2][K3][K4][K5]) => T[K1][K2][K3][K4][K5],
 ): Set5<T, K1, K2, K3, K4, K5>
 
 /**
@@ -183,7 +172,7 @@ export function update<
 export function update<T, K1 extends keyof T>(
   source: Optional<T>,
   path: [K1],
-  updateFn: (value: DeepReadonly<T[K1]> | undefined) => T[K1],
+  updateFn: (value: T[K1] | undefined) => T[K1],
 ): Set1<T, K1>
 
 /**
@@ -209,7 +198,7 @@ export function update<T, K1 extends keyof T>(
 export function update<T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
   source: Optional<T>,
   path: [K1, K2],
-  updateFn: (value: DeepReadonly<U<T[K1]>[K2]> | undefined) => U<T[K1]>[K2],
+  updateFn: (value: U<T[K1]>[K2] | undefined) => U<T[K1]>[K2],
 ): Set2<T, K1, K2>
 
 /**
@@ -240,9 +229,7 @@ export function update<
 >(
   source: Optional<T>,
   path: [K1, K2, K3],
-  updateFn: (
-    value: DeepReadonly<U<U<T[K1]>[K2]>[K3]> | undefined,
-  ) => U<U<T[K1]>[K2]>[K3],
+  updateFn: (value: U<U<T[K1]>[K2]>[K3] | undefined) => U<U<T[K1]>[K2]>[K3],
 ): Set3<T, K1, K2, K3>
 
 /**
@@ -275,7 +262,7 @@ export function update<
   source: Optional<T>,
   path: [K1, K2, K3, K4],
   updateFn: (
-    value: DeepReadonly<U<U<U<T[K1]>[K2]>[K3]>[K4]> | undefined,
+    value: U<U<U<T[K1]>[K2]>[K3]>[K4] | undefined,
   ) => U<U<U<T[K1]>[K2]>[K3]>[K4],
 ): Set4<T, K1, K2, K3, K4>
 
@@ -310,7 +297,7 @@ export function update<
   source: Optional<T>,
   path: [K1, K2, K3, K4, K5],
   updateFn: (
-    value: DeepReadonly<U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]> | undefined,
+    value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5] | undefined,
   ) => U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
 ): Set5<T, K1, K2, K3, K4, K5>
 

@@ -106,7 +106,7 @@
 					according to their idiomatic usage, library is immutable. However, you are able to modify the
 				original entity, for example, by using <code>map</code> helper this way:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> original = [{ <span class="hljs-attr">a</span>: <span class="hljs-number">0</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> }];
-<span class="hljs-keyword">const</span> mapped = map(original, (val: any) =&gt; (val.a = <span class="hljs-number">3</span>));
+<span class="hljs-keyword">const</span> mapped = map(original, (val) =&gt; (val.a = <span class="hljs-number">3</span>));
 <span class="hljs-comment">// 'mapped'  will equal to [3, 3, 3]</span>
 <span class="hljs-comment">// 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]</span></code></pre>
 				<h2 id="api-and-documentation">API and documentation</h2>
@@ -165,11 +165,11 @@ console.log(num); // undefined!</code></pre>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/dictionary.html" class="tsd-kind-icon">Dictionary</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/numericdictionary.html" class="tsd-kind-icon">Numeric<wbr>Dictionary</a>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/state.html" class="tsd-kind-icon">State</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#deepreadonly" class="tsd-kind-icon">Deep<wbr>Readonly</a>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/user.html" class="tsd-kind-icon">User</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#nullable" class="tsd-kind-icon">Nullable</a>

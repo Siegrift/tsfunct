@@ -1,5 +1,4 @@
 import { update } from '../lib/update'
-import { DeepReadonly } from '../types'
 import { State, User } from './common'
 
 describe('update', () => {
@@ -18,7 +17,7 @@ describe('update', () => {
   describe('create or override the nested value in object', () => {
     test('in array', () => {
       let updaterArg: User
-      const updater = (value: DeepReadonly<User>) => {
+      const updater = (value: User) => {
         updaterArg = value
         return { id: 777, key: 'new' }
       }

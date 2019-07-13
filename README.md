@@ -59,7 +59,7 @@ original entity, for example, by using `map` helper this way:
 
 ```javascript
 const original = [{ a: 0 }, { a: 1 }, { a: 2 }];
-const mapped = map(original, (val: any) => (val.a = 3));
+const mapped = map(original, (val) => (val.a = 3));
 // 'mapped'  will equal to [3, 3, 3]
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
