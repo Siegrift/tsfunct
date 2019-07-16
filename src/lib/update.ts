@@ -309,7 +309,8 @@ export function update(source: any, path: any[], updateFn: any) {
   while (index < path.length) {
     if (
       !Array.isArray(currentObject[path[index]]) &&
-      !isObject(currentObject[path[index]])
+      !isObject(currentObject[path[index]]) &&
+      index + 1 < path.length
     ) {
       currentObject[path[index]] = Number.isInteger(path[index + 1]) ? [] : {}
     }

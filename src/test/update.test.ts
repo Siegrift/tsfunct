@@ -109,6 +109,15 @@ describe('update', () => {
       })
     })
 
+    test('calls update fn with undefined', () => {
+      type T = { a?: { b: number } }
+
+      update({} as T, ['a', 'b'], (x) => {
+        expect(x).toBe(undefined)
+        return 123
+      })
+    })
+
     describe('if path is number an array is created, otherwise object is created', () => {
       test('correct root value', () => {
         expect(update(null as any, ['hello'], () => 'str')).toEqual({
