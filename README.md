@@ -69,7 +69,7 @@ const mapped = map(original, (val) => (val.a = 3));
 Documentation is automatically generated from source code and can be found at github pages
 [here](https://siegrift.github.io/tsfunct/).
 
-You can also play with the library on [CodeSandbox](https://codesandbox.io/embed/tsfunct-zysfi).
+You can also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
 
 _You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
 
