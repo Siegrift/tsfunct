@@ -99,7 +99,7 @@ export function map<T, Result>(
 export function map<T, Result>(
   collection: Dictionary<T>,
   fn: (value: T, key: string) => { key: string; value: Result },
-): Dictionary<T>
+): Dictionary<Result>
 
 /**
  * Maps elements from the collection using mapping function. This function will always return the
@@ -119,7 +119,7 @@ export function map<T, Result>(
 export function map<T, Result>(
   collection: Nullable<Dictionary<T>>,
   fn: (value: T, key: string) => { key: string; value: Result },
-): Nullable<Dictionary<T>>
+): Nullable<Dictionary<Result>>
 
 /**
  * Maps elements from the collection using mapping function. This function will always return the
@@ -139,7 +139,7 @@ export function map<T, Result>(
 export function map<T, Result>(
   collection: Undefinable<Dictionary<T>>,
   fn: (value: T, key: string) => { key: string; value: Result },
-): Undefinable<Dictionary<T>>
+): Undefinable<Dictionary<Result>>
 
 /**
  * Maps elements from the collection using mapping function. This function will always return the
@@ -159,7 +159,7 @@ export function map<T, Result>(
 export function map<T, Result>(
   collection: Optional<Dictionary<T>>,
   fn: (value: T, key: string) => { key: string; value: Result },
-): Optional<Dictionary<T>>
+): Optional<Dictionary<Result>>
 
 // NOTE: implementation
 export function map(collection: any, fn: any): any {

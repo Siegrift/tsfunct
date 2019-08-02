@@ -32,10 +32,11 @@ describe('map', () => {
     }
     const mapFn = (value: string, key: string) => ({
       key: key + 'x',
-      value: key + value,
+      value: value.length,
     })
 
-    expect(map(dict, mapFn)).toEqual({ ax: 'aa', bx: 'bb', cx: 'cc' })
+    const newDict: Dictionary<number> = map(dict, mapFn)
+    expect(newDict).toEqual({ ax: 1, bx: 1, cx: 1 })
   })
 
   test('is immutable', () => {
