@@ -13,26 +13,27 @@
     "*"
   ],
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.2",
-    "husky": "^2.4.0",
-    "jest": "^24.8.0",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.16.0",
+    "@types/jest": "^24.0.21",
+    "@types/node": "^12.12.5",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
-    "typedoc": "^0.14.2",
-    "typescript": "^3.5.1"
+    "typedoc": "^0.15.0",
+    "typescript": "^3.7.0-beta"
   },
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
     "clean": "rm -rf dist",
-    "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist && cp README.md dist"
+    "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist && cp README.md dist",
+    "docs": "typedoc --theme minimal --out docs ./src --mode file  --exclude 'src/test/*' --excludeNotExported && cp -r ./assets/* docs/assets"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn clean && typedoc --out docs ./src --mode file  --exclude 'src/test/*' && cp -r ./assets/* docs/assets && git add docs/*",
+      "pre-commit": "yarn clean && yarn docs && git add docs/*",
       "pre-push": "yarn test"
     }
   },

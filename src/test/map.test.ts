@@ -4,17 +4,23 @@ import { idFn } from './common'
 
 describe('map', () => {
   test('if collection is null or undefined, returns the collection', () => {
-    let arr: Optional<number[]> = null
-    let dict: Optional<Dictionary<string>> = null
+    let arr = null as Optional<number[]>
+    let dict = null as Optional<Dictionary<string>>
+    let m1: Optional<number[]>
+    let m2: Optional<Dictionary<string>>
 
-    expect(map(arr, idFn)).toBe(null)
-    expect(map(dict, idFn)).toBe(null)
+    m1 = map(arr, idFn)
+    m2 = map(dict, idFn)
+    expect(m1).toBe(null)
+    expect(m2).toBe(null)
 
-    arr = undefined
-    dict = undefined
+    arr = undefined as Optional<number[]>
+    dict = undefined as Optional<Dictionary<string>>
 
-    expect(map(arr, idFn)).toBe(undefined)
-    expect(map(dict, idFn)).toBe(undefined)
+    m1 = map(arr, idFn)
+    m2 = map(dict, idFn)
+    expect(m1).toBe(undefined)
+    expect(m2).toBe(undefined)
   })
 
   test('maps elements of an array', () => {
@@ -41,7 +47,7 @@ describe('map', () => {
 
   test('is immutable', () => {
     const arr = [1, 2, 3, 4, 5]
-    const mappedArr = map(arr, (value) => value * value)
+    const mappedArr: number[] = map(arr, (value) => value * value)
 
     expect(arr).toBe(arr)
     expect(mappedArr).toEqual([1, 4, 9, 16, 25])

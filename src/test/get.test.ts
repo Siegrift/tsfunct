@@ -1,5 +1,6 @@
 import { get } from '../lib/get'
 import { Dict, State, User } from './common'
+import { Optional } from '../types'
 
 describe('get', () => {
   let state: State
@@ -95,7 +96,7 @@ describe('get', () => {
       [key: string]: { a: number } | undefined
     }
 
-    // the test is testing the typings of the get method
-    expect(get({} as A, ['k1', 'a'])).toBe(undefined)
+    const x: Optional<number> = get({} as A, ['k1', 'a'])
+    expect(x).toBe(undefined)
   })
 })

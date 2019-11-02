@@ -1,5 +1,6 @@
 import { set } from '../lib/set'
 import { State } from './common'
+import { Dictionary } from '../types'
 
 describe('set', () => {
   let state: State
@@ -118,6 +119,14 @@ describe('set', () => {
           req: { opt: { key: [undefined, 'str'] } },
         })
       })
+    })
+
+    test('works with objects with other properties', () => {
+      type A = { a: { b: boolean; c: Dictionary<string> }; d: string }
+      const obj: A = { a: { b: true, c: {} }, d: 'str' }
+
+      const newObj: A = set(obj, ['a', 'b'], false)
+      expect(newObj).toEqual({ a: { b: false, c: {} }, d: 'str' })
     })
   })
 })
