@@ -4,24 +4,30 @@ import { idFn } from './common'
 
 describe('filter', () => {
   test('if collection is null or undefined, returns the collection', () => {
-    let arr: Optional<number[]> = null
-    let dict: Optional<Dictionary<string>> = null
+    let arr = null as Optional<number[]>
+    let dict = null as Optional<Dictionary<string>>
+    let f1: Optional<number[]>
+    let f2: Optional<Dictionary<string>>
 
-    expect(filter(arr, idFn)).toBe(null)
-    expect(filter(dict, idFn)).toBe(null)
+    f1 = filter(arr, idFn)
+    f2 = filter(dict, idFn)
+    expect(f1).toBe(null)
+    expect(f2).toBe(null)
 
-    arr = undefined
-    dict = undefined
-
-    expect(filter(arr, idFn)).toBe(undefined)
-    expect(filter(dict, idFn)).toBe(undefined)
+    arr = undefined as Optional<number[]>
+    dict = undefined as Optional<Dictionary<string>>
+    f1 = filter(arr, idFn)
+    f2 = filter(dict, idFn)
+    expect(f1).toBe(undefined)
+    expect(f2).toBe(undefined)
   })
 
   test('filters elements of an array', () => {
     const arr = [1, 2, 3, 4, 5]
     const filterFn = (_: number, index: number) => index % 2 === 1
 
-    expect(filter(arr, filterFn)).toEqual([2, 4])
+    const f: number[] = filter(arr, filterFn)
+    expect(f).toEqual([2, 4])
   })
 
   test('filters elements of an dictionary', () => {
@@ -32,12 +38,13 @@ describe('filter', () => {
     }
     const filterFn = (value: string) => value.length >= 3
 
-    expect(filter(dict, filterFn)).toEqual({ a: 'aaaaa', b: 'bbb' })
+    const f: Dictionary<string> = filter(dict, filterFn)
+    expect(f).toEqual({ a: 'aaaaa', b: 'bbb' })
   })
 
   test('is immutable', () => {
     const arr = [1, 2, 3, 4, 5]
-    const filteredArr = filter(arr, () => false)
+    const filteredArr: number[] = filter(arr, () => false)
 
     expect(arr).toBe(arr)
     expect(filteredArr).toEqual([])

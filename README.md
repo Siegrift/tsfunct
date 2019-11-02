@@ -13,53 +13,51 @@ or if you use npm
 
 `npm i @siegrift/tsfunct --save`
 
+_**Important:** Some functions (set and friends) work reliably only with TS ^3.7, because of [this
+issue](https://github.com/microsoft/TypeScript/issues/33468)._
+
 ## Motivation
 
 There are two big libraries which provide helper functions for JS/TS. These are
 [lodash](https://github.com/lodash/lodash) and [ramda](https://github.com/ramda/ramda). Both of
-these libraries are made for JS and the TS typings have been added only afterwards. Also, these
-libraries aim to be as general as possible, which makes it harder to type properly.
+these libraries are made for JS and the TS typings for many functions are poor. Also, these
+libraries aim to be as general as possible, which makes it harder or impossible to type properly.
 
-Most of the times, the typings for these helper functions is pretty decent. However, not always...
 There are certain helpers _(mainly for immutable object manipulation)_ which can be typed better.
-
-Let's take a look at `get(obj, path)` helper in both lodash _(^4.14.132)_ and ramda _(^0.26.9)_,
+Let's take a look at `get(obj, path)` helper in both lodash _(4.14.132)_ and ramda _(0.26.9)_,
 when using it on a strongly typed TS object.
 
-![Weak typed result](assets/weak_typed_get.png)<br/>
-_(Lodash gets it at least correct, but cannot
+![Weak typed result](assets/weak_typed_get.png)<br/> _(Lodash gets it at least correct, but cannot
 determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
 it and produce **incorrect** result type)_
 
-![No compile error](assets/no_compile_error.png)<br/>
-_(There are no TS warnings about accessing value on
-nonexistent path)_
+![No compile error](assets/no_compile_error.png)<br/> _(There are no TS warnings about accessing
+value on nonexistent path)_
 
-Lets look what you can get by using `get(obj, path)` from this library.
+Lets look what you can get by using `get(obj, path)` with TSfunct.
 
-![Strongly typed get helper](assets/get_strong_typed.png)<br/>
-There are many advantages of this helper:
+![Strongly typed get helper](assets/get_strong_typed.png)<br/> There are many advantages of this
+helper:
 
 - The result has correct type
 - The path can be autocompleted and must be able to exist in the object
 - Handles arrays, optional and nullable values (even in intermediate objects)
 
-![Update helper](assets/good_update.png)<br/>
-_When you call update for the first time, `value` in update function can be `undefined` (if any
-intermediate value doesn't exist). However, when calling it for a second time, it is guaranteed that
-the values on the path exist._
+![Update helper](assets/good_update.png)<br/> _When you call update for the first time, `value` in
+update function can be `undefined` (if any intermediate value doesn't exist). However, when calling
+it for a second time, it is guaranteed that the values on the path exist._
 
 Refer to documentation, source code and tests for more examples.
 
 ## Immutability
 
 All functions in this library are **effectively immutable**. That means that if you use the helpers
-according to their idiomatic usage, library is immutable. However, you are able to modify the
-original entity, for example, by using `map` helper this way:
+according to their idiomatic usage, library is immutable. However, there are no deep copies created
+for the source values and you are able to modify the original entity if you try really hard.
 
 ```javascript
 const original = [{ a: 0 }, { a: 1 }, { a: 2 }];
-const mapped = map(original, (val) => (val.a = 3));
+const mapped = map(original, val => (val.a = 3));
 // 'mapped'  will equal to [3, 3, 3]
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
@@ -71,33 +69,34 @@ Documentation is automatically generated from source code and can be found at gi
 
 You can also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
 
-_You can read the list and sources of all helpers in the src/lib folder [here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
+_You can read the list and sources of all helpers in the src/lib folder
+[here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
 
 ## Chaining
 
-Original idea was to support chaining same way as lodash `_.chain` works, however after reading
+TLDR: It is a bad idea. If you want to learn more, read
 [this article](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)
-describing the disadvantages of using this function, I decided to drop this idea and you should
-probably do the same.
 
 ## Functional programming style
 
-All of the functions in this library are written **imperatively** (e.g. `get(object, path)` compared
-to traditional functional `get(path, object)`). I encourage you to use FP style, and you can easily
-create small wrappers, which will [curry](https://lodash.com/docs/4.17.11#curry), and
-[rearrange](https://lodash.com/docs/4.17.11#rearg) the arguments (however, your helper will need
-fixed number arguments).
+All of the functions in this library are written **imperatively**
+(e.g. `const get = (object, path) => implementation` compared
+to traditional functional `const get = (path) => (object) => implementation`) for better typing and
+autocompletion support.
+
+If you want more FP style have a look at [monocle](https://github.com/gcanti/monocle-ts) or [fp
+ts](https://github.com/gcanti/fp-ts) or even [lodash
+fp](https://github.com/lodash/lodash/wiki/FP-Guide)
 
 ## Codebase overview
 
-Each helper is written in its own module without depending on other helper (but it might depend on
-common types or small util functions). This allows you to copy the source of single helper you want
-without the need to install the whole library.
+Each helper is written in its own module without depending on other helper. This allows you to copy
+the source of single helper you want **without the need to install** the whole library.
 
 ## Limitations
 
 Most of the helpers are typed manually and have some restrictions on its arguments. For example,
-path array can be up to 5 elements only in some helpers...
+path array can be **up to 5 elements** only in some helpers...
 
 Be also careful about the typesystem. Types might lie to you if you are not careful. For example,
 
@@ -107,8 +106,8 @@ const num: number = get(arr, [999]); // this line won't trigger TS error!
 console.log(num); // undefined!
 ```
 
-Other limitation is typescript path autocompletion, which I
-[reported](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
+Other limitation is typescript path autocompletion, which I reported and is tracked in
+[this issue](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
 
 ## Issues
 

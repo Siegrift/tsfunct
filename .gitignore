@@ -5,3 +5,4 @@ validator/build
 node_modules
 yarn-lock.json
 dist
+.vscode
