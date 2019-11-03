@@ -44,5 +44,6 @@
   "homepage": "https://github.com/Siegrift/tsfunct#readme",
   "directories": {
     "doc": "docs"
-  }
+  },
+  "dependencies": {}
 }

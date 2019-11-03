@@ -128,5 +128,18 @@ describe('set', () => {
       const newObj: A = set(obj, ['a', 'b'], false)
       expect(newObj).toEqual({ a: { b: false, c: {} }, d: 'str' })
     })
+
+    test('works with union of properties', () => {
+      interface A {
+        a: 'fixed'
+        b: string
+        c: boolean
+      }
+      const obj: A = { a: 'fixed', b: 'str', c: true }
+      const prop = 'a' as 'a' | 'b'
+
+      const s: A = set(obj, [prop], 'fixed')
+      expect(s).toEqual(obj)
+    })
   })
 })
