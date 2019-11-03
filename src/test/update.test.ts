@@ -147,4 +147,17 @@ describe('update', () => {
     const newState = update(state, ['optional', 'a'], (op) => 123)
     expect(newState.optional.a).toBe(123) // the path surely exists now!
   })
+
+  test('works with union of properties', () => {
+    interface A {
+      a: string
+      b: number
+      c: boolean
+    }
+    const obj: A = { a: 'str', b: 123, c: true }
+    const prop = 'a' as 'a' | 'b'
+
+    const upd: A = update(obj, [prop], (val) => val)
+    expect(upd).toEqual(obj)
+  })
 })

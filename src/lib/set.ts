@@ -4,12 +4,12 @@ import { isObject, shallowCopy } from '../utils'
 type Set1<T, K1 extends keyof T> = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<Pick<T, KK1>> }[K1]
+      { [KK1 in K1]-?: Required<Pick<T, KK1>>[KK1] }
 
 type Set2<T, K1 extends keyof T, K2 extends keyof U<T[K1]>> = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: Set1<U<T[K1]>, K2> }> }[K1]
+      { [KK1 in K1]-?: Required<{ [key in K1]: Set1<U<T[K1]>, K2> }>[KK1] }
 
 type Set3<
   T,
@@ -19,7 +19,7 @@ type Set3<
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: Set2<U<T[K1]>, K2, K3> }> }[K1]
+      { [KK1 in K1]-?: Required<{ [key in K1]: Set2<U<T[K1]>, K2, K3> }>[KK1] }
 
 type Set4<
   T,
@@ -31,8 +31,10 @@ type Set4<
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<{ [key in K1]: Set3<U<T[K1]>, K2, K3, K4> }>;
-      }[K1]
+        [KK1 in K1]-?: Required<
+          { [key in K1]: Set3<U<T[K1]>, K2, K3, K4> }
+        >[KK1];
+      }
 
 type Set5<
   T,
@@ -47,8 +49,8 @@ type Set5<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Set4<U<T[K1]>, K2, K3, K4, K5> }
-        >;
-      }[K1]
+        >[KK1];
+      }
 
 interface SetFn {
   <T, K1 extends keyof T>(source: Optional<T>, path: [K1], value: T[K1]): Set1<

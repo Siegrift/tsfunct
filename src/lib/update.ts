@@ -4,12 +4,12 @@ import { isObject, shallowCopy } from '../utils'
 type Update1<T, K1 extends keyof T> = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<Pick<T, KK1>> }[K1]
+      { [KK1 in K1]-?: Required<Pick<T, KK1>>[KK1] }
 
 type Update2<T, K1 extends keyof T, K2 extends keyof U<T[K1]>> = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: Update1<U<T[K1]>, K2> }> }[K1]
+      { [KK1 in K1]-?: Required<{ [key in K1]: Update1<U<T[K1]>, K2> }>[KK1] }
 
 type Update3<
   T,
@@ -20,8 +20,10 @@ type Update3<
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<{ [key in K1]: Update2<U<T[K1]>, K2, K3> }>;
-      }[K1]
+        [KK1 in K1]-?: Required<
+          { [key in K1]: Update2<U<T[K1]>, K2, K3> }
+        >[KK1];
+      }
 
 type Update4<
   T,
@@ -33,8 +35,10 @@ type Update4<
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<{ [key in K1]: Update3<U<T[K1]>, K2, K3, K4> }>;
-      }[K1]
+        [KK1 in K1]-?: Required<
+          { [key in K1]: Update3<U<T[K1]>, K2, K3, K4> }
+        >[KK1];
+      }
 
 type Update5<
   T,
@@ -49,8 +53,8 @@ type Update5<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Update4<U<T[K1]>, K2, K3, K4, K5> }
-        >;
-      }[K1]
+        >[KK1];
+      }
 
 interface UpdateFn {
   <T, K1 extends keyof T>(
