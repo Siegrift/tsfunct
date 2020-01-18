@@ -1,5 +1,5 @@
-import { Optional, UnwrapOptional as U } from '../types'
-import { isObject, shallowCopy } from '../utils'
+import { Optional, UnwrapOptional as U } from '../common/types'
+import { isObject, shallowCopy } from '../common/utils'
 
 type Update1<T, K1 extends keyof T> = T extends any[]
   ? T
@@ -20,9 +20,7 @@ type Update3<
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: Update2<U<T[K1]>, K2, K3> }
-        >[KK1];
+        [KK1 in K1]-?: Required<{ [key in K1]: Update2<U<T[K1]>, K2, K3> }>[KK1]
       }
 
 type Update4<
@@ -37,7 +35,7 @@ type Update4<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Update3<U<T[K1]>, K2, K3, K4> }
-        >[KK1];
+        >[KK1]
       }
 
 type Update5<
@@ -53,7 +51,7 @@ type Update5<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Update4<U<T[K1]>, K2, K3, K4, K5> }
-        >[KK1];
+        >[KK1]
       }
 
 interface UpdateFn {

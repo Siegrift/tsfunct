@@ -3,22 +3,22 @@ import {
   Optional,
   Undefinable,
   UnwrapOptional as U,
-  Without
-} from '../types'
-import { isNullOrUndefined, shallowCopy } from '../utils'
+  Without,
+} from '../common/types'
+import { isNullOrUndefined, shallowCopy } from '../common/utils'
 
 type Unset1<T, K1> = Without<T, K1>
 type Unset2<T, K1, K2> = {
-  [P in keyof T]: P extends K1 ? Unset1<T[P], K2> : T[P];
+  [P in keyof T]: P extends K1 ? Unset1<T[P], K2> : T[P]
 }
 type Unset3<T, K1, K2, K3> = {
-  [P in keyof T]: P extends K1 ? Unset2<T[P], K2, K3> : T[P];
+  [P in keyof T]: P extends K1 ? Unset2<T[P], K2, K3> : T[P]
 }
 type Unset4<T, K1, K2, K3, K4> = {
-  [P in keyof T]: P extends K1 ? Unset3<T[P], K2, K3, K4> : T[P];
+  [P in keyof T]: P extends K1 ? Unset3<T[P], K2, K3, K4> : T[P]
 }
 type Unset5<T, K1, K2, K3, K4, K5> = {
-  [P in keyof T]: P extends K1 ? Unset4<T[P], K2, K3, K4, K5> : T[P];
+  [P in keyof T]: P extends K1 ? Unset4<T[P], K2, K3, K4, K5> : T[P]
 }
 
 interface UnsetFn {

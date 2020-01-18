@@ -1,5 +1,5 @@
-import { Dictionary, Nullable, Optional, Undefinable } from '../types'
-import { isNullOrUndefined } from '../utils'
+import { Dictionary, Nullable, Optional, Undefinable } from '../common/types'
+import { isNullOrUndefined } from '../common/utils'
 
 interface FilterFn {
   <T>(collection: T[], fn: (value: T, index: number) => boolean): T[]

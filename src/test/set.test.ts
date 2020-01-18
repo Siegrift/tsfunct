@@ -1,6 +1,6 @@
 import { set } from '../lib/set'
 import { State } from './common'
-import { Dictionary } from '../types'
+import { Dictionary } from '../common/types'
 
 describe('set', () => {
   let state: State
