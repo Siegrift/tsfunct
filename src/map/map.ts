@@ -74,3 +74,5 @@ const mapImplementation: MapFn = (collection: any, fn: any): any => {
  * @returns the same type of collection with mapped elements.
  */
 export const map = mapImplementation
+
+export default map

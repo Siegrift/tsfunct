@@ -1,4 +1,4 @@
-import { set } from '../lib/set'
+import set from '../set'
 import { State } from './common'
 import { Dictionary } from '../common/types'
 

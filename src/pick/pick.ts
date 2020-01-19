@@ -48,3 +48,5 @@ const pickImplementation: PickFn = (
  * @returns the source value with picked properties
  */
 export const pick = pickImplementation
+
+export default pick

@@ -138,3 +138,5 @@ const setImplementation: SetFn = (source: any, path: any[], value: any) => {
  * @returns source value with value on path set
  */
 export const set = setImplementation
+
+export default set

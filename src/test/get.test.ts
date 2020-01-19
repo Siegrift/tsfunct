@@ -1,4 +1,4 @@
-import { get } from '../lib/get'
+import get from '../get'
 import { Dict, State, User } from './common'
 import { Optional } from '../common/types'
 

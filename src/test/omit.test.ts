@@ -1,4 +1,4 @@
-import { omit } from '../lib/omit'
+import omit from '../omit'
 import { Dictionary, Optional } from '../common/types'
 import { State } from './common'
 

@@ -154,3 +154,5 @@ const getImplementation: GetFn = (
  * Modifying this value will also modify the source value.
  */
 export const get = getImplementation
+
+export default get

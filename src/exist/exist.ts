@@ -67,3 +67,5 @@ const existImplementation: ExistFn = (source: any, path: any[]) => {
  * @returns true if the path exist in source, false otherwise
  */
 export const exist = existImplementation
+
+export default exist

@@ -68,3 +68,5 @@ const filterImplementation: FilterFn = (collection: any, fn: any): any => {
  * @returns the same type of collection with filtered elements.
  */
 export const filter = filterImplementation
+
+export default filter

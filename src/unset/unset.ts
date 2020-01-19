@@ -206,3 +206,5 @@ const unsetImplementation: UnsetFn = (source: any, path: any[]) => {
  * @returns source value with removed value
  */
 export const unset = unsetImplementation
+
+export default unset

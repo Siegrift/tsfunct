@@ -1,4 +1,4 @@
-import { pick } from '../lib/pick'
+import pick from '../pick'
 import { Dictionary, Optional } from '../common/types'
 import { State } from './common'
 

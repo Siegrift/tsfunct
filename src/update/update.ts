@@ -191,3 +191,5 @@ const updateImplementation: UpdateFn = (
  * @returns source value with removed value
  */
 export const update = updateImplementation
+
+export default update

@@ -52,3 +52,5 @@ const omitImplementation: OmitFn = (
  * @returns the source value with omitted properties
  */
 export const omit = omitImplementation
+
+export default omit
