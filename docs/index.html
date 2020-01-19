@@ -2366,6 +2366,9 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-variable">
+			<a href="globals.html#compose" class="tsd-kind-icon">compose</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="globals.html#exist" class="tsd-kind-icon">exist</a>
 		</li>
 		<li class=" tsd-kind-variable">
@@ -2384,6 +2387,9 @@ img {
 			<a href="globals.html#pick" class="tsd-kind-icon">pick</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="globals.html#pipe" class="tsd-kind-icon">pipe</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="globals.html#set" class="tsd-kind-icon">set</a>
 		</li>
 		<li class=" tsd-kind-variable">
@@ -2398,9 +2404,9 @@ img {
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
 			<a href="#tsfunct-a-hrefhttpscirclecicomghsiegrifttsfunctimg-srchttpscirclecicomghsiegrifttsfunctsvgstylesvg-altcirclecia" id="tsfunct-a-hrefhttpscirclecicomghsiegrifttsfunctimg-srchttpscirclecicomghsiegrifttsfunctsvgstylesvg-altcirclecia" style="color: inherit; text-decoration: none;">
-				<h1>tsfunct <a href="https://circleci.com/gh/Siegrift/tsfunct"><img src="https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg" alt="CircleCI"></a></h1>
+				<h1>Tsfunct <a href="https://circleci.com/gh/Siegrift/tsfunct"><img src="https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg" alt="CircleCI"></a></h1>
 			</a>
-			<p>Tsfunct is a <strong>T</strong>ype<strong>S</strong>cript <strong>funct</strong>ional library made directly for TS with its static
+			<p>Tsfunct is a <strong>T</strong>ype<strong>S</strong>cript <strong>funct</strong>ional library made directly with and for TS with its static
 			typesystem in mind.</p>
 			<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 				<h2>Installation</h2>
@@ -2410,14 +2416,16 @@ img {
 			<p>or if you use npm</p>
 			<p><code>npm i @siegrift/tsfunct --save</code></p>
 			<p><em><strong>Important:</strong> Some functions (set and friends) work reliably only with TS ^3.7, because of <a href="https://github.com/microsoft/TypeScript/issues/33468">this
-			issue</a>.</em></p>
+					issue</a>. Also, this library will be using
+			latest TS features when needed. Keep this in mind if you are trying to use it in your project.</em></p>
 			<a href="#motivation" id="motivation" style="color: inherit; text-decoration: none;">
 				<h2>Motivation</h2>
 			</a>
 			<p>There are two big libraries which provide helper functions for JS/TS. These are
 				<a href="https://github.com/lodash/lodash">lodash</a> and <a href="https://github.com/ramda/ramda">ramda</a>. Both of
 				these libraries are made for JS and the TS typings for many functions are poor. Also, these
-			libraries aim to be as general as possible, which makes it harder or impossible to type properly.</p>
+				functions aim to be as general as possible, which makes it harder or even impossible to type
+			properly.</p>
 			<p>There are certain helpers <em>(mainly for immutable object manipulation)</em> which can be typed better.
 				Let&#39;s take a look at <code>get(obj, path)</code> helper in both lodash <em>(4.14.132)</em> and ramda <em>(0.26.9)</em>,
 			when using it on a strongly typed TS object.</p>
@@ -2444,8 +2452,8 @@ img {
 			<p>All functions in this library are <strong>effectively immutable</strong>. That means that if you use the helpers
 				according to their idiomatic usage, library is immutable. However, there are no deep copies created
 			for the source values and you are able to modify the original entity if you try really hard.</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> original = [{ <span class="hljs-attr">a</span>: <span class="hljs-number">0</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> }];
-<span class="hljs-keyword">const</span> mapped = map(original, val =&gt; (val.a = <span class="hljs-number">3</span>));
+			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> original = [{ <span class="hljs-attr">a</span>: <span class="hljs-number">0</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }, { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> }]
+<span class="hljs-keyword">const</span> mapped = map(original, (val) =&gt; (val.a = <span class="hljs-number">3</span>))
 <span class="hljs-comment">// 'mapped'  will equal to [3, 3, 3]</span>
 <span class="hljs-comment">// 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]</span></code></pre>
 			<a href="#api-and-documentation" id="api-and-documentation" style="color: inherit; text-decoration: none;">
@@ -2464,29 +2472,30 @@ img {
 			<a href="#functional-programming-style" id="functional-programming-style" style="color: inherit; text-decoration: none;">
 				<h2>Functional programming style</h2>
 			</a>
-			<p>All of the functions in this library are written <strong>imperatively</strong>
+			<p>All of the functions in this library are written <strong>imperatively (FOR NOW!!!)</strong>
 				(e.g. <code>const get = (object, path) =&gt; implementation</code> compared
 				to traditional functional <code>const get = (path) =&gt; (object) =&gt; implementation</code>) for better typing and
 			autocompletion support.</p>
 			<p>If you want more FP style have a look at <a href="https://github.com/gcanti/monocle-ts">monocle</a> or <a href="https://github.com/gcanti/fp-ts">fp
-					ts</a> or even <a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash
+					ts</a> or <a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash
 			fp</a></p>
 			<a href="#codebase-overview" id="codebase-overview" style="color: inherit; text-decoration: none;">
 				<h2>Codebase overview</h2>
 			</a>
 			<p>Each helper is written in its own module without depending on other helper. This allows you to copy
-			the source of single helper you want <strong>without the need to install</strong> the whole library.</p>
+			the source of single helper you want without installing the whole library.</p>
 			<a href="#limitations" id="limitations" style="color: inherit; text-decoration: none;">
 				<h2>Limitations</h2>
 			</a>
 			<p>Most of the helpers are typed manually and have some restrictions on its arguments. For example,
-			path array can be <strong>up to 5 elements</strong> only in some helpers...</p>
-			<p>Be also careful about the typesystem. Types might lie to you if you are not careful. For example,</p>
-			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> arr: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
-<span class="hljs-keyword">const</span> num: number = <span class="hljs-keyword">get</span>(arr, [999]); // this line won't trigger TS error!
-console.log(num); // undefined!</code></pre>
-			<p>Other limitation is typescript path autocompletion, which I reported and is tracked in
-			<a href="https://github.com/microsoft/TypeScript/issues/31630">this issue</a> and will be fixed in the future.</p>
+			path array can be <strong>up to X elements</strong> only in some helpers...</p>
+			<p>Bear in mind that TS is unsound! Types might easily lie to you if you are not careful. For example,</p>
+			<pre><code class="language-javascript"><span class="hljs-keyword">const</span> arr: number[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-keyword">const</span> num: number = <span class="hljs-keyword">get</span>(arr, [999]) // this line won't trigger TS error!
+console.log(num) // undefined!</code></pre>
+			<p>Other limitation is for example TS path autocompletion for immutability helpers, which I reported
+				and is tracked in <a href="https://github.com/microsoft/TypeScript/issues/31630">this issue</a> and will be
+			fixed in the future.</p>
 			<a href="#issues" id="issues" style="color: inherit; text-decoration: none;">
 				<h2>Issues</h2>
 			</a>
@@ -2513,12 +2522,14 @@ console.log(num); // undefined!</code></pre>
 					<section class="tsd-index-section ">
 						<h3>Variables</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-variable"><a href="globals.html#compose" class="tsd-kind-icon">compose</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#exist" class="tsd-kind-icon">exist</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#filter" class="tsd-kind-icon">filter</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#get" class="tsd-kind-icon">get</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#omit" class="tsd-kind-icon">omit</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#pick" class="tsd-kind-icon">pick</a></li>
+							<li class="tsd-kind-variable"><a href="globals.html#pipe" class="tsd-kind-icon">pipe</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#set" class="tsd-kind-icon">set</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#unset" class="tsd-kind-icon">unset</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#update" class="tsd-kind-icon">update</a></li>
@@ -2529,6 +2540,34 @@ console.log(num); // undefined!</code></pre>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Variables</h2>
+			<section class="tsd-panel tsd-member tsd-kind-variable">
+				<a name="compose" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> compose</h3>
+				<div class="tsd-signature tsd-kind-icon">compose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ComposeFn</span><span class="tsd-signature-symbol"> =&nbsp;composeImplementation</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in compose/compose.ts:118</li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Creates a new function composed from the functions received as arguments. The composition
+							is right to left (the last function is invoked first and it&#39;s result is passed as an
+						argument to the previous function...).</p>
+					</div>
+					<p>Note that this function can&#39;t be typed properly (TS design limitation,
+						see: <a href="https://github.com/microsoft/TypeScript/issues/31738">https://github.com/microsoft/TypeScript/issues/31738</a>). Use <code>pipe</code> if with left to right
+					composition instead if possible.</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>functions that should be composed together</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>the composed function</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="exist" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> exist</h3>
@@ -2718,6 +2757,33 @@ console.log(num); // undefined!</code></pre>
 						</dd>
 						<dt>returns</dt>
 						<dd><p>the source value with picked properties</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable">
+				<a name="pipe" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> pipe</h3>
+				<div class="tsd-signature tsd-kind-icon">pipe<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PipeFn</span><span class="tsd-signature-symbol"> =&nbsp;pipeImplementation</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in pipe/pipe.ts:110</li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Creates a new function composed from the functions received as arguments. The composition
+							is left to right (the first function is invoked first and it&#39;s result is passed as an
+						argument to the second...).</p>
+					</div>
+					<p>Note that this is the preferred way to compose functions in TS, because right to left
+					composition can&#39;t be typed properly (TS design limitation).</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>functions that should be composed together</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>the composed function</p>
 						</dd>
 					</dl>
 				</div>

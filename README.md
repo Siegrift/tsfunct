@@ -1,6 +1,6 @@
-# tsfunct [![CircleCI](https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg)](https://circleci.com/gh/Siegrift/tsfunct)
+# Tsfunct [![CircleCI](https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg)](https://circleci.com/gh/Siegrift/tsfunct)
 
-Tsfunct is a **T**ype**S**cript **funct**ional library made directly for TS with its static
+Tsfunct is a **T**ype**S**cript **funct**ional library made directly with and for TS with its static
 typesystem in mind.
 
 ## Installation
@@ -14,14 +14,16 @@ or if you use npm
 `npm i @siegrift/tsfunct --save`
 
 _**Important:** Some functions (set and friends) work reliably only with TS ^3.7, because of [this
-issue](https://github.com/microsoft/TypeScript/issues/33468)._
+issue](https://github.com/microsoft/TypeScript/issues/33468). Also, this library will be using
+latest TS features when needed. Keep this in mind if you are trying to use it in your project._
 
 ## Motivation
 
 There are two big libraries which provide helper functions for JS/TS. These are
 [lodash](https://github.com/lodash/lodash) and [ramda](https://github.com/ramda/ramda). Both of
 these libraries are made for JS and the TS typings for many functions are poor. Also, these
-libraries aim to be as general as possible, which makes it harder or impossible to type properly.
+functions aim to be as general as possible, which makes it harder or even impossible to type
+properly.
 
 There are certain helpers _(mainly for immutable object manipulation)_ which can be typed better.
 Let's take a look at `get(obj, path)` helper in both lodash _(4.14.132)_ and ramda _(0.26.9)_,
@@ -56,8 +58,8 @@ according to their idiomatic usage, library is immutable. However, there are no 
 for the source values and you are able to modify the original entity if you try really hard.
 
 ```javascript
-const original = [{ a: 0 }, { a: 1 }, { a: 2 }];
-const mapped = map(original, val => (val.a = 3));
+const original = [{ a: 0 }, { a: 1 }, { a: 2 }]
+const mapped = map(original, (val) => (val.a = 3))
 // 'mapped'  will equal to [3, 3, 3]
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
@@ -79,35 +81,36 @@ TLDR: It is a bad idea. If you want to learn more, read
 
 ## Functional programming style
 
-All of the functions in this library are written **imperatively**
+All of the functions in this library are written **imperatively (FOR NOW!!!)**
 (e.g. `const get = (object, path) => implementation` compared
 to traditional functional `const get = (path) => (object) => implementation`) for better typing and
 autocompletion support.
 
 If you want more FP style have a look at [monocle](https://github.com/gcanti/monocle-ts) or [fp
-ts](https://github.com/gcanti/fp-ts) or even [lodash
+ts](https://github.com/gcanti/fp-ts) or [lodash
 fp](https://github.com/lodash/lodash/wiki/FP-Guide)
 
 ## Codebase overview
 
 Each helper is written in its own module without depending on other helper. This allows you to copy
-the source of single helper you want **without the need to install** the whole library.
+the source of single helper you want without installing the whole library.
 
 ## Limitations
 
 Most of the helpers are typed manually and have some restrictions on its arguments. For example,
-path array can be **up to 5 elements** only in some helpers...
+path array can be **up to X elements** only in some helpers...
 
-Be also careful about the typesystem. Types might lie to you if you are not careful. For example,
+Bear in mind that TS is unsound! Types might easily lie to you if you are not careful. For example,
 
 ```javascript
-const arr: number[] = [1, 2, 3];
-const num: number = get(arr, [999]); // this line won't trigger TS error!
-console.log(num); // undefined!
+const arr: number[] = [1, 2, 3]
+const num: number = get(arr, [999]) // this line won't trigger TS error!
+console.log(num) // undefined!
 ```
 
-Other limitation is typescript path autocompletion, which I reported and is tracked in
-[this issue](https://github.com/microsoft/TypeScript/issues/31630) and will be fixed in the future.
+Other limitation is for example TS path autocompletion for immutability helpers, which I reported
+and is tracked in [this issue](https://github.com/microsoft/TypeScript/issues/31630) and will be
+fixed in the future.
 
 ## Issues
 
