@@ -1,4 +1,4 @@
-import { exist } from '../lib/exist'
+import exist from '../exist'
 
 describe('exist', () => {
   let obj: { a: string[]; b: { [key: string]: boolean }; c?: { d: string } }

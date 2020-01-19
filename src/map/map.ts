@@ -1,5 +1,5 @@
-import { Dictionary, Nullable, Optional, Undefinable } from '../types'
-import { isNullOrUndefined } from '../utils'
+import { Dictionary, Nullable, Optional, Undefinable } from '../common/types'
+import { isNullOrUndefined } from '../common/utils'
 
 interface MapFn {
   <T, Result>(
@@ -74,3 +74,5 @@ const mapImplementation: MapFn = (collection: any, fn: any): any => {
  * @returns the same type of collection with mapped elements.
  */
 export const map = mapImplementation
+
+export default map

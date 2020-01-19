@@ -1,5 +1,5 @@
-import { Optional, UnwrapOptional as U } from '../types'
-import { isNullOrUndefined, isObject } from '../utils'
+import { Optional, UnwrapOptional as U } from '../common/types'
+import { isNullOrUndefined, isObject } from '../common/utils'
 
 interface GetFn {
   <T, K1 extends keyof T>(source: T, path: [K1]): T[K1]
@@ -154,3 +154,5 @@ const getImplementation: GetFn = (
  * Modifying this value will also modify the source value.
  */
 export const get = getImplementation
+
+export default get

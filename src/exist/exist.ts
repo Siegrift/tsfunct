@@ -1,5 +1,5 @@
-import { Optional, UnwrapOptional as U } from '../types'
-import { isNullOrUndefined, isObject } from '../utils'
+import { Optional, UnwrapOptional as U } from '../common/types'
+import { isNullOrUndefined, isObject } from '../common/utils'
 
 interface ExistFn {
   <T, K1 extends keyof T>(source: Optional<T>, path: [K1]): boolean
@@ -67,3 +67,5 @@ const existImplementation: ExistFn = (source: any, path: any[]) => {
  * @returns true if the path exist in source, false otherwise
  */
 export const exist = existImplementation
+
+export default exist

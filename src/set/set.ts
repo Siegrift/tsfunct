@@ -1,5 +1,5 @@
-import { Optional, UnwrapOptional as U } from '../types'
-import { isObject, shallowCopy } from '../utils'
+import { Optional, UnwrapOptional as U } from '../common/types'
+import { isObject, shallowCopy } from '../common/utils'
 
 type Set1<T, K1 extends keyof T> = T extends any[]
   ? T
@@ -33,7 +33,7 @@ type Set4<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Set3<U<T[K1]>, K2, K3, K4> }
-        >[KK1];
+        >[KK1]
       }
 
 type Set5<
@@ -49,7 +49,7 @@ type Set5<
       {
         [KK1 in K1]-?: Required<
           { [key in K1]: Set4<U<T[K1]>, K2, K3, K4, K5> }
-        >[KK1];
+        >[KK1]
       }
 
 interface SetFn {
@@ -138,3 +138,5 @@ const setImplementation: SetFn = (source: any, path: any[], value: any) => {
  * @returns source value with value on path set
  */
 export const set = setImplementation
+
+export default set

@@ -1,6 +1,6 @@
-import { map } from './lib/map'
-import { update } from './lib/update'
-import { filter } from './lib/filter'
+import map from '../map'
+import update from '../update'
+import filter from '../filter'
 
 interface User {
   name: string
@@ -31,7 +31,10 @@ describe('integration', () => {
     })
 
     expect(newState).toEqual({
-      users: [{ name: 'Aaaa', age: 18 }, { name: 'Bbbb', age: 18 }],
+      users: [
+        { name: 'Aaaa', age: 18 },
+        { name: 'Bbbb', age: 18 },
+      ],
     })
   })
 })

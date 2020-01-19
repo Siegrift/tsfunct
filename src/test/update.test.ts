@@ -1,4 +1,4 @@
-import { update } from '../lib/update'
+import update from '../update'
 import { State, User } from './common'
 
 describe('update', () => {

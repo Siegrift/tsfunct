@@ -13,23 +13,24 @@
     "*"
   ],
   "devDependencies": {
-    "@types/jest": "^24.0.21",
-    "@types/node": "^12.12.5",
-    "husky": "^3.0.9",
+    "@types/jest": "^24.9.0",
+    "@types/node": "^13.1.8",
+    "husky": "^4.0.10",
     "jest": "^24.9.0",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
+    "ts-jest": "^24.3.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^8.0.1",
-    "typedoc": "^0.15.0",
-    "typescript": "^3.7.0-beta"
+    "tslint-config-standard": "^9.0.0",
+    "//": "NOTE: Typedoc mustn't be updated to ^0.16.0 as it has breaking changes",
+    "typedoc": "^0.15.8",
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist docs",
     "build": "yarn clean && yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist && cp README.md dist",
-    "docs": "typedoc --theme minimal --out docs ./src --mode file  --exclude 'src/test/*' --excludeNotExported && cp -r ./assets/* docs/assets"
+    "docs": "yarn clean && typedoc --theme minimal --out docs ./src --mode file --exclude './src/+(common|test)/*' --excludeNotExported --excludePrivate && cp -r ./assets/* docs/assets"
   },
   "husky": {
     "hooks": {

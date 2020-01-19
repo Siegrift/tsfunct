@@ -1,5 +1,5 @@
-import { isNullOrUndefined } from '../utils'
-import { Nullable, Optional, Undefinable } from '../types'
+import { isNullOrUndefined } from '../common/utils'
+import { Nullable, Optional, Undefinable } from '../common/types'
 
 interface PickFn {
   <T, K extends keyof T>(source: T, keys: K[]): Pick<T, K>
@@ -48,3 +48,5 @@ const pickImplementation: PickFn = (
  * @returns the source value with picked properties
  */
 export const pick = pickImplementation
+
+export default pick
