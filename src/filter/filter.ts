@@ -2,32 +2,81 @@ import { Dictionary, Nullable, Optional, Undefinable } from '../common/types'
 import { isNullOrUndefined } from '../common/utils'
 
 interface FilterFn {
+  // NOTE: Typescript typeguards
+  <T, R extends T>(
+    collection: T[],
+    fn: (value: T, index: number) => value is R,
+  ): R[]
+
+  <T, R extends T>(
+    collection: Nullable<T[]>,
+    fn: (value: T, index: number) => value is R,
+  ): Nullable<R[]>
+
+  <T, R extends T>(
+    collection: Undefinable<T[]>,
+    fn: (value: T, index: number) => value is R,
+  ): Undefinable<R[]>
+
+  <T, R extends T>(
+    collection: Optional<T[]>,
+    fn: (value: T, index: number) => value is R,
+  ): Optional<R[]>
+
+  <T, R extends T>(
+    collection: Dictionary<T>,
+    fn: (value: T, key: string) => value is R,
+  ): Dictionary<R>
+
+  <T, R extends T>(
+    collection: Nullable<Dictionary<T>>,
+    fn: (value: T, key: string) => value is R,
+  ): Nullable<Dictionary<R>>
+
+  <T, R extends T>(
+    collection: Undefinable<Dictionary<T>>,
+    fn: (value: T, key: string) => value is R,
+  ): Undefinable<Dictionary<R>>
+
+  <T, R extends T>(
+    collection: Optional<Dictionary<T>>,
+    fn: (value: T, key: string) => value is R,
+  ): Optional<Dictionary<R>>
+
+  // NOTE: boolean predicates
   <T>(collection: T[], fn: (value: T, index: number) => boolean): T[]
+
   <T>(
     collection: Nullable<T[]>,
     fn: (value: T, index: number) => boolean,
   ): Nullable<T[]>
+
   <T>(
     collection: Undefinable<T[]>,
     fn: (value: T, index: number) => boolean,
   ): Undefinable<T[]>
+
   <T>(
     collection: Optional<T[]>,
     fn: (value: T, index: number) => boolean,
   ): Optional<T[]>
+
   <T>(
     collection: Dictionary<T>,
     fn: (value: T, key: string) => boolean,
   ): Dictionary<T>
+
   <T>(
     collection: Nullable<Dictionary<T>>,
     fn: (value: T, key: string) => boolean,
   ): Nullable<Dictionary<T>>
+
   <T>(
     collection: Undefinable<Dictionary<T>>,
     fn: (value: T, key: string) => boolean,
   ): Undefinable<Dictionary<T>>
-  <T>(
+
+  <T, R extends T>(
     collection: Optional<Dictionary<T>>,
     fn: (value: T, key: string) => boolean,
   ): Optional<Dictionary<T>>

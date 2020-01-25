@@ -49,4 +49,16 @@ describe('filter', () => {
     expect(arr).toBe(arr)
     expect(filteredArr).toEqual([])
   })
+
+  test('works with TS filter functions', () => {
+    const isNumber = (x: any): x is number => typeof x === 'number'
+    const numbers: number[] = filter([1, '2', 3, '4'], isNumber)
+    const evenNums: Array<string | number> = filter(
+      [1, '2', 3, '4', 5, 6],
+      (x) => typeof x === 'number' && x % 2 === 0,
+    )
+
+    expect(numbers).toEqual([1, 3])
+    expect(evenNums).toEqual([6])
+  })
 })
