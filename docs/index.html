@@ -2375,6 +2375,9 @@ img {
 			<a href="globals.html#filter" class="tsd-kind-icon">filter</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="globals.html#get" class="tsd-kind-icon">get</a>
 		</li>
 		<li class=" tsd-kind-variable">
@@ -2525,6 +2528,7 @@ console.log(num) // undefined!</code></pre>
 							<li class="tsd-kind-variable"><a href="globals.html#compose" class="tsd-kind-icon">compose</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#exist" class="tsd-kind-icon">exist</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#filter" class="tsd-kind-icon">filter</a></li>
+							<li class="tsd-kind-variable"><a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#get" class="tsd-kind-icon">get</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#omit" class="tsd-kind-icon">omit</a></li>
@@ -2624,6 +2628,42 @@ console.log(num) // undefined!</code></pre>
 						</dd>
 						<dt>returns</dt>
 						<dd><p>the same type of collection with filtered elements.</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable">
+				<a name="fpset" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> fp<wbr>Set</h3>
+				<div class="tsd-signature tsd-kind-icon">fp<wbr>Set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">fpSetImplementation</span><span class="tsd-signature-symbol"> =&nbsp;fpSetImplementation</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in fpSet/fpSet.ts:125</li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Sets the value on the specified path in source value. If the path in the source doesn&#39;t exist it
+							will be created. Note, that we don&#39;t know what is the type of the object at runtime. Due to this,
+						if the path value is number, we create an array, otherwise object.</p>
+					</div>
+					<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+					intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+					<p>Return type will be the same as the source type, where any optional values along the path are
+					made required (because they are created).</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>source, in which the nested value should be set.</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>path array of the nested value in the source</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>value to be set in source on specified path</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>source value with value on path set</p>
 						</dd>
 					</dl>
 				</div>
@@ -2794,7 +2834,7 @@ console.log(num) // undefined!</code></pre>
 				<div class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SetFn</span><span class="tsd-signature-symbol"> =&nbsp;setImplementation</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in set/set.ts:140</li>
+						<li>Defined in set/set.ts:120</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
