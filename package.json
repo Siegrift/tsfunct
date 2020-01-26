@@ -34,8 +34,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test && yarn clean && yarn docs && git add docs/*",
-      "pre-push": "yarn test"
+      "pre-commit": "python3 check_exports.py && yarn test && yarn clean && yarn docs && git add docs/*",
+      "pre-push": "python3 check_exports.py && yarn test"
     }
   },
   "description": "Tsfunct is a **T**ype**S**cript **funct**ional library made directly for TS with its static typesystem in mind.",
