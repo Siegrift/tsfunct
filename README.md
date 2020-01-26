@@ -17,6 +17,16 @@ _**Important:** Some functions (set and friends) work reliably only with TS ^3.7
 issue](https://github.com/microsoft/TypeScript/issues/33468). Also, this library will be using
 latest TS features when needed. Keep this in mind if you are trying to use it in your project._
 
+## API and documentation
+
+Documentation is automatically generated from source code and can be found at github pages
+[here](https://siegrift.github.io/tsfunct/).
+
+You can also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
+
+_You can read the list and sources of all helpers in the src/lib folder
+[here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
+
 ## Motivation
 
 There are two big libraries which provide helper functions for JS/TS. These are
@@ -64,16 +74,6 @@ const mapped = map(original, (val) => (val.a = 3))
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
 
-## API and documentation
-
-Documentation is automatically generated from source code and can be found at github pages
-[here](https://siegrift.github.io/tsfunct/).
-
-You can also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
-
-_You can read the list and sources of all helpers in the src/lib folder
-[here](https://github.com/Siegrift/tsfunct/tree/master/src/lib)._
-
 ## Chaining
 
 TLDR: It is a bad idea. If you want to learn more, read
@@ -81,14 +81,19 @@ TLDR: It is a bad idea. If you want to learn more, read
 
 ## Functional programming style
 
-All of the functions in this library are written **imperatively (FOR NOW!!!)**
-(e.g. `const get = (object, path) => implementation` compared
-to traditional functional `const get = (path) => (object) => implementation`) for better typing and
-autocompletion support.
+Most of the functions in this library are written **imperatively** _(e.g. `const get = (object,
+path) => implementation` compared to traditional functional `const get = (path) => (object) =>
+implementation`)_ for better typing and autocompletion support. These helpers **aren't composable**
+together and if you would like to do multiple transformations you would have to either nest the
+calls _(which hurts readability)_ or introduce unnecessary local variables.
 
-If you want more FP style have a look at [monocle](https://github.com/gcanti/monocle-ts) or [fp
+For this reason, there are also **functional alternatives** of most common methods _(in the future
+maybe all of them)_, which offer the same type guarantees and their imperative clones. These fp
+helpers have prefix `fp` _(e.g. functional version of `set` helper is called `fpSet`)_.
+
+_(If you are looking for more FP helpers have a look at [monocle](https://github.com/gcanti/monocle-ts) or [fp
 ts](https://github.com/gcanti/fp-ts) or [lodash
-fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+fp](https://github.com/lodash/lodash/wiki/FP-Guide))_
 
 ## Codebase overview
 
