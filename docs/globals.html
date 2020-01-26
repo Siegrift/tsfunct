@@ -2378,6 +2378,9 @@ img {
 			<a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="globals.html#fpunset" class="tsd-kind-icon">fp<wbr>Unset</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="globals.html#get" class="tsd-kind-icon">get</a>
 		</li>
 		<li class=" tsd-kind-variable">
@@ -2421,6 +2424,14 @@ img {
 			<p><em><strong>Important:</strong> Some functions (set and friends) work reliably only with TS ^3.7, because of <a href="https://github.com/microsoft/TypeScript/issues/33468">this
 					issue</a>. Also, this library will be using
 			latest TS features when needed. Keep this in mind if you are trying to use it in your project.</em></p>
+			<a href="#api-and-documentation" id="api-and-documentation" style="color: inherit; text-decoration: none;">
+				<h2>API and documentation</h2>
+			</a>
+			<p>Documentation is automatically generated from source code and can be found at github pages
+			<a href="https://siegrift.github.io/tsfunct/">here</a>.</p>
+			<p>You can also play with the library on <a href="https://codesandbox.io/s/tsfunct-zysfi">CodeSandbox</a>.</p>
+			<p><em>You can read the list and sources of all helpers in the src/lib folder
+			<a href="https://github.com/Siegrift/tsfunct/tree/master/src/lib">here</a>.</em></p>
 			<a href="#motivation" id="motivation" style="color: inherit; text-decoration: none;">
 				<h2>Motivation</h2>
 			</a>
@@ -2459,14 +2470,6 @@ img {
 <span class="hljs-keyword">const</span> mapped = map(original, (val) =&gt; (val.a = <span class="hljs-number">3</span>))
 <span class="hljs-comment">// 'mapped'  will equal to [3, 3, 3]</span>
 <span class="hljs-comment">// 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]</span></code></pre>
-			<a href="#api-and-documentation" id="api-and-documentation" style="color: inherit; text-decoration: none;">
-				<h2>API and documentation</h2>
-			</a>
-			<p>Documentation is automatically generated from source code and can be found at github pages
-			<a href="https://siegrift.github.io/tsfunct/">here</a>.</p>
-			<p>You can also play with the library on <a href="https://codesandbox.io/s/tsfunct-zysfi">CodeSandbox</a>.</p>
-			<p><em>You can read the list and sources of all helpers in the src/lib folder
-			<a href="https://github.com/Siegrift/tsfunct/tree/master/src/lib">here</a>.</em></p>
 			<a href="#chaining" id="chaining" style="color: inherit; text-decoration: none;">
 				<h2>Chaining</h2>
 			</a>
@@ -2475,13 +2478,17 @@ img {
 			<a href="#functional-programming-style" id="functional-programming-style" style="color: inherit; text-decoration: none;">
 				<h2>Functional programming style</h2>
 			</a>
-			<p>All of the functions in this library are written <strong>imperatively (FOR NOW!!!)</strong>
-				(e.g. <code>const get = (object, path) =&gt; implementation</code> compared
-				to traditional functional <code>const get = (path) =&gt; (object) =&gt; implementation</code>) for better typing and
-			autocompletion support.</p>
-			<p>If you want more FP style have a look at <a href="https://github.com/gcanti/monocle-ts">monocle</a> or <a href="https://github.com/gcanti/fp-ts">fp
-					ts</a> or <a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash
-			fp</a></p>
+			<p>Most of the functions in this library are written <strong>imperatively</strong> <em>(e.g. <code>const get = (object,
+path) =&gt; implementation</code> compared to traditional functional <code>const get = (path) =&gt; (object) =&gt;
+implementation</code>)</em> for better typing and autocompletion support. These helpers <strong>aren&#39;t composable</strong>
+				together and if you would like to do multiple transformations you would have to either nest the
+			calls <em>(which hurts readability)</em> or introduce unnecessary local variables.</p>
+			<p>For this reason, there are also <strong>functional alternatives</strong> of most common methods <em>(in the future
+				maybe all of them)</em>, which offer the same type guarantees and their imperative clones. These fp
+			helpers have prefix <code>fp</code> <em>(e.g. functional version of <code>set</code> helper is called <code>fpSet</code>)</em>.</p>
+			<p><em>(If you are looking for more FP helpers have a look at <a href="https://github.com/gcanti/monocle-ts">monocle</a> or <a href="https://github.com/gcanti/fp-ts">fp
+						ts</a> or <a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash
+			fp</a>)</em></p>
 			<a href="#codebase-overview" id="codebase-overview" style="color: inherit; text-decoration: none;">
 				<h2>Codebase overview</h2>
 			</a>
@@ -2528,6 +2535,7 @@ console.log(num) // undefined!</code></pre>
 							<li class="tsd-kind-variable"><a href="globals.html#exist" class="tsd-kind-icon">exist</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#filter" class="tsd-kind-icon">filter</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a></li>
+							<li class="tsd-kind-variable"><a href="globals.html#fpunset" class="tsd-kind-icon">fp<wbr>Unset</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#get" class="tsd-kind-icon">get</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#omit" class="tsd-kind-icon">omit</a></li>
@@ -2663,6 +2671,37 @@ console.log(num) // undefined!</code></pre>
 						</dd>
 						<dt>returns</dt>
 						<dd><p>source value with value on path set</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable">
+				<a name="fpunset" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> fp<wbr>Unset</h3>
+				<div class="tsd-signature tsd-kind-icon">fp<wbr>Unset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">fpUnsetImplementation</span><span class="tsd-signature-symbol"> =&nbsp;fpUnsetImplementation</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in fpUnset/fpUnset.ts:183</li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Removes the value on the specified path in source value. If the value is an array, the behavior
+							is similar to splicing shallow copy of the value. If the value is object, the value is removed
+						from the shallow copy using <code>delete</code> keyword.</p>
+					</div>
+					<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+					intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>source, in which the nested value should be removed.</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>path array of the nested value in the source</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>source value with removed value</p>
 						</dd>
 					</dl>
 				</div>
@@ -2869,7 +2908,7 @@ console.log(num) // undefined!</code></pre>
 				<div class="tsd-signature tsd-kind-icon">unset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnsetFn</span><span class="tsd-signature-symbol"> =&nbsp;unsetImplementation</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in unset/unset.ts:208</li>
+						<li>Defined in unset/unset.ts:190</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2900,12 +2939,15 @@ console.log(num) // undefined!</code></pre>
 				<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UpdateFn</span><span class="tsd-signature-symbol"> =&nbsp;updateImplementation</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in update/update.ts:193</li>
+						<li>Defined in fpUpdate/fpUpdate.ts:170</li>
+						<li>Defined in update/update.ts:168</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Updates the value on the specified path in source value using update function. This function will
+							take current value and can transform it to other value (with the same type).
+							Updates the value on the specified path in source value using update function. This function will
 						take current value and can transform it to other value (with the same type).</p>
 					</div>
 					<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
@@ -2916,7 +2958,24 @@ console.log(num) // undefined!</code></pre>
 					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
 					<p>Return type will be the same as the source type, where any optional values along the path are
 					made required (because they are created).</p>
+					<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+						type of the object at runtime. Due to this, if the path value is number, we create an array,
+					otherwise object.</p>
+					<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+					intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+					<p>Return type will be the same as the source type, where any optional values along the path are
+					made required (because they are created).</p>
 					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>source, in which the nested value should be removed.</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>path array of the nested value in the source</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>source value with removed value</p>
+						</dd>
 						<dt>param</dt>
 						<dd><p>source, in which the nested value should be removed.</p>
 						</dd>

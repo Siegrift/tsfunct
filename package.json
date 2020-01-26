@@ -34,7 +34,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn clean && yarn docs && git add docs/*",
+      "pre-commit": "yarn test && yarn clean && yarn docs && git add docs/*",
       "pre-push": "yarn test"
     }
   },
