@@ -2378,6 +2378,9 @@ img {
 			<a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a>
 		</li>
 		<li class=" tsd-kind-variable">
+			<a href="globals.html#fpunset" class="tsd-kind-icon">fp<wbr>Unset</a>
+		</li>
+		<li class=" tsd-kind-variable">
 			<a href="globals.html#get" class="tsd-kind-icon">get</a>
 		</li>
 		<li class=" tsd-kind-variable">
@@ -2528,6 +2531,7 @@ console.log(num) // undefined!</code></pre>
 							<li class="tsd-kind-variable"><a href="globals.html#exist" class="tsd-kind-icon">exist</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#filter" class="tsd-kind-icon">filter</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#fpset" class="tsd-kind-icon">fp<wbr>Set</a></li>
+							<li class="tsd-kind-variable"><a href="globals.html#fpunset" class="tsd-kind-icon">fp<wbr>Unset</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#get" class="tsd-kind-icon">get</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#map" class="tsd-kind-icon">map</a></li>
 							<li class="tsd-kind-variable"><a href="globals.html#omit" class="tsd-kind-icon">omit</a></li>
@@ -2663,6 +2667,37 @@ console.log(num) // undefined!</code></pre>
 						</dd>
 						<dt>returns</dt>
 						<dd><p>source value with value on path set</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-variable">
+				<a name="fpunset" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> fp<wbr>Unset</h3>
+				<div class="tsd-signature tsd-kind-icon">fp<wbr>Unset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">fpUnsetImplementation</span><span class="tsd-signature-symbol"> =&nbsp;fpUnsetImplementation</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in fpUnset/fpUnset.ts:183</li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Removes the value on the specified path in source value. If the value is an array, the behavior
+							is similar to splicing shallow copy of the value. If the value is object, the value is removed
+						from the shallow copy using <code>delete</code> keyword.</p>
+					</div>
+					<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+					intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>source, in which the nested value should be removed.</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>path array of the nested value in the source</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>source value with removed value</p>
 						</dd>
 					</dl>
 				</div>
@@ -2869,7 +2904,7 @@ console.log(num) // undefined!</code></pre>
 				<div class="tsd-signature tsd-kind-icon">unset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UnsetFn</span><span class="tsd-signature-symbol"> =&nbsp;unsetImplementation</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in unset/unset.ts:208</li>
+						<li>Defined in unset/unset.ts:190</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -2900,12 +2935,15 @@ console.log(num) // undefined!</code></pre>
 				<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">UpdateFn</span><span class="tsd-signature-symbol"> =&nbsp;updateImplementation</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in update/update.ts:193</li>
+						<li>Defined in fpUpdate/fpUpdate.ts:170</li>
+						<li>Defined in update/update.ts:168</li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Updates the value on the specified path in source value using update function. This function will
+							take current value and can transform it to other value (with the same type).
+							Updates the value on the specified path in source value using update function. This function will
 						take current value and can transform it to other value (with the same type).</p>
 					</div>
 					<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
@@ -2916,7 +2954,24 @@ console.log(num) // undefined!</code></pre>
 					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
 					<p>Return type will be the same as the source type, where any optional values along the path are
 					made required (because they are created).</p>
+					<p>If the path in the source doesn&#39;t exist, it will be created. Note, that we don&#39;t know what is the
+						type of the object at runtime. Due to this, if the path value is number, we create an array,
+					otherwise object.</p>
+					<p>Source value can be nullable or undefinable, and path is treated as if the source (and all
+					intermediate) values are required (because nullable and undefinable types can&#39;t have keys).</p>
+					<p>Path supports up to 5 elements. This means, you are not able to use this helper if you need more.</p>
+					<p>Return type will be the same as the source type, where any optional values along the path are
+					made required (because they are created).</p>
 					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>source, in which the nested value should be removed.</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>path array of the nested value in the source</p>
+						</dd>
+						<dt>returns</dt>
+						<dd><p>source value with removed value</p>
+						</dd>
 						<dt>param</dt>
 						<dd><p>source, in which the nested value should be removed.</p>
 						</dd>
