@@ -1,39 +1,38 @@
 import { Optional, UnwrapOptional as U } from '../common/types'
 import baseSet from '../common/baseSet'
 
-type Set1<T, K1 extends keyof T> = T extends any[]
+type Set1<T, K1 extends keyof T, R> = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<Pick<T, KK1>>[KK1] }
+  : Pick<T, Exclude<keyof T, K1>> & { [KK1 in K1]: R }
 
-type Set2<T, K1 extends keyof T, K2 extends keyof U<T[K1]>> = T extends any[]
+type Set2<T, K1 extends keyof T, K2 extends keyof U<T[K1]>, R> = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: Set1<U<T[K1]>, K2> }>[KK1] }
+      { [KK1 in K1]-?: { [key in K1]: Set1<U<T[K1]>, K2, R> }[KK1] }
 
 type Set3<
   T,
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
-  K3 extends keyof U<U<T[K1]>[K2]>
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: Set2<U<T[K1]>, K2, K3> }>[KK1] }
+      { [KK1 in K1]-?: { [key in K1]: Set2<U<T[K1]>, K2, K3, R> }[KK1] }
 
 type Set4<
   T,
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>,
-  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: Set3<U<T[K1]>, K2, K3, K4> }
-        >[KK1]
+        [KK1 in K1]-?: { [key in K1]: Set3<U<T[K1]>, K2, K3, K4, R> }[KK1]
       }
 
 type Set5<
@@ -42,59 +41,62 @@ type Set5<
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
-  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: Set4<U<T[K1]>, K2, K3, K4, K5> }
-        >[KK1]
+        [KK1 in K1]-?: { [key in K1]: Set4<U<T[K1]>, K2, K3, K4, K5, R> }[KK1]
       }
 
 interface SetFn {
-  <T, K1 extends keyof T>(source: Optional<T>, path: [K1], value: T[K1]): Set1<
-    T,
-    K1
-  >
-  <T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
+  <T, K1 extends keyof T, R extends T[K1]>(
+    source: Optional<T>,
+    path: [K1],
+    value: R,
+  ): Set1<T, K1, R>
+  <T, K1 extends keyof T, K2 extends keyof U<T[K1]>, R extends U<T[K1]>[K2]>(
     source: Optional<T>,
     path: [K1, K2],
-    value: U<T[K1]>[K2],
-  ): Set2<T, K1, K2>
-  <
-    T,
-    K1 extends keyof T,
-    K2 extends keyof U<T[K1]>,
-    K3 extends keyof U<U<T[K1]>[K2]>
-  >(
-    source: Optional<T>,
-    path: [K1, K2, K3],
-    value: U<U<T[K1]>[K2]>[K3],
-  ): Set3<T, K1, K2, K3>
+    value: R,
+  ): Set2<T, K1, K2, R>
   <
     T,
     K1 extends keyof T,
     K2 extends keyof U<T[K1]>,
     K3 extends keyof U<U<T[K1]>[K2]>,
-    K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+    R extends U<U<T[K1]>[K2]>[K3]
   >(
     source: Optional<T>,
-    path: [K1, K2, K3, K4],
-    value: U<U<U<T[K1]>[K2]>[K3]>[K4],
-  ): Set4<T, K1, K2, K3, K4>
+    path: [K1, K2, K3],
+    value: R,
+  ): Set3<T, K1, K2, K3, R>
   <
     T,
     K1 extends keyof T,
     K2 extends keyof U<T[K1]>,
     K3 extends keyof U<U<T[K1]>[K2]>,
     K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
-    K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+    R extends U<U<U<T[K1]>[K2]>[K3]>[K4]
+  >(
+    source: Optional<T>,
+    path: [K1, K2, K3, K4],
+    value: R,
+  ): Set4<T, K1, K2, K3, K4, R>
+  <
+    T,
+    K1 extends keyof T,
+    K2 extends keyof U<T[K1]>,
+    K3 extends keyof U<U<T[K1]>[K2]>,
+    K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+    K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
+    R extends U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]
   >(
     source: Optional<T>,
     path: [K1, K2, K3, K4, K5],
     value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
-  ): Set5<T, K1, K2, K3, K4, K5>
+  ): Set5<T, K1, K2, K3, K4, K5, R>
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.

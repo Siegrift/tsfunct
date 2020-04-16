@@ -1,5 +1,6 @@
 import update from '../update'
 import { State, User } from './common'
+import { expectAssignable, expectNotAssignable, expectType } from 'tsd'
 
 describe('update', () => {
   let state: State
@@ -148,16 +149,43 @@ describe('update', () => {
     expect(newState.optional.a).toBe(123) // the path surely exists now!
   })
 
-  test('works with union of properties', () => {
+  test('works not that well with union of properties', () => {
     interface A {
-      a: string
+      a: 'fixed'
       b: number
       c: boolean
     }
-    const obj: A = { a: 'str', b: 123, c: true }
+    const obj: A = { a: 'fixed', b: 123, c: true }
     const prop = 'a' as 'a' | 'b'
 
-    const upd: A = update(obj, [prop], (val) => val)
+    const upd = update(obj, [prop], (val) => val)
+    expectNotAssignable<A>(upd)
     expect(upd).toEqual(obj)
+  })
+
+  test('correct type when setting optional properties', () => {
+    type CustomUser = { id: string; name?: { surname: string }; age: number }
+    interface CustomState {
+      user?: CustomUser
+      messages: string[]
+    }
+    const st: CustomState = {
+      user: undefined,
+      messages: ['mess1', 'mess2'],
+    }
+
+    expectAssignable<CustomState>(update(st, ['user'], () => undefined))
+    expectType<undefined>(update(st, ['user'], () => undefined).user)
+    expectType<CustomUser>(
+      update(st, ['user'], () => ({ age: 11, id: 'id' })).user,
+    )
+
+    expectAssignable<CustomState>(update(st, ['user', 'name'], () => undefined))
+    expectType<undefined>(
+      update(st, ['user', 'name'], () => undefined).user.name,
+    )
+    expectType<{ surname: string }>(
+      update(st, ['user', 'name'], () => ({ surname: 'ads' })).user.name,
+    )
   })
 })

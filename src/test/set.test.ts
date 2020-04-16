@@ -1,6 +1,7 @@
 import set from '../set'
 import { State } from './common'
 import { Dictionary } from '../common/types'
+import { expectAssignable, expectNotAssignable, expectType } from 'tsd'
 
 describe('set', () => {
   let state: State
@@ -129,7 +130,7 @@ describe('set', () => {
       expect(newObj).toEqual({ a: { b: false, c: {} }, d: 'str' })
     })
 
-    test('works with union of properties', () => {
+    test('works not that well with union of properties', () => {
       interface A {
         a: 'fixed'
         b: string
@@ -138,8 +139,31 @@ describe('set', () => {
       const obj: A = { a: 'fixed', b: 'str', c: true }
       const prop = 'a' as 'a' | 'b'
 
-      const s: A = set(obj, [prop], 'fixed')
+      expectNotAssignable<A>(set(obj, [prop], 'fixed'))
+      const s: A = set(obj, [prop], 'fixed' as const)
       expect(s).toEqual(obj)
+    })
+
+    test('correct type when setting optional properties', () => {
+      type User = { id: string; name?: { surname: string }; age: number }
+      interface CustomState {
+        user?: User
+        messages: string[]
+      }
+      const st: CustomState = {
+        user: undefined,
+        messages: ['mess1', 'mess2'],
+      }
+
+      expectAssignable<CustomState>(set(st, ['user'], undefined))
+      expectType<undefined>(set(st, ['user'], undefined).user)
+      expectType<User>(set(st, ['user'], { age: 11, id: 'id' }).user)
+
+      expectAssignable<CustomState>(set(st, ['user', 'name'], undefined))
+      expectType<undefined>(set(st, ['user', 'name'], undefined).user.name)
+      expectType<{ surname: string }>(
+        set(st, ['user', 'name'], { surname: 'ads' }).user.name,
+      )
     })
   })
 })
