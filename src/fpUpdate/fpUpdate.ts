@@ -1,32 +1,31 @@
 import { Optional, UnwrapOptional as U } from '../common/types'
 import baseUpdate from '../common/baseUpdate'
 
-type FpUpdate1<T, K1 extends keyof T> = T extends any[]
+type FpUpdate1<T, K1 extends keyof T, R> = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<Pick<T, KK1>>[KK1] }
+  : Pick<T, Exclude<keyof T, K1>> & { [KK1 in K1]: R }
 
 type FpUpdate2<
   T,
   K1 extends keyof T,
-  K2 extends keyof U<T[K1]>
+  K2 extends keyof U<T[K1]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: Required<{ [key in K1]: FpUpdate1<U<T[K1]>, K2> }>[KK1] }
+      { [KK1 in K1]-?: { [key in K1]: FpUpdate1<U<T[K1]>, K2, R> }[KK1] }
 
 type FpUpdate3<
   T,
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
-  K3 extends keyof U<U<T[K1]>[K2]>
+  K3 extends keyof U<U<T[K1]>[K2]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: FpUpdate2<U<T[K1]>, K2, K3> }
-        >[KK1]
+        [KK1 in K1]-?: { [key in K1]: FpUpdate2<U<T[K1]>, K2, K3, R> }[KK1]
       }
 
 type FpUpdate4<
@@ -34,14 +33,13 @@ type FpUpdate4<
   K1 extends keyof T,
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>,
-  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+  K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: FpUpdate3<U<T[K1]>, K2, K3, K4> }
-        >[KK1]
+        [KK1 in K1]-?: { [key in K1]: FpUpdate3<U<T[K1]>, K2, K3, K4, R> }[KK1]
       }
 
 type FpUpdate5<
@@ -50,95 +48,103 @@ type FpUpdate5<
   K2 extends keyof U<T[K1]>,
   K3 extends keyof U<U<T[K1]>[K2]>,
   K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
-  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+  K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
+  R
 > = T extends any[]
   ? T
   : Pick<T, Exclude<keyof T, K1>> &
       {
-        [KK1 in K1]-?: Required<
-          { [key in K1]: FpUpdate4<U<T[K1]>, K2, K3, K4, K5> }
-        >[KK1]
+        [KK1 in K1]-?: {
+          [key in K1]: FpUpdate4<U<T[K1]>, K2, K3, K4, K5, R>
+        }[KK1]
       }
 
 interface FpUpdateFnReturn<T> {
-  <K1 extends keyof T>(path: [K1], updateFn: (value: T[K1]) => T[K1]): (
-    source: T,
-  ) => FpUpdate1<T, K1>
+  <K1 extends keyof T, R extends T[K1]>(
+    path: [K1],
+    updateFn: (value: T[K1]) => R,
+  ): (source: T) => FpUpdate1<T, K1, R>
 
-  <K1 extends keyof T, K2 extends keyof T[K1]>(
+  <K1 extends keyof T, K2 extends keyof T[K1], R extends T[K1][K2]>(
     path: [K1, K2],
-    updateFn: (value: T[K1][K2]) => T[K1][K2],
-  ): (source: T) => FpUpdate2<T, K1, K2>
-
-  <K1 extends keyof T, K2 extends keyof T[K1], K3 extends keyof T[K1][K2]>(
-    path: [K1, K2, K3],
-    updateFn: (value: T[K1][K2][K3]) => T[K1][K2][K3],
-  ): (source: T) => FpUpdate3<T, K1, K2, K3>
+    updateFn: (value: T[K1][K2]) => R,
+  ): (source: T) => FpUpdate2<T, K1, K2, R>
 
   <
     K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
-    K4 extends keyof T[K1][K2][K3]
+    R extends T[K1][K2][K3]
   >(
-    path: [K1, K2, K3, K4],
-    updateFn: (value: T[K1][K2][K3][K4]) => T[K1][K2][K3][K4],
-  ): (source: T) => FpUpdate4<T, K1, K2, K3, K4>
+    path: [K1, K2, K3],
+    updateFn: (value: T[K1][K2][K3]) => R,
+  ): (source: T) => FpUpdate3<T, K1, K2, K3, R>
 
   <
     K1 extends keyof T,
     K2 extends keyof T[K1],
     K3 extends keyof T[K1][K2],
     K4 extends keyof T[K1][K2][K3],
-    K5 extends keyof T[K1][K2][K3][K4]
+    R extends T[K1][K2][K3][K4]
   >(
-    path: [K1, K2, K3, K4, K5],
-    updateFn: (value: T[K1][K2][K3][K4][K5]) => T[K1][K2][K3][K4][K5],
-  ): (source: T) => FpUpdate5<T, K1, K2, K3, K4, K5>
-
-  <K1 extends keyof T>(
-    path: [K1],
-    updateFn: (value: T[K1] | undefined) => T[K1],
-  ): (source: Optional<T>) => FpUpdate1<T, K1>
-
-  <K1 extends keyof T, K2 extends keyof U<T[K1]>>(
-    path: [K1, K2],
-    updateFn: (value: U<T[K1]>[K2] | undefined) => U<T[K1]>[K2],
-  ): (source: Optional<T>) => FpUpdate2<T, K1, K2>
+    path: [K1, K2, K3, K4],
+    updateFn: (value: T[K1][K2][K3][K4]) => R,
+  ): (source: T) => FpUpdate4<T, K1, K2, K3, K4, R>
 
   <
     K1 extends keyof T,
-    K2 extends keyof U<T[K1]>,
-    K3 extends keyof U<U<T[K1]>[K2]>
+    K2 extends keyof T[K1],
+    K3 extends keyof T[K1][K2],
+    K4 extends keyof T[K1][K2][K3],
+    K5 extends keyof T[K1][K2][K3][K4],
+    R extends T[K1][K2][K3][K4][K5]
   >(
-    path: [K1, K2, K3],
-    updateFn: (value: U<U<T[K1]>[K2]>[K3] | undefined) => U<U<T[K1]>[K2]>[K3],
-  ): (source: Optional<T>) => FpUpdate3<T, K1, K2, K3>
+    path: [K1, K2, K3, K4, K5],
+    updateFn: (value: T[K1][K2][K3][K4][K5]) => R,
+  ): (source: T) => FpUpdate5<T, K1, K2, K3, K4, K5, R>
+
+  <K1 extends keyof T, R extends T[K1]>(
+    path: [K1],
+    updateFn: (value: T[K1] | undefined) => R,
+  ): (source: Optional<T>) => FpUpdate1<T, K1, R>
+
+  <K1 extends keyof T, K2 extends keyof U<T[K1]>, R extends U<T[K1]>[K2]>(
+    path: [K1, K2],
+    updateFn: (value: U<T[K1]>[K2] | undefined) => R,
+  ): (source: Optional<T>) => FpUpdate2<T, K1, K2, R>
 
   <
     K1 extends keyof T,
     K2 extends keyof U<T[K1]>,
     K3 extends keyof U<U<T[K1]>[K2]>,
-    K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
+    R extends U<U<T[K1]>[K2]>[K3]
   >(
-    path: [K1, K2, K3, K4],
-    updateFn: (
-      value: U<U<U<T[K1]>[K2]>[K3]>[K4] | undefined,
-    ) => U<U<U<T[K1]>[K2]>[K3]>[K4],
-  ): (source: Optional<T>) => FpUpdate4<T, K1, K2, K3, K4>
+    path: [K1, K2, K3],
+    updateFn: (value: U<U<T[K1]>[K2]>[K3] | undefined) => R,
+  ): (source: Optional<T>) => FpUpdate3<T, K1, K2, K3, R>
 
   <
     K1 extends keyof T,
     K2 extends keyof U<T[K1]>,
     K3 extends keyof U<U<T[K1]>[K2]>,
     K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
-    K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
+    R extends U<U<U<T[K1]>[K2]>[K3]>[K4]
+  >(
+    path: [K1, K2, K3, K4],
+    updateFn: (value: U<U<U<T[K1]>[K2]>[K3]>[K4] | undefined) => R,
+  ): (source: Optional<T>) => FpUpdate4<T, K1, K2, K3, K4, R>
+
+  <
+    K1 extends keyof T,
+    K2 extends keyof U<T[K1]>,
+    K3 extends keyof U<U<T[K1]>[K2]>,
+    K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>,
+    K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>,
+    R extends U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]
   >(
     path: [K1, K2, K3, K4, K5],
-    updateFn: (
-      value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5] | undefined,
-    ) => U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5],
-  ): (source: Optional<T>) => FpUpdate5<T, K1, K2, K3, K4, K5>
+    updateFn: (value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5] | undefined) => R,
+  ): (source: Optional<T>) => FpUpdate5<T, K1, K2, K3, K4, K5, R>
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.

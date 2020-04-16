@@ -58,14 +58,11 @@ describe('fpSet', () => {
 
       setObj = fpSet<typeof obj>()(['a', 'b', 'c', 'd'], { e: '123' })(obj)
       expect(setObj).toEqual(expected)
-
-      setObj = fpSet<typeof obj>()(['a', 'b', 'c', 'd', 'e'], '123')(obj)
-      expect(setObj).toEqual(expected)
     })
   })
 
   test('is immutable', () => {
-    fpSet<State>()(['a', 'b', 'c', 'd', 'e'], '123')(state)
+    fpSet<State>()(['a', 'b', 'c', 'd'], { e: '123' })(state)
 
     expect(state).toBe(state)
   })

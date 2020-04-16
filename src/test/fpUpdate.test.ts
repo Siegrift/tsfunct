@@ -1,5 +1,6 @@
 import fpUpdate from '../fpUpdate'
 import { State, User } from './common'
+import { expectNotAssignable } from 'tsd'
 
 describe('fpUpdate', () => {
   let state: State
@@ -162,7 +163,7 @@ describe('fpUpdate', () => {
     expect(newState.optional.a).toBe(123) // the path surely exists now!
   })
 
-  test('works with union of properties', () => {
+  test('works not that well with union of properties', () => {
     interface A {
       a: string
       b: number
@@ -171,7 +172,8 @@ describe('fpUpdate', () => {
     const obj: A = { a: 'str', b: 123, c: true }
     const prop = 'a' as 'a' | 'b'
 
-    const upd: A = fpUpdate<typeof obj>()([prop], (val) => val)(obj)
+    const upd = fpUpdate<typeof obj>()([prop], (val) => val)(obj)
+    expectNotAssignable<A>(upd)
     expect(upd).toEqual(obj)
   })
 })
