@@ -13,9 +13,8 @@ or if you use npm
 
 `npm i @siegrift/tsfunct --save`
 
-_**Important:** Some functions (set and friends) work reliably only with TS ^3.7, because of [this
-issue](https://github.com/microsoft/TypeScript/issues/33468). Also, this library will be using
-latest TS features when needed. Keep this in mind if you are trying to use it in your project._
+_**Important:** This library is using latest TS features when needed. Keep this in mind if you are
+trying to use it in your project._
 
 ## API and documentation
 

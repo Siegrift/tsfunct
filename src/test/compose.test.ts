@@ -31,14 +31,4 @@ describe('compose', () => {
     const composed: (x: string) => string = compose(f1, f2, f3)
     expect(composed('x')).toBe('f1(5)')
   })
-
-  it('results in TS error if used with many (>10) heterogeneous function signatures', () => {
-    const f1: (x: number) => string = (val) => `f1(${val})`
-    const f2: (x: string) => number = (val) => val.length
-    const f3: (x: string) => string = (val) => `f3(${val})`
-
-    // @ts-ignore TODO: replace with @ts-expect-error. See: https://github.com/Microsoft/TypeScript/issues/29394
-    const composed = compose(f1, f2, f3, f1, f1, f1, f1, f1, f1, f1, f1)
-    expect(composed('x')).toBe('f1(37)')
-  })
 })

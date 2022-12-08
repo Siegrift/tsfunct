@@ -30,14 +30,4 @@ describe('pipe', () => {
     const piped: (x: string) => string = pipe(f1, f2, f3)
     expect(piped('x')).toBe('f3(5)')
   })
-
-  it('results in TS error if used with many (>10) heterogeneous function signatures', () => {
-    const f1: (x: string) => string = (val) => `f1(${val})`
-    const f2: (x: string) => number = (val) => val.length
-    const f3: (x: number) => string = (val) => `f3(${val})`
-
-    // @ts-ignore TODO: replace with @ts-expect-error. See: https://github.com/Microsoft/TypeScript/issues/29394
-    const piped = pipe(f1, f2, f3, f1, f1, f1, f1, f1, f1, f1, f1)
-    expect(piped('x')).toBe('f1(f1(f1(f1(f1(f1(f1(f1(f3(5)))))))))')
-  })
 })
