@@ -170,8 +170,7 @@ describe('update', () => {
       messages: ['mess1', 'mess2'],
     };
 
-    // @ts-expect-error Doesn't work because the property is optional, which is different to
-    // setting undefined value. TODO: Fix.
+    // @ts-expect-error Optional property is different to undefined value. TODO: Fix.
     expectAssignable<CustomState>(update(st, ['user'], () => undefined));
     expectType<undefined>(update(st, ['user'], () => undefined).user);
     expectType<CustomUser>(update(st, ['user'], () => ({ age: 11, id: 'id' })).user);

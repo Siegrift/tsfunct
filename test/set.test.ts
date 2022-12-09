@@ -154,8 +154,7 @@ describe('set', () => {
         messages: ['mess1', 'mess2'],
       };
 
-      // @ts-expect-error Doesn't work because the property is optional, which is different to
-      // setting undefined value. TODO: Fix.
+      // @ts-expect-error Optional property is different to undefined value. TODO: Fix.
       expectAssignable<CustomState>(set(st, ['user'], undefined));
       expectType<undefined>(set(st, ['user'], undefined).user);
       expectType<User>(set(st, ['user'], { age: 11, id: 'id' }).user);
