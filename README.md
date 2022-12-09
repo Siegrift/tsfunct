@@ -18,12 +18,14 @@ trying to use it in your project._
 
 ## API and documentation
 
-Documentation is automatically generated from source code and can be found at github pages
-[here](https://siegrift.github.io/tsfunct/).
+Extended documentation can be found at [github pages](https://siegrift.github.io/tsfunct/). You can
+also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
 
-You can also play with the library on [CodeSandbox](https://codesandbox.io/s/tsfunct-zysfi).
+The error handling utilities, `go` and `goSync` are inspired by
+[promise-utils](https://github.com/api3dao/promise-utils) library which offers extended
+functionality.
 
-_You can read the list and sources of all helpers in the
+_You can check the sources of all helpers in the
 [src/lib](https://github.com/Siegrift/tsfunct/tree/master/src/lib) folder._
 
 ## Motivation
