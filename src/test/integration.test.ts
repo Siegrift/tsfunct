@@ -1,10 +1,6 @@
 import map from '../map';
 import update from '../update';
 import filter from '../filter';
-import pipe from '../pipe';
-import fpSet from '../fpSet';
-import fpUpdate from '../fpUpdate';
-import fpUnset from '../fpUnset';
 
 interface User {
   name: string;
@@ -45,43 +41,6 @@ describe('update, map and filter', () => {
       users: [
         { name: 'Aaaa', age: 18 },
         { name: 'Bbbb', age: 18 },
-      ],
-    });
-  });
-});
-
-describe('pipe and fp helpers', () => {
-  let state: State;
-
-  beforeEach(() => {
-    state = {
-      users: [
-        { name: 'Aaaa', age: 12 },
-        { name: 'Bbbb', age: 55 },
-        { name: 'Cccc', age: 89 },
-      ],
-      dict: { xxxx: { id: 'xxx', x: 123 } },
-      visible: false,
-    };
-  });
-
-  test('piping fp helpers composes the logic', () => {
-    const newState: Pick<State, 'users' | 'dict'> = pipe(
-      fpSet<State>()(['dict', 'xxxx'], { id: 'newId', x: 789 }),
-      fpUpdate<State>()(['dict', 'xxxx', 'x'], (val) => val! + 1), // to demonstrate left to right execution
-      fpUpdate<State>()(['users', 0], (u) => ({
-        ...u,
-        name: u.name.toUpperCase(),
-      })),
-      fpUnset<State>()(['users', 2]),
-      fpUnset<State>()(['visible'])
-    )(state);
-
-    expect(newState).toEqual({
-      dict: { xxxx: { id: 'newId', x: 790 } },
-      users: [
-        { age: 12, name: 'AAAA' },
-        { age: 55, name: 'Bbbb' },
       ],
     });
   });

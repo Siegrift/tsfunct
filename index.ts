@@ -7,8 +7,5 @@ export { default as pick } from './src/pick';
 export { default as set } from './src/set';
 export { default as update } from './src/update';
 export { default as unset } from './src/unset';
-export { default as fpSet } from './src/fpSet';
-export { default as fpUnset } from './src/fpUnset';
-export { default as fpUpdate } from './src/fpUpdate';
 export { default as pipe } from './src/pipe';
 export { default as compose } from './src/compose';
