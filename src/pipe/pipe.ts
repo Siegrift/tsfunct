@@ -96,7 +96,7 @@ interface PipeFn {
  * @param fns functions that should be composed together
  * @returns the composed function
  */
-export const pipe: PipeFn = (...fns: any[]) =>
+const pipe: PipeFn = (...fns: any[]) =>
   fns.reduceRight(
     (f, g) =>
       (...args: any[]) =>

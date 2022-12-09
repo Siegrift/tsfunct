@@ -45,7 +45,7 @@ interface MapFn {
  * 2) If the value is dictionary, function must return `{ key: newKey; value: mappedResult }`
  * @returns the same type of collection with mapped elements.
  */
-export const map: MapFn = (collection: any, fn: any): any => {
+const map: MapFn = (collection: any, fn: any): any => {
   if (isNullOrUndefined(collection)) return collection;
 
   let res;

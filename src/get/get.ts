@@ -116,7 +116,7 @@ interface GetFn {
  * @returns the nested value in the source. Value returned is the reference of the value in source.
  * Modifying this value will also modify the source value.
  */
-export const get: GetFn = (source: any, path: any[], defaultValue?: any) => {
+const get: GetFn = (source: any, path: any[], defaultValue?: any) => {
   for (const key of path) {
     if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
       return defaultValue;

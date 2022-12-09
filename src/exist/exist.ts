@@ -43,7 +43,7 @@ interface ExistFn {
  * @param path path array to be checked
  * @returns true if the path exist in source, false otherwise
  */
-export const exist: ExistFn = (source: any, path: any[]) => {
+const exist: ExistFn = (source: any, path: any[]) => {
   for (const key of path) {
     if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
       return false;

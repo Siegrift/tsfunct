@@ -22,7 +22,7 @@ interface OmitFn {
  * @param keys array of names of the properties
  * @returns the source value with omitted properties
  */
-export const omit: OmitFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+const omit: OmitFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
   if (isNullOrUndefined(source)) return source;
 
   const res = { ...source };

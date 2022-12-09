@@ -147,6 +147,6 @@ interface UnsetFn {
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const unset: UnsetFn = baseUnset;
+const unset: UnsetFn = baseUnset;
 
 export default unset;

@@ -104,7 +104,7 @@ interface ComposeFn {
  * @param fns functions that should be composed together
  * @returns the composed function
  */
-export const compose: ComposeFn = (...fns: any[]) =>
+const compose: ComposeFn = (...fns: any[]) =>
   fns.reduce(
     (f, g) =>
       (...args: any[]) =>

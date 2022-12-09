@@ -75,7 +75,7 @@ interface FilterFn {
  * otherwise.
  * @returns the same type of collection with filtered elements.
  */
-export const filter: FilterFn = (collection: any, fn: any): any => {
+const filter: FilterFn = (collection: any, fn: any): any => {
   if (isNullOrUndefined(collection)) return collection;
 
   let res;

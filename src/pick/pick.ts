@@ -22,7 +22,7 @@ interface PickFn {
  * @param keys array of names of the properties
  * @returns the source value with picked properties
  */
-export const pick: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+const pick: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
   if (isNullOrUndefined(source)) return source;
 
   const res = {} as any;

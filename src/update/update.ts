@@ -167,6 +167,6 @@ interface UpdateFn {
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const update: UpdateFn = baseUpdate;
+const update: UpdateFn = baseUpdate;
 
 export default update;

@@ -115,6 +115,6 @@ interface SetFn {
  * @param value value to be set in source on specified path
  * @returns source value with value on path set
  */
-export const set: SetFn = baseSet;
+const set: SetFn = baseSet;
 
 export default set;
