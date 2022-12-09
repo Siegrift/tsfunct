@@ -59,10 +59,9 @@ interface FilterFn {
     Dictionary<T>
   >;
 
-  <T, R extends T>(
-    collection: Optional<Dictionary<T>>,
-    fn: (value: T, key: string) => boolean
-  ): Optional<Dictionary<T>>;
+  <T>(collection: Optional<Dictionary<T>>, fn: (value: T, key: string) => boolean): Optional<
+    Dictionary<T>
+  >;
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.

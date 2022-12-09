@@ -150,7 +150,7 @@ describe('fpUpdate', () => {
   });
 
   test('optional path', () => {
-    const newState = fpUpdate<State>()(['optional', 'a'], (op) => 123)(state);
+    const newState = fpUpdate<State>()(['optional', 'a'], () => 123)(state);
     expect(newState.optional.a).toBe(123); // the path surely exists now!
   });
 
