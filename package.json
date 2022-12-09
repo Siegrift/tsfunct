@@ -28,7 +28,7 @@
   "scripts": {
     "build": "yarn tsc --project . && cp package.json dist && cp README.md dist",
     "clean": "rm -rf dist docs",
-    "docs": "yarn clean && typedoc index.ts --out docs&& cp -r ./assets/* docs/assets",
+    "docs": "yarn clean && typedoc index.ts --out docs --gitRevision master && cp -r ./assets/* docs/assets",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test-watch": "jest --watch",
