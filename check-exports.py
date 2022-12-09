@@ -7,7 +7,7 @@ with open('index.ts') as f:
 # verify exports structure (and create the export names)
 exportNames = set()
 for e in exports:
-  m = match("^export { default as (.*) } from '(.*)'$", e)
+  m = match("^export { default as (.*) } from '(.*)';$", e)
   if not m:
     print(f'Line "{e}" is not a valid export!')
     exit(1)

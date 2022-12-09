@@ -28,7 +28,9 @@
   "scripts": {
     "build": "yarn tsc --project . && cp package.json dist && cp README.md dist",
     "clean": "rm -rf dist docs",
-    "docs": "yarn clean && typedoc index.ts --out docs --gitRevision master && cp -r ./assets/* docs/assets",
+    "checks": "python3 check-exports.py && node check-docs.js",
+    "docs": "yarn clean && DOCS_OUT_DIR=docs yarn docs:raw",
+    "docs:raw": "typedoc index.ts --out $DOCS_OUT_DIR --gitRevision master && cp -r ./assets/* $DOCS_OUT_DIR/assets",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test-watch": "jest --watch",

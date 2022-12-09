@@ -1,9 +1,4 @@
 # Keep in sync with .prettierignore
-*.js
-!.test.js
-!jest.config.js
-validator/build
 node_modules
 yarn-lock.json
 dist
-.vscode
