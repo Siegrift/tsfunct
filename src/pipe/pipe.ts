@@ -85,15 +85,6 @@ interface PipeFn {
   <V extends any[], T>(...fns: Array<(...args: V) => T>): (...args: V) => T;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const pipeImplementation: PipeFn = (...fns: any[]) =>
-  fns.reduceRight(
-    (f, g) =>
-      (...args: any[]) =>
-        f(g(...args)),
-    (id: any) => id
-  );
-
 /**
  * Creates a new function composed from the functions received as arguments. The composition
  * is left to right (the first function is invoked first and it's result is passed as an
@@ -105,6 +96,12 @@ const pipeImplementation: PipeFn = (...fns: any[]) =>
  * @param fns functions that should be composed together
  * @returns the composed function
  */
-export const pipe = pipeImplementation;
+export const pipe: PipeFn = (...fns: any[]) =>
+  fns.reduceRight(
+    (f, g) =>
+      (...args: any[]) =>
+        f(g(...args)),
+    (id: any) => id
+  );
 
 export default pipe;

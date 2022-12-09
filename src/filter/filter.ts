@@ -2,7 +2,6 @@ import { Dictionary, Nullable, Optional, Undefinable } from '../common/types';
 import { isNullOrUndefined } from '../common/utils';
 
 interface FilterFn {
-  // NOTE: Typescript typeguards
   <T, R extends T>(collection: T[], fn: (value: T, index: number) => value is R): R[];
 
   <T, R extends T>(
@@ -40,7 +39,6 @@ interface FilterFn {
     fn: (value: T, key: string) => value is R
   ): Optional<Dictionary<R>>;
 
-  // NOTE: boolean predicates
   <T>(collection: T[], fn: (value: T, index: number) => boolean): T[];
 
   <T>(collection: Nullable<T[]>, fn: (value: T, index: number) => boolean): Nullable<T[]>;
@@ -64,8 +62,20 @@ interface FilterFn {
   >;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const filterImplementation: FilterFn = (collection: any, fn: any): any => {
+/**
+ * Filters elements from the collection for which the filter function returns true. This function
+ * will always return the same type of collection. This means that if you pass nullable dictionary,
+ * you will also receive nullable dictionary.
+ *
+ * If the collection is null or undefined, the function will immediately return.
+ *
+ * @param collection the collection to be filtered
+ * @param fn predicate that receives the value and index (or key) of the collection element.
+ * Function must return true for elements that should appear in the filtered collection, false
+ * otherwise.
+ * @returns the same type of collection with filtered elements.
+ */
+export const filter: FilterFn = (collection: any, fn: any): any => {
   if (isNullOrUndefined(collection)) return collection;
 
   let res;
@@ -84,20 +94,5 @@ const filterImplementation: FilterFn = (collection: any, fn: any): any => {
 
   return res;
 };
-
-/**
- * Filters elements from the collection for which the filter function returns true. This function
- * will always return the same type of collection. This means that if you pass nullable dictionary,
- * you will also receive nullable dictionary.
- *
- * If the collection is null or undefined, the function will immediately return.
- *
- * @param collection the collection to be filtered
- * @param fn predicate that receives the value and index (or key) of the collection element.
- * Function must return true for elements that should appear in the filtered collection, false
- * otherwise.
- * @returns the same type of collection with filtered elements.
- */
-export const filter = filterImplementation;
 
 export default filter;

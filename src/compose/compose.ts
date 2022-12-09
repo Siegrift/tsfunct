@@ -92,15 +92,6 @@ interface ComposeFn {
   <V extends any[], T>(...fns: Array<(...args: V) => T>): (...args: V) => T;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const composeImplementation: ComposeFn = (...fns: any[]) =>
-  fns.reduce(
-    (f, g) =>
-      (...args: any[]) =>
-        f(g(...args)),
-    (id: any) => id
-  );
-
 /**
  * Creates a new function composed from the functions received as arguments. The composition
  * is right to left (the last function is invoked first and it's result is passed as an
@@ -113,6 +104,12 @@ const composeImplementation: ComposeFn = (...fns: any[]) =>
  * @param fns functions that should be composed together
  * @returns the composed function
  */
-export const compose = composeImplementation;
+export const compose: ComposeFn = (...fns: any[]) =>
+  fns.reduce(
+    (f, g) =>
+      (...args: any[]) =>
+        f(g(...args)),
+    (id: any) => id
+  );
 
 export default compose;

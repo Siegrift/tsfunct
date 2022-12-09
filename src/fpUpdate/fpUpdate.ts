@@ -133,13 +133,6 @@ interface FpUpdateFnReturn<T> {
   ): (source: Optional<T>) => FpUpdate5<T, K1, K2, K3, K4, K5, R>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const updateImplementation =
-  <T>(): FpUpdateFnReturn<T> =>
-  (path: any[], value: any) =>
-  (source: any) =>
-    baseUpdate(source, path, value);
-
 /**
  * Updates the value on the specified path in source value using update function. This function will
  * take current value and can transform it to other value (with the same type).
@@ -160,6 +153,10 @@ const updateImplementation =
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const update = updateImplementation;
+export const update =
+  <T>(): FpUpdateFnReturn<T> =>
+  (path: any[], value: any) =>
+  (source: any) =>
+    baseUpdate(source, path, value);
 
 export default update;

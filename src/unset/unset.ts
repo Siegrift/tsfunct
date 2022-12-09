@@ -133,9 +133,6 @@ interface UnsetFn {
   ): Optional<Unset5<T, K1, K2, K3, K4, K5>>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const unsetImplementation: UnsetFn = baseUnset;
-
 /**
  * Removes the value on the specified path in source value. If the value is an array, the behavior
  * is similar to splicing shallow copy of the value. If the value is object, the value is removed
@@ -150,6 +147,6 @@ const unsetImplementation: UnsetFn = baseUnset;
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const unset = unsetImplementation;
+export const unset: UnsetFn = baseUnset;
 
 export default unset;

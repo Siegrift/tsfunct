@@ -94,17 +94,6 @@ interface GetFn {
   ): U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5];
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const getImplementation: GetFn = (source: any, path: any[], defaultValue?: any) => {
-  for (const key of path) {
-    if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
-      return defaultValue;
-    }
-    source = source[key];
-  }
-  return source;
-};
-
 /**
  * Returns the nested value in source specified by path. There are 3 ways how to use this helper.
  *
@@ -127,6 +116,14 @@ const getImplementation: GetFn = (source: any, path: any[], defaultValue?: any) 
  * @returns the nested value in the source. Value returned is the reference of the value in source.
  * Modifying this value will also modify the source value.
  */
-export const get = getImplementation;
+export const get: GetFn = (source: any, path: any[], defaultValue?: any) => {
+  for (const key of path) {
+    if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
+      return defaultValue;
+    }
+    source = source[key];
+  }
+  return source;
+};
 
 export default get;

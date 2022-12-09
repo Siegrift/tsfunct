@@ -6,7 +6,6 @@ describe('compose', () => {
     expect(compose(wrap(1), wrap(2), wrap(3))('x')).toBe('fn1(fn2(fn3(x)))');
 
     expect(
-      // NOTE: these are necessary due to TS limitations
       compose(
         (n: number) => n + 2,
         (n: number) => n * 3,

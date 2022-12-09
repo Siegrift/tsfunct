@@ -133,13 +133,6 @@ interface FpUnsetFnReturn<T> {
   ): (source: Optional<T>) => Optional<FpUnset5<T, K1, K2, K3, K4, K5>>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const fpUnsetImplementation =
-  <T>(): FpUnsetFnReturn<T> =>
-  (path: any[]) =>
-  (source: any) =>
-    baseUnset(source, path);
-
 /**
  * Removes the value on the specified path in source value. If the value is an array, the behavior
  * is similar to splicing shallow copy of the value. If the value is object, the value is removed
@@ -154,6 +147,10 @@ const fpUnsetImplementation =
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const fpUnset = fpUnsetImplementation;
+export const fpUnset =
+  <T>(): FpUnsetFnReturn<T> =>
+  (path: any[]) =>
+  (source: any) =>
+    baseUnset(source, path);
 
 export default fpUnset;

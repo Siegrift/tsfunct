@@ -31,17 +31,6 @@ interface ExistFn {
   ): boolean;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const existImplementation: ExistFn = (source: any, path: any[]) => {
-  for (const key of path) {
-    if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
-      return false;
-    }
-    source = source[key];
-  }
-  return true;
-};
-
 /**
  * Checks whether path exist in source value.
  *
@@ -54,6 +43,14 @@ const existImplementation: ExistFn = (source: any, path: any[]) => {
  * @param path path array to be checked
  * @returns true if the path exist in source, false otherwise
  */
-export const exist = existImplementation;
+export const exist: ExistFn = (source: any, path: any[]) => {
+  for (const key of path) {
+    if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
+      return false;
+    }
+    source = source[key];
+  }
+  return true;
+};
 
 export default exist;

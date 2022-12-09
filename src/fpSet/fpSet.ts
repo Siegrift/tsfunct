@@ -50,9 +50,6 @@ type FpSet5<
       [KK1 in K1]-?: { [key in K1]: FpSet4<U<T[K1]>, K2, K3, K4, K5, R> }[KK1];
     };
 
-// NOTE: TS doesn't allow partial generic type argument inference
-// see: https://github.com/microsoft/TypeScript/pull/26349
-// see: https://medium.com/@nandiinbao/partial-type-argument-inference-in-typescript-and-workarounds-for-it-d7c772788b2e
 interface FpSetFnReturn<T> {
   <K1 extends keyof T, R extends T[K1]>(path: [K1], value: R): (
     source: Optional<T>
@@ -97,13 +94,6 @@ interface FpSetFnReturn<T> {
   ): (source: Optional<T>) => FpSet5<T, K1, K2, K3, K4, K5, R>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const fpSetImplementation =
-  <T>(): FpSetFnReturn<T> =>
-  (path: any[], value: any) =>
-  (source: any) =>
-    baseSet(source, path, value);
-
 /**
  * Sets the value on the specified path in source value. If the path in the source doesn't exist it
  * will be created. Note, that we don't know what is the type of the object at runtime. Due to this,
@@ -122,6 +112,10 @@ const fpSetImplementation =
  * @param value value to be set in source on specified path
  * @returns source value with value on path set
  */
-export const fpSet = fpSetImplementation;
+export const fpSet =
+  <T>(): FpSetFnReturn<T> =>
+  (path: any[], value: any) =>
+  (source: any) =>
+    baseSet(source, path, value);
 
 export default fpSet;

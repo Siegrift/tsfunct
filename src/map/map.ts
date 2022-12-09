@@ -30,8 +30,22 @@ interface MapFn {
   ): Optional<Dictionary<Result>>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const mapImplementation: MapFn = (collection: any, fn: any): any => {
+/**
+ * Maps elements from the collection using mapping function. This function will always return the
+ * same type of collection. This means that if you pass nullable dictionary, you will also receive
+ * nullable dictionary.
+ *
+ * If the collection is null or undefined, the function will immediately return.
+ *
+ * @param collection the collection to be mapped
+ * @param fn predicate that receives the value and index (or key) of the collection element.
+ * Function can transform this value to some other value. The return type differs depending on the
+ * type of collection.
+ * 1) If the collection is array, only the value must be returned
+ * 2) If the value is dictionary, function must return `{ key: newKey; value: mappedResult }`
+ * @returns the same type of collection with mapped elements.
+ */
+export const map: MapFn = (collection: any, fn: any): any => {
   if (isNullOrUndefined(collection)) return collection;
 
   let res;
@@ -51,22 +65,5 @@ const mapImplementation: MapFn = (collection: any, fn: any): any => {
 
   return res;
 };
-
-/**
- * Maps elements from the collection using mapping function. This function will always return the
- * same type of collection. This means that if you pass nullable dictionary, you will also receive
- * nullable dictionary.
- *
- * If the collection is null or undefined, the function will immediately return.
- *
- * @param collection the collection to be mapped
- * @param fn predicate that receives the value and index (or key) of the collection element.
- * Function can transform this value to some other value. The return type differs depending on the
- * type of collection.
- * 1) If the collection is array, only the value must be returned
- * 2) If the value is dictionary, function must return `{ key: newKey; value: mappedResult }`
- * @returns the same type of collection with mapped elements.
- */
-export const map = mapImplementation;
 
 export default map;

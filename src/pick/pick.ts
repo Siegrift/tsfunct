@@ -8,8 +8,21 @@ interface PickFn {
   <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Pick<T, K>>;
 }
 
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const pickImplementation: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+/**
+ * Picks properties from source value. If source type is nullable or optional, the result type is
+ * nullable or optional too.
+ *
+ * There are two signatures of this function, depending on number of properties.
+ * 1) When number of picked properties <= 15, the result type will be the source value only with
+ *    these properties (strongly typed).
+ * 2) If the number of picked properties > 15, the result will be the source value with all
+ *    properties marked as optional.
+ *
+ * @param source source value which properties should be picked
+ * @param keys array of names of the properties
+ * @returns the source value with picked properties
+ */
+export const pick: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
   if (isNullOrUndefined(source)) return source;
 
   const res = {} as any;
@@ -25,21 +38,5 @@ const pickImplementation: PickFn = (source: any, firstKeyOrKeys?: any, ...otherK
   }
   return res;
 };
-
-/**
- * Picks properties from source value. If source type is nullable or optional, the result type is
- * nullable or optional too.
- *
- * There are two signatures of this function, depending on number of properties.
- * 1) When number of picked properties <= 15, the result type will be the source value only with
- *    these properties (strongly typed).
- * 2) If the number of picked properties > 15, the result will be the source value with all
- *    properties marked as optional.
- *
- * @param source source value which properties should be picked
- * @param keys array of names of the properties
- * @returns the source value with picked properties
- */
-export const pick = pickImplementation;
 
 export default pick;
