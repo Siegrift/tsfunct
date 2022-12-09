@@ -18,7 +18,6 @@ interface OmitFn {
 const omitImplementation: OmitFn = (
   source: any,
   firstKeyOrKeys?: any,
-  // tslint:disable-next-line
   ...otherKeys: any[]
 ) => {
   if (isNullOrUndefined(source)) return source

@@ -11,12 +11,12 @@ for e in exports:
   if not m:
     print(f'Line "{e}" is not a valid export!')
     exit(1)
-  
+
   g = m.groups()
   if len(g) != 2 or f'./src/{g[0]}' != g[1]:
     print(f'Export "{e}" doesn\'t match the library folder name!')
     exit(1)
-  
+
   exportNames.add(g[0])
 
 # verify that all helpers are exported (except the ignored ones)

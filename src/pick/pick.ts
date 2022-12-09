@@ -14,7 +14,6 @@ interface PickFn {
 const pickImplementation: PickFn = (
   source: any,
   firstKeyOrKeys?: any,
-  // tslint:disable-next-line
   ...otherKeys: any[]
 ) => {
   if (isNullOrUndefined(source)) return source

@@ -4,6 +4,8 @@
     "module": "commonjs",
     "lib": ["es2015"],
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
     "skipLibCheck": true,
 
@@ -15,6 +17,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
     "moduleResolution": "node",
     "esModuleInterop": true
