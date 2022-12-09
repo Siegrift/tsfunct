@@ -9,6 +9,8 @@ exportNames = set()
 for e in exports:
   m = match("^export { default as (.*) } from '(.*)';$", e)
   if not m:
+    # allow export * for modules that have multiple exports
+    if match("^export \* from '(.*)';$", e): continue
     print(f'Line "{e}" is not a valid export!')
     exit(1)
 
@@ -20,7 +22,7 @@ for e in exports:
   exportNames.add(g[0])
 
 # verify that all helpers are exported (except the ignored ones)
-ignored = set(['common', 'index.ts', 'tsconfig.json'])
+ignored = set(['common', 'go', 'index.ts', 'tsconfig.json'])
 srcFolders = set(listdir('src'))
 diff = srcFolders.difference(ignored.union(exportNames))
 if len(diff) != 0:

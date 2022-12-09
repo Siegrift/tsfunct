@@ -8,7 +8,6 @@ import {
   GoWrappedError,
 } from '../src/go';
 import { expectType, expectNotAssignable } from 'tsd';
-import { describe } from 'node:test';
 
 const resolveAfter = <T>(ms: number, value?: T): Promise<T> =>
   new Promise((resolve) => setTimeout(() => resolve(value as T), ms));
