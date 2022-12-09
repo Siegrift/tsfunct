@@ -1,4 +1,4 @@
 # Keep in sync with .prettierignore
-node_modules
-yarn-lock.json
-dist
+/node_modules
+/dist
+/build

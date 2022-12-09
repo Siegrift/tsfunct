@@ -1,4 +1,4 @@
-import unset from '../unset';
+import unset from '../src/unset';
 import { State } from './common';
 
 describe('unset', () => {

@@ -1,5 +1,5 @@
-import map from '../map';
-import { Dictionary, Optional } from '../common/types';
+import map from '../src/map';
+import { Dictionary, Optional } from '../src/common/types';
 import { idFn } from './common';
 
 describe('map', () => {

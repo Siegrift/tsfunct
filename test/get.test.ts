@@ -1,6 +1,6 @@
-import get from '../get';
+import get from '../src/get';
 import { Dict, State, User } from './common';
-import { Optional } from '../common/types';
+import { Optional } from '../src/common/types';
 
 describe('get', () => {
   let state: State;

@@ -1,4 +1,4 @@
-import pipe from '../pipe';
+import pipe from '../src/pipe';
 
 describe('pipe', () => {
   it('composes left to right', () => {

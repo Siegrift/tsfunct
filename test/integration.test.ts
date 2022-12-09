@@ -1,6 +1,6 @@
-import map from '../map';
-import update from '../update';
-import filter from '../filter';
+import map from '../src/map';
+import update from '../src/update';
+import filter from '../src/filter';
 
 interface User {
   name: string;

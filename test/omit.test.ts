@@ -1,5 +1,5 @@
-import omit from '../omit';
-import { Dictionary, Optional } from '../common/types';
+import omit from '../src/omit';
+import { Dictionary, Optional } from '../src/common/types';
 import { State } from './common';
 
 describe('omit', () => {

@@ -1,5 +1,5 @@
-import filter from '../filter';
-import { Dictionary, Optional } from '../common/types';
+import filter from '../src/filter';
+import { Dictionary, Optional } from '../src/common/types';
 import { idFn } from './common';
 
 describe('filter', () => {

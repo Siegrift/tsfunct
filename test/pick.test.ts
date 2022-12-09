@@ -1,5 +1,5 @@
-import pick from '../pick';
-import { Dictionary, Optional } from '../common/types';
+import pick from '../src/pick';
+import { Dictionary, Optional } from '../src/common/types';
 import { State } from './common';
 
 describe('pick', () => {

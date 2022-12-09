@@ -1,4 +1,4 @@
-import compose from '../compose';
+import compose from '../src/compose';
 
 describe('compose', () => {
   it('composes left to right', () => {

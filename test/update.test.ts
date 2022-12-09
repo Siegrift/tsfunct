@@ -1,4 +1,4 @@
-import update from '../update';
+import update from '../src/update';
 import { State, User } from './common';
 import { expectAssignable, expectNotAssignable, expectType } from 'tsd';
 

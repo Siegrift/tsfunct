@@ -1,6 +1,6 @@
-import set from '../set';
+import set from '../src/set';
 import { State } from './common';
-import { Dictionary } from '../common/types';
+import { Dictionary } from '../src/common/types';
 import { expectAssignable, expectNotAssignable, expectType } from 'tsd';
 
 describe('set', () => {
