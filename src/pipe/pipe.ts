@@ -90,7 +90,7 @@ interface PipeFn {
  * is left to right (the first function is invoked first and it's result is passed as an
  * argument to the second...).
  *
- * Note that this is the preferred way to compose functions in TS, because right to left
+ * Using pipe is is the preferred way to compose functions in TS, because right to left
  * composition can't be typed properly (TS design limitation).
  *
  * @param fns functions that should be composed together

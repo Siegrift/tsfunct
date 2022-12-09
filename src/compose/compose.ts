@@ -97,7 +97,7 @@ interface ComposeFn {
  * is right to left (the last function is invoked first and it's result is passed as an
  * argument to the previous function...).
  *
- * Note that this function can't be typed properly (TS design limitation,
+ * Unfortunately, this function can't be typed properly (TS design limitation,
  * see: https://github.com/microsoft/TypeScript/issues/31738). Use `pipe` if with left to right
  * composition instead if possible.
  *

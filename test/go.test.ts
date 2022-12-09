@@ -8,6 +8,7 @@ import {
   GoWrappedError,
 } from '../src/go';
 import { expectType, expectNotAssignable } from 'tsd';
+import { describe } from 'node:test';
 
 const resolveAfter = <T>(ms: number, value?: T): Promise<T> =>
   new Promise((resolve) => setTimeout(() => resolve(value as T), ms));
@@ -54,14 +55,38 @@ describe('basic go usage', () => {
     expect(res).toEqual(fail(err));
   });
 
+  describe('uniformness', () => {
+    it('goSync', () => {
+      const { success, error, data } = goSync(() => 123);
+
+      expectType<number | undefined>(data);
+      expectType<Error | undefined>(error);
+      if (success) {
+        expectType<number>(data);
+        expectType<undefined>(error);
+      }
+    });
+
+    it('go', async () => {
+      const { success, error, data } = await go(() => Promise.resolve(123));
+
+      expectType<number | undefined>(data);
+      expectType<Error | undefined>(error);
+      if (success) {
+        expectType<number>(data);
+        expectType<undefined>(error);
+      }
+    });
+  });
+
   it('resolves on sync errors as well', async () => {
     const obj = {} as any;
     const res = await go(() => obj.nonExistingFunction());
     expect(res).toEqual(fail(new TypeError('obj.nonExistingFunction is not a function')));
   });
 
-  // NOTE: This is not an issue of promise utils library since the error is thrown before the value is passed as an
-  // argument to the go function
+  // This is not an issue of promise utils library since the error is thrown before the value is
+  // passed as an argument to the go function. There is nothing we can do about it.
   it('throws on sync usage without callback', async () => {
     const obj = {} as any;
     expect(() => go(obj.nonExistingFunction())).toThrow(
@@ -287,7 +312,6 @@ it('has access to native error', async () => {
   expect(goRes.error.reason).toEqual({ message: 'an error', data: 'some data' });
 });
 
-// NOTE: Keep in sync with README
 describe('documentation snippets are valid', () => {
   const fetchData = (_path: string) => {
     if (_path.startsWith('throw')) return Promise.reject('unexpected error');

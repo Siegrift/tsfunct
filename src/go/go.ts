@@ -1,5 +1,5 @@
-export type GoResultSuccess<T> = { data: T; success: true };
-export type GoResultError<E extends Error = Error> = { error: E; success: false };
+export type GoResultSuccess<T> = { data: T; error: undefined; success: true };
+export type GoResultError<E extends Error = Error> = { data: undefined; error: E; success: false };
 export type GoResult<T, E extends Error = Error> = GoResultSuccess<T> | GoResultError<E>;
 
 export class GoWrappedError extends Error {
@@ -8,16 +8,16 @@ export class GoWrappedError extends Error {
   }
 }
 
-// NOTE: This needs to be written using 'function' syntax (cannot be arrow function)
-// See: https://github.com/microsoft/TypeScript/issues/34523#issuecomment-542978853
+// This needs to be written using 'function' syntax (cannot be arrow function) See:
+// https://github.com/microsoft/TypeScript/issues/34523#issuecomment-542978853
 export function assertGoSuccess<T>(result: GoResult<T>): asserts result is GoResultSuccess<T> {
   if (!result.success) {
     throw result.error;
   }
 }
 
-// NOTE: This needs to be written using 'function' syntax (cannot be arrow function)
-// See: https://github.com/microsoft/TypeScript/issues/34523#issuecomment-542978853
+// This needs to be written using 'function' syntax (cannot be arrow function) See:
+// https://github.com/microsoft/TypeScript/issues/34523#issuecomment-542978853
 export function assertGoError<E extends Error>(
   result: GoResult<any, E>
 ): asserts result is GoResultError<E> {
@@ -27,13 +27,13 @@ export function assertGoError<E extends Error>(
 }
 
 export const success = <T>(value: T): GoResultSuccess<T> => {
-  return { success: true, data: value };
+  return { success: true, data: value, error: undefined };
 };
 
 // We allow the consumer to type which error is returned. The "err" parameter has weaker type ("Error") to accommodate
 // for a generic error thrown by the go functions.
 export const fail = <E extends Error>(err: Error): GoResultError<E> => {
-  return { success: false, error: err as E };
+  return { success: false, data: undefined, error: err as E };
 };
 
 const createGoError = <E extends Error>(err: unknown): GoResultError<E> => {
@@ -45,7 +45,7 @@ export const goSync = <T, E extends Error>(fn: () => T): GoResult<T, E> => {
   try {
     return success(fn());
   } catch (err) {
-    return createGoError(err);
+    return createGoError(err) as GoResultError<E>;
   }
 };
 
@@ -85,6 +85,6 @@ export const go = async <T, E extends Error>(
       return success(result as T);
     }
   } catch (err) {
-    return createGoError(err);
+    return createGoError(err) as GoResultError<E>;
   }
 };
