@@ -116,3 +116,14 @@ contribute just follow these steps:
 3. create a new branch with you feature
 4. commit & push
 5. create PR to the original repo
+
+## Publishing
+
+To publish run:
+
+```sh
+# This needs to be run with "npm run" and not "yarn"
+# See: https://github.com/sindresorhus/np/issues/432#issuecomment-583732143
+# We could set the publishConfig correctly, but using NPM is good enough
+npm run publish-new-version
+```
