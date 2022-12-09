@@ -1,4 +1,4 @@
-# Tsfunct [![CircleCI](https://circleci.com/gh/Siegrift/tsfunct.svg?style=svg)](https://circleci.com/gh/Siegrift/tsfunct)
+# Tsfunct ![CI status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 
 Tsfunct is a **T**ype**S**cript **funct**ional library made directly with and for TS with its static
 typesystem in mind.
