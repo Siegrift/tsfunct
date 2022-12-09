@@ -119,11 +119,12 @@ contribute just follow these steps:
 
 ## Publishing
 
-To publish run:
+To release a new version follow these steps:
 
-```sh
-# This needs to be run with "npm run" and not "yarn"
-# See: https://github.com/sindresorhus/np/issues/432#issuecomment-583732143
-# We could set the publishConfig correctly, but using NPM is good enough
-npm run publish-new-version
-```
+1. `git checkout master && git pull` - ensure you are on the "master" branch with latest changes
+2. `yarn version` - choose "x.y.z" as the version to be released
+3. `git show` - verify the changes of the version commit
+4. `yarn build` - only build the package after the "yarn version" command so the bundled
+   "package.json" uses the updated version
+5. `yarn publish --access public`
+6. `git push --follow-tags` - to push the commits to a "main" branch
