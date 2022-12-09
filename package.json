@@ -29,8 +29,8 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "clean": "rm -rf dist docs",
-    "build": "yarn tsc --target \"ES5\" --outDir \"dist\" --declaration true && cp package.json dist && cp README.md dist",
-    "docs": "yarn clean && typedoc --theme minimal --out docs ./src --mode file --exclude './src/+(common|test)/*' --excludeNotExported --excludePrivate && cp -r ./assets/* docs/assets"
+    "build": "yarn tsc --project . && cp package.json dist && cp README.md dist",
+    "docs": "yarn clean && typedoc index.ts --out docs&& cp -r ./assets/* docs/assets"
   },
   "husky": {
     "hooks": {
