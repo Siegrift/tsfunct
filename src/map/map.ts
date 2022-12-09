@@ -1,61 +1,33 @@
-import { Dictionary, Nullable, Optional, Undefinable } from '../common/types'
-import { isNullOrUndefined } from '../common/utils'
+import { Dictionary, Nullable, Optional, Undefinable } from '../common/types';
+import { isNullOrUndefined } from '../common/utils';
 
 interface MapFn {
-  <T, Result>(
-    collection: T[],
-    fn: (value: T, index: number) => Result,
-  ): Result[]
-  <T, Result>(
-    collection: Nullable<T[]>,
-    fn: (value: T, index: number) => Result,
-  ): Nullable<Result[]>
-  <T, Result>(
-    collection: Undefinable<T[]>,
-    fn: (value: T, index: number) => Result,
-  ): Undefinable<Result[]>
-  <T, Result>(
-    collection: Optional<T[]>,
-    fn: (value: T, index: number) => Result,
-  ): Optional<Result[]>
+  <T, Result>(collection: T[], fn: (value: T, index: number) => Result): Result[];
+  <T, Result>(collection: Nullable<T[]>, fn: (value: T, index: number) => Result): Nullable<
+    Result[]
+  >;
+  <T, Result>(collection: Undefinable<T[]>, fn: (value: T, index: number) => Result): Undefinable<
+    Result[]
+  >;
+  <T, Result>(collection: Optional<T[]>, fn: (value: T, index: number) => Result): Optional<
+    Result[]
+  >;
   <T, Result>(
     collection: Dictionary<T>,
-    fn: (value: T, key: string) => { key: string; value: Result },
-  ): Dictionary<Result>
+    fn: (value: T, key: string) => { key: string; value: Result }
+  ): Dictionary<Result>;
   <T, Result>(
     collection: Nullable<Dictionary<T>>,
-    fn: (value: T, key: string) => { key: string; value: Result },
-  ): Nullable<Dictionary<Result>>
+    fn: (value: T, key: string) => { key: string; value: Result }
+  ): Nullable<Dictionary<Result>>;
   <T, Result>(
     collection: Undefinable<Dictionary<T>>,
-    fn: (value: T, key: string) => { key: string; value: Result },
-  ): Undefinable<Dictionary<Result>>
+    fn: (value: T, key: string) => { key: string; value: Result }
+  ): Undefinable<Dictionary<Result>>;
   <T, Result>(
     collection: Optional<Dictionary<T>>,
-    fn: (value: T, key: string) => { key: string; value: Result },
-  ): Optional<Dictionary<Result>>
-}
-
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const mapImplementation: MapFn = (collection: any, fn: any): any => {
-  if (isNullOrUndefined(collection)) return collection
-
-  let res
-  if (Array.isArray(collection)) {
-    res = []
-    for (let i = 0; i < collection.length; i++) {
-      res.push(fn(collection[i], i))
-    }
-  } else {
-    res = {} as any
-    const keys = Object.keys(collection)
-    for (const key of keys) {
-      const mapped = fn(collection[key], key)
-      res[mapped.key] = mapped.value
-    }
-  }
-
-  return res
+    fn: (value: T, key: string) => { key: string; value: Result }
+  ): Optional<Dictionary<Result>>;
 }
 
 /**
@@ -73,6 +45,25 @@ const mapImplementation: MapFn = (collection: any, fn: any): any => {
  * 2) If the value is dictionary, function must return `{ key: newKey; value: mappedResult }`
  * @returns the same type of collection with mapped elements.
  */
-export const map = mapImplementation
+const map: MapFn = (collection: any, fn: any): any => {
+  if (isNullOrUndefined(collection)) return collection;
 
-export default map
+  let res;
+  if (Array.isArray(collection)) {
+    res = [];
+    for (let i = 0; i < collection.length; i++) {
+      res.push(fn(collection[i], i));
+    }
+  } else {
+    res = {} as any;
+    const keys = Object.keys(collection);
+    for (const key of keys) {
+      const mapped = fn(collection[key], key);
+      res[mapped.key] = mapped.value;
+    }
+  }
+
+  return res;
+};
+
+export default map;

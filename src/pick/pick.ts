@@ -1,36 +1,11 @@
-import { isNullOrUndefined } from '../common/utils'
-import { Nullable, Optional, Undefinable } from '../common/types'
+import { isNullOrUndefined } from '../common/utils';
+import { Nullable, Optional, Undefinable } from '../common/types';
 
 interface PickFn {
-  <T, K extends keyof T>(source: T, keys: K[]): Pick<T, K>
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Undefinable<
-    Pick<T, K>
-  >
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Pick<T, K>>
-  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Pick<T, K>>
-}
-
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const pickImplementation: PickFn = (
-  source: any,
-  firstKeyOrKeys?: any,
-  // tslint:disable-next-line
-  ...otherKeys: any[]
-) => {
-  if (isNullOrUndefined(source)) return source
-
-  const res = {} as any
-  if (Array.isArray(firstKeyOrKeys)) {
-    firstKeyOrKeys.forEach((key) => {
-      if (source[key] !== undefined) res[key] = source[key]
-    })
-  } else {
-    res[firstKeyOrKeys] = source[firstKeyOrKeys]
-    otherKeys.forEach((key) => {
-      if (source[key] !== undefined) res[key] = source[key]
-    })
-  }
-  return res
+  <T, K extends keyof T>(source: T, keys: K[]): Pick<T, K>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Undefinable<Pick<T, K>>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Pick<T, K>>;
+  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Pick<T, K>>;
 }
 
 /**
@@ -47,6 +22,21 @@ const pickImplementation: PickFn = (
  * @param keys array of names of the properties
  * @returns the source value with picked properties
  */
-export const pick = pickImplementation
+const pick: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+  if (isNullOrUndefined(source)) return source;
 
-export default pick
+  const res = {} as any;
+  if (Array.isArray(firstKeyOrKeys)) {
+    firstKeyOrKeys.forEach((key) => {
+      if (source[key] !== undefined) res[key] = source[key];
+    });
+  } else {
+    res[firstKeyOrKeys] = source[firstKeyOrKeys];
+    otherKeys.forEach((key) => {
+      if (source[key] !== undefined) res[key] = source[key];
+    });
+  }
+  return res;
+};
+
+export default pick;

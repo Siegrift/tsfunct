@@ -1,21 +1,13 @@
-import { Optional, UnwrapOptional as U } from '../common/types'
-import { isNullOrUndefined, isObject } from '../common/utils'
+import { Optional, UnwrapOptional as U } from '../common/types';
+import { isNullOrUndefined, isObject } from '../common/utils';
 
 interface ExistFn {
-  <T, K1 extends keyof T>(source: Optional<T>, path: [K1]): boolean
-  <T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(
+  <T, K1 extends keyof T>(source: Optional<T>, path: [K1]): boolean;
+  <T, K1 extends keyof T, K2 extends keyof U<T[K1]>>(source: Optional<T>, path: [K1, K2]): boolean;
+  <T, K1 extends keyof T, K2 extends keyof U<T[K1]>, K3 extends keyof U<U<T[K1]>[K2]>>(
     source: Optional<T>,
-    path: [K1, K2],
-  ): boolean
-  <
-    T,
-    K1 extends keyof T,
-    K2 extends keyof U<T[K1]>,
-    K3 extends keyof U<U<T[K1]>[K2]>
-  >(
-    source: Optional<T>,
-    path: [K1, K2, K3],
-  ): boolean
+    path: [K1, K2, K3]
+  ): boolean;
   <
     T,
     K1 extends keyof T,
@@ -24,8 +16,8 @@ interface ExistFn {
     K4 extends keyof U<U<U<T[K1]>[K2]>[K3]>
   >(
     source: Optional<T>,
-    path: [K1, K2, K3, K4],
-  ): boolean
+    path: [K1, K2, K3, K4]
+  ): boolean;
   <
     T,
     K1 extends keyof T,
@@ -35,23 +27,8 @@ interface ExistFn {
     K5 extends keyof U<U<U<U<T[K1]>[K2]>[K3]>[K4]>
   >(
     source: Optional<T>,
-    path: [K1, K2, K3, K4, K5],
-  ): boolean
-}
-
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const existImplementation: ExistFn = (source: any, path: any[]) => {
-  for (const key of path) {
-    if (
-      isNullOrUndefined(source) ||
-      !isObject(source) ||
-      !source.hasOwnProperty(key)
-    ) {
-      return false
-    }
-    source = source[key]
-  }
-  return true
+    path: [K1, K2, K3, K4, K5]
+  ): boolean;
 }
 
 /**
@@ -66,6 +43,14 @@ const existImplementation: ExistFn = (source: any, path: any[]) => {
  * @param path path array to be checked
  * @returns true if the path exist in source, false otherwise
  */
-export const exist = existImplementation
+const exist: ExistFn = (source: any, path: any[]) => {
+  for (const key of path) {
+    if (isNullOrUndefined(source) || !isObject(source) || !source.hasOwnProperty(key)) {
+      return false;
+    }
+    source = source[key];
+  }
+  return true;
+};
 
-export default exist
+export default exist;

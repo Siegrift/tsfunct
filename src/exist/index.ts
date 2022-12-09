@@ -1,1 +1,1 @@
-export { default } from './exist'
+export { default } from './exist';

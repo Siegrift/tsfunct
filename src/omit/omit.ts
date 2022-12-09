@@ -1,40 +1,11 @@
-import { Nullable, Optional, Undefinable, Without } from '../common/types'
-import { isNullOrUndefined } from '../common/utils'
+import { Nullable, Optional, Undefinable, Without } from '../common/types';
+import { isNullOrUndefined } from '../common/utils';
 
 interface OmitFn {
-  <T, K extends keyof T>(source: T, keys: K[]): Without<T, K>
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<
-    Without<T, K>
-  >
-  <T, K extends keyof T>(source: Undefinable<T>, keys: K[]): Undefinable<
-    Without<T, K>
-  >
-  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<
-    Without<T, K>
-  >
-}
-
-// NOTE: use private implementation because typedoc generates wrong documentation.
-const omitImplementation: OmitFn = (
-  source: any,
-  firstKeyOrKeys?: any,
-  // tslint:disable-next-line
-  ...otherKeys: any[]
-) => {
-  if (isNullOrUndefined(source)) return source
-
-  const res = { ...source }
-  if (Array.isArray(firstKeyOrKeys)) {
-    firstKeyOrKeys.forEach((key) => {
-      delete res[key]
-    })
-  } else {
-    delete res[firstKeyOrKeys]
-    otherKeys.forEach((key) => {
-      delete res[key]
-    })
-  }
-  return res
+  <T, K extends keyof T>(source: T, keys: K[]): Without<T, K>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Without<T, K>>;
+  <T, K extends keyof T>(source: Undefinable<T>, keys: K[]): Undefinable<Without<T, K>>;
+  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Without<T, K>>;
 }
 
 /**
@@ -51,6 +22,21 @@ const omitImplementation: OmitFn = (
  * @param keys array of names of the properties
  * @returns the source value with omitted properties
  */
-export const omit = omitImplementation
+const omit: OmitFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+  if (isNullOrUndefined(source)) return source;
 
-export default omit
+  const res = { ...source };
+  if (Array.isArray(firstKeyOrKeys)) {
+    firstKeyOrKeys.forEach((key) => {
+      delete res[key];
+    });
+  } else {
+    delete res[firstKeyOrKeys];
+    otherKeys.forEach((key) => {
+      delete res[key];
+    });
+  }
+  return res;
+};
+
+export default omit;
