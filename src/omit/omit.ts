@@ -1,40 +1,30 @@
-import { Nullable, Optional, Undefinable, Without } from '../common/types'
-import { isNullOrUndefined } from '../common/utils'
+import { Nullable, Optional, Undefinable, Without } from '../common/types';
+import { isNullOrUndefined } from '../common/utils';
 
 interface OmitFn {
-  <T, K extends keyof T>(source: T, keys: K[]): Without<T, K>
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<
-    Without<T, K>
-  >
-  <T, K extends keyof T>(source: Undefinable<T>, keys: K[]): Undefinable<
-    Without<T, K>
-  >
-  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<
-    Without<T, K>
-  >
+  <T, K extends keyof T>(source: T, keys: K[]): Without<T, K>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Without<T, K>>;
+  <T, K extends keyof T>(source: Undefinable<T>, keys: K[]): Undefinable<Without<T, K>>;
+  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Without<T, K>>;
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.
-const omitImplementation: OmitFn = (
-  source: any,
-  firstKeyOrKeys?: any,
-  ...otherKeys: any[]
-) => {
-  if (isNullOrUndefined(source)) return source
+const omitImplementation: OmitFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+  if (isNullOrUndefined(source)) return source;
 
-  const res = { ...source }
+  const res = { ...source };
   if (Array.isArray(firstKeyOrKeys)) {
     firstKeyOrKeys.forEach((key) => {
-      delete res[key]
-    })
+      delete res[key];
+    });
   } else {
-    delete res[firstKeyOrKeys]
+    delete res[firstKeyOrKeys];
     otherKeys.forEach((key) => {
-      delete res[key]
-    })
+      delete res[key];
+    });
   }
-  return res
-}
+  return res;
+};
 
 /**
  * Omits properties from source value. If source type is nullable or optional, the result type is
@@ -50,6 +40,6 @@ const omitImplementation: OmitFn = (
  * @param keys array of names of the properties
  * @returns the source value with omitted properties
  */
-export const omit = omitImplementation
+export const omit = omitImplementation;
 
-export default omit
+export default omit;

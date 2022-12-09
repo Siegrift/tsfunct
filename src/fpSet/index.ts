@@ -1,1 +1,1 @@
-export { default } from './fpSet'
+export { default } from './fpSet';

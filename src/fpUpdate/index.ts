@@ -1,1 +1,1 @@
-export { default } from './fpUpdate'
+export { default } from './fpUpdate';

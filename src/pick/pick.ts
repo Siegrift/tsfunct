@@ -1,36 +1,30 @@
-import { isNullOrUndefined } from '../common/utils'
-import { Nullable, Optional, Undefinable } from '../common/types'
+import { isNullOrUndefined } from '../common/utils';
+import { Nullable, Optional, Undefinable } from '../common/types';
 
 interface PickFn {
-  <T, K extends keyof T>(source: T, keys: K[]): Pick<T, K>
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Undefinable<
-    Pick<T, K>
-  >
-  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Pick<T, K>>
-  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Pick<T, K>>
+  <T, K extends keyof T>(source: T, keys: K[]): Pick<T, K>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Undefinable<Pick<T, K>>;
+  <T, K extends keyof T>(source: Nullable<T>, keys: K[]): Nullable<Pick<T, K>>;
+  <T, K extends keyof T>(source: Optional<T>, keys: K[]): Optional<Pick<T, K>>;
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.
-const pickImplementation: PickFn = (
-  source: any,
-  firstKeyOrKeys?: any,
-  ...otherKeys: any[]
-) => {
-  if (isNullOrUndefined(source)) return source
+const pickImplementation: PickFn = (source: any, firstKeyOrKeys?: any, ...otherKeys: any[]) => {
+  if (isNullOrUndefined(source)) return source;
 
-  const res = {} as any
+  const res = {} as any;
   if (Array.isArray(firstKeyOrKeys)) {
     firstKeyOrKeys.forEach((key) => {
-      if (source[key] !== undefined) res[key] = source[key]
-    })
+      if (source[key] !== undefined) res[key] = source[key];
+    });
   } else {
-    res[firstKeyOrKeys] = source[firstKeyOrKeys]
+    res[firstKeyOrKeys] = source[firstKeyOrKeys];
     otherKeys.forEach((key) => {
-      if (source[key] !== undefined) res[key] = source[key]
-    })
+      if (source[key] !== undefined) res[key] = source[key];
+    });
   }
-  return res
-}
+  return res;
+};
 
 /**
  * Picks properties from source value. If source type is nullable or optional, the result type is
@@ -46,6 +40,6 @@ const pickImplementation: PickFn = (
  * @param keys array of names of the properties
  * @returns the source value with picked properties
  */
-export const pick = pickImplementation
+export const pick = pickImplementation;
 
-export default pick
+export default pick;

@@ -1,1 +1,1 @@
-export { default } from './fpUnset'
+export { default } from './fpUnset';

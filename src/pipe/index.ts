@@ -1,1 +1,1 @@
-export { default } from './pipe'
+export { default } from './pipe';

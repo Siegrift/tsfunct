@@ -24,16 +24,18 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
-    "clean": "rm -rf dist docs",
     "build": "yarn tsc --project . && cp package.json dist && cp README.md dist",
-    "docs": "yarn clean && typedoc index.ts --out docs&& cp -r ./assets/* docs/assets"
+    "clean": "rm -rf dist docs",
+    "docs": "yarn clean && typedoc index.ts --out docs&& cp -r ./assets/* docs/assets",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "test-watch": "jest --watch",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "python3 check_exports.py && yarn test && yarn clean && yarn docs && git add docs/*",
-      "pre-push": "python3 check_exports.py && yarn test"
+      "pre-commit": "python3 check_exports.py && yarn lint && yarn docs && git add docs/*",
+      "pre-push": "yarn test"
     }
   },
   "description": "Tsfunct is a **T**ype**S**cript **funct**ional library made directly for TS with its static typesystem in mind.",

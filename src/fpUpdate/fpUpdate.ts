@@ -1,19 +1,15 @@
-import { Optional, UnwrapOptional as U } from '../common/types'
-import baseUpdate from '../common/baseUpdate'
+import { Optional, UnwrapOptional as U } from '../common/types';
+import baseUpdate from '../common/baseUpdate';
 
 type FpUpdate1<T, K1 extends keyof T, R> = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> & { [KK1 in K1]: R }
+  : Pick<T, Exclude<keyof T, K1>> & { [KK1 in K1]: R };
 
-type FpUpdate2<
-  T,
-  K1 extends keyof T,
-  K2 extends keyof U<T[K1]>,
-  R
-> = T extends any[]
+type FpUpdate2<T, K1 extends keyof T, K2 extends keyof U<T[K1]>, R> = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      { [KK1 in K1]-?: { [key in K1]: FpUpdate1<U<T[K1]>, K2, R> }[KK1] }
+  : Pick<T, Exclude<keyof T, K1>> & {
+      [KK1 in K1]-?: { [key in K1]: FpUpdate1<U<T[K1]>, K2, R> }[KK1];
+    };
 
 type FpUpdate3<
   T,
@@ -23,10 +19,9 @@ type FpUpdate3<
   R
 > = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      {
-        [KK1 in K1]-?: { [key in K1]: FpUpdate2<U<T[K1]>, K2, K3, R> }[KK1]
-      }
+  : Pick<T, Exclude<keyof T, K1>> & {
+      [KK1 in K1]-?: { [key in K1]: FpUpdate2<U<T[K1]>, K2, K3, R> }[KK1];
+    };
 
 type FpUpdate4<
   T,
@@ -37,10 +32,9 @@ type FpUpdate4<
   R
 > = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      {
-        [KK1 in K1]-?: { [key in K1]: FpUpdate3<U<T[K1]>, K2, K3, K4, R> }[KK1]
-      }
+  : Pick<T, Exclude<keyof T, K1>> & {
+      [KK1 in K1]-?: { [key in K1]: FpUpdate3<U<T[K1]>, K2, K3, K4, R> }[KK1];
+    };
 
 type FpUpdate5<
   T,
@@ -52,33 +46,26 @@ type FpUpdate5<
   R
 > = T extends any[]
   ? T
-  : Pick<T, Exclude<keyof T, K1>> &
-      {
-        [KK1 in K1]-?: {
-          [key in K1]: FpUpdate4<U<T[K1]>, K2, K3, K4, K5, R>
-        }[KK1]
-      }
+  : Pick<T, Exclude<keyof T, K1>> & {
+      [KK1 in K1]-?: {
+        [key in K1]: FpUpdate4<U<T[K1]>, K2, K3, K4, K5, R>;
+      }[KK1];
+    };
 
 interface FpUpdateFnReturn<T> {
-  <K1 extends keyof T, R extends T[K1]>(
-    path: [K1],
-    updateFn: (value: T[K1]) => R,
-  ): (source: T) => FpUpdate1<T, K1, R>
+  <K1 extends keyof T, R extends T[K1]>(path: [K1], updateFn: (value: T[K1]) => R): (
+    source: T
+  ) => FpUpdate1<T, K1, R>;
 
   <K1 extends keyof T, K2 extends keyof T[K1], R extends T[K1][K2]>(
     path: [K1, K2],
-    updateFn: (value: T[K1][K2]) => R,
-  ): (source: T) => FpUpdate2<T, K1, K2, R>
+    updateFn: (value: T[K1][K2]) => R
+  ): (source: T) => FpUpdate2<T, K1, K2, R>;
 
-  <
-    K1 extends keyof T,
-    K2 extends keyof T[K1],
-    K3 extends keyof T[K1][K2],
-    R extends T[K1][K2][K3]
-  >(
+  <K1 extends keyof T, K2 extends keyof T[K1], K3 extends keyof T[K1][K2], R extends T[K1][K2][K3]>(
     path: [K1, K2, K3],
-    updateFn: (value: T[K1][K2][K3]) => R,
-  ): (source: T) => FpUpdate3<T, K1, K2, K3, R>
+    updateFn: (value: T[K1][K2][K3]) => R
+  ): (source: T) => FpUpdate3<T, K1, K2, K3, R>;
 
   <
     K1 extends keyof T,
@@ -88,8 +75,8 @@ interface FpUpdateFnReturn<T> {
     R extends T[K1][K2][K3][K4]
   >(
     path: [K1, K2, K3, K4],
-    updateFn: (value: T[K1][K2][K3][K4]) => R,
-  ): (source: T) => FpUpdate4<T, K1, K2, K3, K4, R>
+    updateFn: (value: T[K1][K2][K3][K4]) => R
+  ): (source: T) => FpUpdate4<T, K1, K2, K3, K4, R>;
 
   <
     K1 extends keyof T,
@@ -100,18 +87,17 @@ interface FpUpdateFnReturn<T> {
     R extends T[K1][K2][K3][K4][K5]
   >(
     path: [K1, K2, K3, K4, K5],
-    updateFn: (value: T[K1][K2][K3][K4][K5]) => R,
-  ): (source: T) => FpUpdate5<T, K1, K2, K3, K4, K5, R>
+    updateFn: (value: T[K1][K2][K3][K4][K5]) => R
+  ): (source: T) => FpUpdate5<T, K1, K2, K3, K4, K5, R>;
 
-  <K1 extends keyof T, R extends T[K1]>(
-    path: [K1],
-    updateFn: (value: T[K1] | undefined) => R,
-  ): (source: Optional<T>) => FpUpdate1<T, K1, R>
+  <K1 extends keyof T, R extends T[K1]>(path: [K1], updateFn: (value: T[K1] | undefined) => R): (
+    source: Optional<T>
+  ) => FpUpdate1<T, K1, R>;
 
   <K1 extends keyof T, K2 extends keyof U<T[K1]>, R extends U<T[K1]>[K2]>(
     path: [K1, K2],
-    updateFn: (value: U<T[K1]>[K2] | undefined) => R,
-  ): (source: Optional<T>) => FpUpdate2<T, K1, K2, R>
+    updateFn: (value: U<T[K1]>[K2] | undefined) => R
+  ): (source: Optional<T>) => FpUpdate2<T, K1, K2, R>;
 
   <
     K1 extends keyof T,
@@ -120,8 +106,8 @@ interface FpUpdateFnReturn<T> {
     R extends U<U<T[K1]>[K2]>[K3]
   >(
     path: [K1, K2, K3],
-    updateFn: (value: U<U<T[K1]>[K2]>[K3] | undefined) => R,
-  ): (source: Optional<T>) => FpUpdate3<T, K1, K2, K3, R>
+    updateFn: (value: U<U<T[K1]>[K2]>[K3] | undefined) => R
+  ): (source: Optional<T>) => FpUpdate3<T, K1, K2, K3, R>;
 
   <
     K1 extends keyof T,
@@ -131,8 +117,8 @@ interface FpUpdateFnReturn<T> {
     R extends U<U<U<T[K1]>[K2]>[K3]>[K4]
   >(
     path: [K1, K2, K3, K4],
-    updateFn: (value: U<U<U<T[K1]>[K2]>[K3]>[K4] | undefined) => R,
-  ): (source: Optional<T>) => FpUpdate4<T, K1, K2, K3, K4, R>
+    updateFn: (value: U<U<U<T[K1]>[K2]>[K3]>[K4] | undefined) => R
+  ): (source: Optional<T>) => FpUpdate4<T, K1, K2, K3, K4, R>;
 
   <
     K1 extends keyof T,
@@ -143,15 +129,16 @@ interface FpUpdateFnReturn<T> {
     R extends U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5]
   >(
     path: [K1, K2, K3, K4, K5],
-    updateFn: (value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5] | undefined) => R,
-  ): (source: Optional<T>) => FpUpdate5<T, K1, K2, K3, K4, K5, R>
+    updateFn: (value: U<U<U<U<T[K1]>[K2]>[K3]>[K4]>[K5] | undefined) => R
+  ): (source: Optional<T>) => FpUpdate5<T, K1, K2, K3, K4, K5, R>;
 }
 
 // NOTE: use private implementation because typedoc generates wrong documentation.
-const updateImplementation = <T>(): FpUpdateFnReturn<T> => (
-  path: any[],
-  value: any,
-) => (source: any) => baseUpdate(source, path, value)
+const updateImplementation =
+  <T>(): FpUpdateFnReturn<T> =>
+  (path: any[], value: any) =>
+  (source: any) =>
+    baseUpdate(source, path, value);
 
 /**
  * Updates the value on the specified path in source value using update function. This function will
@@ -173,6 +160,6 @@ const updateImplementation = <T>(): FpUpdateFnReturn<T> => (
  * @param path path array of the nested value in the source
  * @returns source value with removed value
  */
-export const update = updateImplementation
+export const update = updateImplementation;
 
-export default update
+export default update;

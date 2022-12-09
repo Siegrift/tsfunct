@@ -1,29 +1,29 @@
-import map from '../map'
-import update from '../update'
-import filter from '../filter'
-import pipe from '../pipe'
-import fpSet from '../fpSet'
-import fpUpdate from '../fpUpdate'
-import fpUnset from '../fpUnset'
+import map from '../map';
+import update from '../update';
+import filter from '../filter';
+import pipe from '../pipe';
+import fpSet from '../fpSet';
+import fpUpdate from '../fpUpdate';
+import fpUnset from '../fpUnset';
 
 interface User {
-  name: string
-  age: number
+  name: string;
+  age: number;
 }
 
 interface DictValue {
-  id: string
-  x: number
+  id: string;
+  x: number;
 }
 
 interface State {
-  users: User[]
-  dict?: { [key: string]: DictValue }
-  visible?: boolean
+  users: User[];
+  dict?: { [key: string]: DictValue };
+  visible?: boolean;
 }
 
 describe('update, map and filter', () => {
-  let state: State
+  let state: State;
 
   beforeEach(() => {
     state = {
@@ -32,26 +32,26 @@ describe('update, map and filter', () => {
         { name: 'Bbbb', age: 55 },
         { name: 'Cccc', age: 89 },
       ],
-    }
-  })
+    };
+  });
 
   test('update, map, filter', () => {
     const newState = update(state, ['users'], (users) => {
-      const young = filter(users, (user) => user.age < 60)
-      return map(young, (user) => ({ ...user, age: 18 }))
-    })
+      const young = filter(users, (user) => user.age < 60);
+      return map(young, (user) => ({ ...user, age: 18 }));
+    });
 
     expect(newState).toEqual({
       users: [
         { name: 'Aaaa', age: 18 },
         { name: 'Bbbb', age: 18 },
       ],
-    })
-  })
-})
+    });
+  });
+});
 
 describe('pipe and fp helpers', () => {
-  let state: State
+  let state: State;
 
   beforeEach(() => {
     state = {
@@ -62,8 +62,8 @@ describe('pipe and fp helpers', () => {
       ],
       dict: { xxxx: { id: 'xxx', x: 123 } },
       visible: false,
-    }
-  })
+    };
+  });
 
   test('piping fp helpers composes the logic', () => {
     const newState: Pick<State, 'users' | 'dict'> = pipe(
@@ -74,8 +74,8 @@ describe('pipe and fp helpers', () => {
         name: u.name.toUpperCase(),
       })),
       fpUnset<State>()(['users', 2]),
-      fpUnset<State>()(['visible']),
-    )(state)
+      fpUnset<State>()(['visible'])
+    )(state);
 
     expect(newState).toEqual({
       dict: { xxxx: { id: 'newId', x: 790 } },
@@ -83,6 +83,6 @@ describe('pipe and fp helpers', () => {
         { age: 12, name: 'AAAA' },
         { age: 55, name: 'Bbbb' },
       ],
-    })
-  })
-})
+    });
+  });
+});

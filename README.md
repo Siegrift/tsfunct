@@ -35,8 +35,8 @@ functions aim to be as general as possible, which makes it harder or even imposs
 properly.
 
 There are certain helpers _(mainly for immutable object manipulation)_ which can be typed better.
-Let's take a look at `get(obj, path)` helper in both lodash _(4.14.132)_ and ramda _(0.26.9)_,
-when using it on a strongly typed TS object.
+Let's take a look at `get(obj, path)` helper in both lodash _(4.14.132)_ and ramda _(0.26.9)_, when
+using it on a strongly typed TS object.
 
 ![Weak typed result](assets/weak_typed_get.png)<br/> _(Lodash gets it at least correct, but cannot
 determine the result type. Ramda allows you to pass a type that is being returned, but you can omit
@@ -67,8 +67,8 @@ according to their idiomatic usage, library is immutable. However, there are no 
 for the source values and you are able to modify the original entity if you try really hard.
 
 ```javascript
-const original = [{ a: 0 }, { a: 1 }, { a: 2 }]
-const mapped = map(original, (val) => (val.a = 3))
+const original = [{ a: 0 }, { a: 1 }, { a: 2 }];
+const mapped = map(original, (val) => (val.a = 3));
 // 'mapped'  will equal to [3, 3, 3]
 // 'original' will equal to [{ a: 3 }, { a: 3 }, { a: 3 }]
 ```
@@ -80,19 +80,20 @@ TLDR: It is a bad idea. If you want to learn more, read
 
 ## Functional programming style
 
-Most of the functions in this library are written **imperatively** _(e.g. `const get = (object,
-path) => implementation` compared to traditional functional `const get = (path) => (object) =>
-implementation`)_ for better typing and autocompletion support. These helpers **aren't composable**
-together and if you would like to do multiple transformations you would have to either nest the
-calls _(which hurts readability)_ or introduce unnecessary local variables.
+Most of the functions in this library are written **imperatively** _(e.g.
+`const get = (object, path) => implementation` compared to traditional functional
+`const get = (path) => (object) => implementation`)_ for better typing and autocompletion support.
+These helpers **aren't composable** together and if you would like to do multiple transformations
+you would have to either nest the calls _(which hurts readability)_ or introduce unnecessary local
+variables.
 
 For this reason, there are also **functional alternatives** of most common methods _(in the future
 maybe all of them)_, which offer the same type guarantees and their imperative clones. These fp
 helpers have prefix `fp` _(e.g. functional version of `set` helper is called `fpSet`)_.
 
-_(If you are looking for more FP helpers have a look at [monocle](https://github.com/gcanti/monocle-ts) or [fp
-ts](https://github.com/gcanti/fp-ts) or [lodash
-fp](https://github.com/lodash/lodash/wiki/FP-Guide))_
+_(If you are looking for more FP helpers have a look at
+[monocle](https://github.com/gcanti/monocle-ts) or [fp ts](https://github.com/gcanti/fp-ts) or
+[lodash fp](https://github.com/lodash/lodash/wiki/FP-Guide))_
 
 ## Codebase overview
 
@@ -107,9 +108,9 @@ path array can be **up to X elements** only in some helpers...
 Bear in mind that TS is unsound! Types might easily lie to you if you are not careful. For example,
 
 ```javascript
-const arr: number[] = [1, 2, 3]
-const num: number = get(arr, [999]) // this line won't trigger TS error!
-console.log(num) // undefined!
+const arr: number[] = [1, 2, 3];
+const num: number = get(arr, [999]); // this line won't trigger TS error!
+console.log(num); // undefined!
 ```
 
 Other limitation is for example TS path autocompletion for immutability helpers, which I reported

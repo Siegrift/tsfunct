@@ -1,1 +1,12 @@
-.gitignore
+# Keep in sync with .gitignore
+*.js
+!.test.js
+!jest.config.js
+validator/build
+node_modules
+yarn-lock.json
+dist
+.vscode
+
+# Extra ignores
+docs

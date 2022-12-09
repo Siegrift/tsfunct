@@ -1,3 +1,4 @@
+# Keep in sync with .prettierignore
 *.js
 !.test.js
 !jest.config.js
