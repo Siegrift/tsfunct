@@ -41,5 +41,8 @@
   "homepage": "https://github.com/Siegrift/tsfunct#readme",
   "directories": {
     "doc": "docs"
+  },
+  "dependencies": {
+    "typedoc-plugin-missing-exports": "^1.0.0"
   }
 }
