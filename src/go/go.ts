@@ -73,16 +73,16 @@ export interface GoAsyncOptions {
 }
 
 export const go = async <T, E extends Error>(
-  fn: () => Promise<T>,
+  fn: () => T,
   options?: GoAsyncOptions
-): Promise<GoResult<T, E>> => {
+): Promise<GoResult<Awaited<T>, E>> => {
   try {
     if (!options?.timeoutMs) return success(await fn());
     else {
       const timeout = cancellableTimeout(options.timeoutMs);
       const result = await Promise.race([fn(), timeout.promise]);
       timeout.cancel();
-      return success(result as T);
+      return success(result as Awaited<T>);
     }
   } catch (err) {
     return createGoError(err) as GoResultError<E>;

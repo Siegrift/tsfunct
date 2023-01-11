@@ -302,7 +302,7 @@ it('has access to native error', async () => {
     throw { message: 'an error', data: 'some data' };
   };
 
-  const goRes = await go<never, GoWrappedError>(throwingFn);
+  const goRes = await go<Promise<never>, GoWrappedError>(throwingFn);
 
   assertGoError(goRes);
   // The error message is the  not very useful stringified data
@@ -385,11 +385,20 @@ describe('documentation snippets are valid', () => {
     }
 
     // Compare it to simpler version using go
-    type MyData = never;
+    type MyData = Promise<never>;
     const goRes = await go<MyData, MyError>(someAsyncCall);
     if (!goRes.success) return logError(goRes.error.reason);
     // At this point TypeScript infers that the error was handled and goRes must be a success response
     const data = goRes.data;
     expectType<MyData>(data);
+  });
+
+  it('handles nested promises correctly', async () => {
+    const x = Promise.resolve('123') as any as Promise<Promise<string>>;
+
+    const goRes = await go(() => x);
+    assertGoSuccess(goRes);
+
+    expectType<string>(goRes.data);
   });
 });
