@@ -41,7 +41,7 @@ const createGoError = <E extends Error>(err: unknown): GoResultError<E> => {
   return fail(new GoWrappedError(err));
 };
 
-export const goSync = <T, E extends Error>(fn: () => T): GoResult<T, E> => {
+export const goSync = <T, E extends Error = Error>(fn: () => T): GoResult<T, E> => {
   try {
     return success(fn());
   } catch (err) {
@@ -72,8 +72,8 @@ export interface GoAsyncOptions {
   timeoutMs: number;
 }
 
-export const go = async <T, E extends Error>(
-  fn: () => T,
+export const go = async <T, E extends Error = Error>(
+  fn: () => Promise<T>,
   options?: GoAsyncOptions
 ): Promise<GoResult<Awaited<T>, E>> => {
   try {

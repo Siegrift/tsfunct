@@ -100,6 +100,21 @@ describe('basic go usage', () => {
     });
     expect(res).toEqual(fail(err));
   });
+
+  it('allows to specify the type of the returned value', async () => {
+    const goResOnlyData = await go<string | number>(() => {
+      return Promise.resolve(123);
+    });
+    assertGoSuccess(goResOnlyData);
+    expectType<string | number>(goResOnlyData.data);
+
+    class CustomError extends Error {}
+    const goResBoth = await go<string | number, CustomError>(() => {
+      return Promise.resolve(123);
+    });
+    assertGoSuccess(goResBoth);
+    expectType<string | number>(goResBoth.data);
+  });
 });
 
 describe('basic timeout usage', () => {
